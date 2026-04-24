@@ -259,6 +259,18 @@ section{position:relative}
 .scotus-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:14px}
 .scotus-seat{width:40px;height:54px;background:#222;border-radius:4px 4px 1px 1px;position:relative;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px}
 #takeaway .scotus-seat{background:#222}
+#takeaway .routine-callback .rc-label{color:#666}
+#takeaway .routine-diagram svg .path-line{stroke:#bbb}
+#takeaway .routine-diagram svg .path-line.lit{stroke:#c0392b}
+#takeaway .routine-diagram svg .path-label{fill:#444}
+#takeaway .routine-diagram svg .path-label.lit{fill:#111}
+#takeaway .routine-diagram svg .path-sub{fill:#888}
+#takeaway .routine-diagram svg .path-sub.lit{fill:#c0392b}
+#takeaway .routine-diagram svg .node-charisma{fill:#c0392b}
+#takeaway .routine-diagram svg .node-down{fill:#fff;stroke:#bbb}
+#takeaway .routine-diagram svg .node-down.lit{stroke:#c0392b;fill:#fff5f3}
+#takeaway .routine-diagram svg .rc-mandela-pulse{animation:rcMandelaPulse 2.4s ease-in-out infinite}
+@keyframes rcMandelaPulse{0%,100%{opacity:0.65}50%{opacity:1}}
 .scotus-seat.proposed{background:transparent;border:2px dashed #777;transition:opacity 0.7s,transform 0.7s}
 .scotus-seat.proposed.cracked{opacity:0;transform:translateY(8px) rotate(6deg)}
 .scotus-vote{font-size:14px;color:#111;font-weight:500;text-align:center;margin-top:18px;letter-spacing:0.5px}
@@ -276,9 +288,11 @@ section{position:relative}
 .synth-card .sc-pulse::after{content:'?';position:absolute;right:-4px;top:-4px;color:#c0392b;font-weight:600;animation:qPulse 2.4s ease-in-out infinite}
 
 /* === CLOSING === */
-.closing-section{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#fff;position:relative}
-.closing-line-text{font-size:28px;font-style:italic;color:#111;text-align:center;max-width:720px;line-height:1.5;font-weight:500;letter-spacing:-0.3px;padding:0 40px}
+.closing-section{min-height:140vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;position:relative;gap:160px;padding:120px 0}
+.closing-line-text{font-size:28px;font-style:italic;color:#111;text-align:center;max-width:760px;line-height:1.5;font-weight:500;letter-spacing:-0.3px;padding:0 40px}
 .closing-line-text .word{display:inline-block;opacity:0;margin-right:0.3em}
+.closing-cite{display:block;font-size:14px;font-style:normal;color:#666;margin-top:18px;letter-spacing:0.3px;opacity:0}
+.closing-final{font-size:24px}
 
 /* === PROGRESS NAV === */
 .progress-nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:12px}
@@ -290,8 +304,11 @@ section{position:relative}
 /* === REFERENCES === */
 #references{background:#050505;padding:80px 0}
 #references h3{color:#444}
-#references ul{list-style:none;max-width:680px}
-#references li{font-size:14px;color:#555;padding:8px 0;border-bottom:1px solid #111}
+#references .ref-group{margin-bottom:32px;max-width:760px}
+#references .ref-group-label{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:2px;margin:24px 0 12px;font-weight:500}
+#references .ref-list{list-style:decimal inside;max-width:760px;padding-left:0}
+#references .ref-list li{font-size:13px;color:#666;padding:6px 0;border-bottom:1px solid #111;line-height:1.6}
+#references .ref-list li em{color:#888}
 
 /* === RESPONSIVE === */
 @media(max-width:900px){
@@ -461,11 +478,7 @@ section{position:relative}
       </div></div>
       <div class="scrolly-step" data-step="2"><div class="step-content">
         <p>Red Guard factions turn on each other. Provincial governments collapse. Liu Shaoqi — the second most powerful man in China — is dragged from his home and left to die in detention. The revolution is eating its own.</p>
-        <div class="image-pair">
-          <div class="section-image"><img src="assets/s1-anti-liu-shaoqi-poster.jpg" alt="Anti-Liu Shaoqi propaganda poster during the Cultural Revolution"><div class="caption">Liu Shaoqi, denounced as "China's Khrushchev." Died in detention, 1969.</div></div>
-          <div class="section-image"><img src="assets/s1-peng-dehuai-military-portrait.jpg" alt="Marshal Peng Dehuai in military uniform before persecution"><div class="caption">Peng Dehuai — defense minister, war hero — before he was purged.</div></div>
-        </div>
-        <div class="section-image"><img src="assets/s1-peng-dehuai-struggle-session.jpg" alt="Marshal Peng Dehuai subjected to a struggle session by Red Guards"><div class="caption">The same man, after. Beaten until his back was broken for telling Mao the Great Leap was failing. Died in prison, 1974.</div></div>
+        <div class="section-image"><img src="assets/s1-anti-liu-shaoqi-poster.jpg" alt="Anti-Liu Shaoqi propaganda poster during the Cultural Revolution"><div class="caption">Liu Shaoqi, denounced as "China's Khrushchev." Died in detention, 1969.</div></div>
       </div></div>
       <div class="scrolly-step" data-step="3"><div class="step-content">
         <p>Even Mao cannot stop it. He sends the army to suppress the Red Guards — the very forces he summoned two years earlier. The weapon he built no longer answers to him.</p>
@@ -615,7 +628,7 @@ section{position:relative}
           <rect class="node-rect" x="205" y="442" width="140" height="44" fill="#141414" stroke="#8b1a1a" stroke-width="1" data-info="Iraq Civil War (2003–2011)|Sunni-Shia sectarian violence after the US invasion."/><text x="275" y="460" text-anchor="middle" font-size="11" fill="#a0a0a0">Iraq Civil War</text><text x="275" y="478" text-anchor="middle" class="conflict-tag" font-weight="600">~200,000 dead</text>
           <rect class="node-rect" x="365" y="442" width="130" height="44" fill="#141414" stroke="#8b1a1a" stroke-width="1" data-info="Syrian Civil War (2011–present)|Multi-faction war with strong sectarian dimensions."/><text x="430" y="460" text-anchor="middle" font-size="11" fill="#a0a0a0">Syrian War</text><text x="430" y="478" text-anchor="middle" class="conflict-tag" font-weight="600">~500,000 dead</text>
           <rect class="node-rect" x="515" y="442" width="130" height="44" fill="#141414" stroke="#8b1a1a" stroke-width="1" data-info="Yemen Civil War (2014–present)|Zaidi Shia Houthis vs Saudi-backed Sunni government."/><text x="580" y="460" text-anchor="middle" font-size="11" fill="#a0a0a0">Yemen War</text><text x="580" y="478" text-anchor="middle" class="conflict-tag" font-weight="600">~150,000+ dead</text>
-          <text x="380" y="530" text-anchor="middle" font-size="14" font-weight="600" fill="#c0392b">1,850,000+ lives — from one succession crisis in 632 CE</text>
+          <text x="380" y="530" text-anchor="middle" font-size="14" font-weight="600" fill="#c0392b">1,850,000+ lives — in conflicts shaped by a fracture that began in 632 CE</text>
         </g>
       </svg>
     </div>
@@ -623,6 +636,7 @@ section{position:relative}
   <div class="section-image-full fade-in"><img src="assets/s2-syria-aleppo-destruction.jpg" alt="Destroyed buildings in Aleppo, Syria, during the civil war"></div>
   <div class="content-wrap" style="padding-bottom:80px">
     <div class="fade-in" style="margin-top:16px"><p style="font-size:13px;color:#555;font-style:italic">Aleppo, Syria. One of the oldest continuously inhabited cities in the world, reduced to rubble in a war with deep sectarian dimensions.</p></div>
+    <div class="fade-in" style="margin-top:48px"><p>No war on that list was caused by theology alone. The Iran-Iraq War was triggered by border disputes, revolutionary export, and Cold War maneuvering. The Iraq Civil War followed a foreign invasion. The Syrian War began as a political uprising. The Yemen War is tangled in Saudi-Iranian rivalry and resource competition. Each conflict had its own proximate causes, its own geopolitics, its own cynical actors. But each one also cracked along the same fault line — the question of who inherited Muhammad's authority. Fourteen centuries later, that fracture has not healed. It does not cause the wars. It shapes where they break.</p></div>
   </div>
   <div class="year-counter" id="yearCounter">
     <div class="yc-sticky">
@@ -642,6 +656,12 @@ section{position:relative}
     <h2 class="fade-in">Followers Are Self-Sealing</h2>
     <div class="section-image fade-in" style="margin-top:48px"><img src="assets/s3-great-leap-forward-furnaces.jpg" alt="Backyard steel furnaces during China's Great Leap Forward"><div class="caption">Backyard steel furnaces, China, late 1950s</div></div>
     <div class="fade-in"><p>Somewhere in rural Henan province, 1959. A local Party secretary stands in a field. The wheat is thin. He knows the harvest will fall short — maybe thirty percent of last year. He also knows what happened to the last official who reported low numbers. The man was denounced as a rightist, stripped of his position, and sent to a labor camp. His family was not told where.</p><p>The secretary writes his report. Record yield. Twice the actual harvest. He sends it up the chain.</p></div>
+    <div class="fade-in" style="margin-top:48px"><p>Not everyone lied. In July 1959, Marshal Peng Dehuai — China's defense minister and one of the most decorated commanders of the Korean War — wrote a private letter to Mao at the Lushan Conference. He called the backyard steel campaign "a waste of resources and manpower." He said the harvest numbers were inflated. He was right about everything.</p></div>
+    <div class="image-pair fade-in">
+      <div class="section-image"><img src="assets/s1-peng-dehuai-military-portrait.jpg" alt="Marshal Peng Dehuai in military uniform before persecution"><div class="caption">Peng Dehuai — defense minister, war hero, veteran of Korea.</div></div>
+      <div class="section-image"><img src="assets/s1-peng-dehuai-struggle-session.jpg" alt="Marshal Peng Dehuai subjected to a struggle session by Red Guards"><div class="caption">The same man, after. Beaten until his back was broken. Died in prison, 1974.</div></div>
+    </div>
+    <div class="fade-in"><p>Mao read the letter aloud to the Politburo — not to act on it, but to force everyone in the room to choose a side. Peng was stripped of all positions, placed under house arrest, and eventually handed to the Red Guards. The message was clear: the system does not lack information. It punishes the people who carry it. Every official in the chain below Peng understood what his fate meant for theirs.</p></div>
   </div>
 
   <!-- INFLATE SCROLLY -->
@@ -770,28 +790,15 @@ section{position:relative}
   <div class="counter-example fade-in">
     <h3>Counter-example 2 — FDR, 1937</h3>
     <div class="ce-image"><img src="assets/takeaway-fdr-portrait.jpg" alt="Franklin D. Roosevelt"><div class="caption">Franklin D. Roosevelt, 32nd President of the United States.</div></div>
-    <p>Franklin Roosevelt won the 1936 presidential election with 61% of the vote — the largest popular mandate since James Monroe ran unopposed. He carried 46 of 48 states. His New Deal had reshaped the American economy. His charisma was immense, his popularity unrivaled.</p>
-    <p>And the Supreme Court kept striking down his laws. So in February 1937, Roosevelt proposed the Judicial Procedures Reform Bill — a plan to add up to six new justices to the Court, one for every sitting justice over the age of seventy. The transparent goal: pack the bench with allies who would stop blocking the New Deal.</p>
-
-    <div class="scotus-bench" id="scotusBench">
-      <div class="scotus-row" id="scotusOriginal"></div>
-      <div class="scotus-row" id="scotusProposed"></div>
-      <div class="scotus-vote" id="scotusVote">Senate vote: <span class="accent-red">70 against</span>, 22 in favor</div>
-    </div>
-
+    <p>Franklin Roosevelt won the 1936 election with 61% of the vote — the largest mandate since Monroe ran unopposed — and carried 46 of 48 states. When the Supreme Court kept striking down his New Deal legislation, he proposed packing the bench: adding up to six new justices, one for every sitting justice over seventy. The transparent goal was to fill the Court with allies. His own party killed the bill. The Senate voted 70 to 22 against their own president — the most popular leader in American history — because the institutional principle mattered more than the political alliance. Roosevelt remained president. He won two more elections. But the Court stayed at nine.</p>
     <div class="ce-image"><img src="assets/takeaway-fdr-supreme-court-1937.png" alt="The nine justices of the U.S. Supreme Court, 1937"><div class="caption">The Hughes Court, 1937. Nine seats. Roosevelt wanted fifteen. The Senate said no.</div></div>
-    <p>The Senate — controlled by Roosevelt's own party — killed the bill 70 to 22. Democrats voted against their own president, against the most popular leader in American history, because the institutional principle mattered more than the political alliance. Roosevelt remained president. He won two more elections. But the Court stayed at nine.</p>
-    <p>The cage held — not because Roosevelt lacked charisma, but because the people inside the institution chose the institution over the leader. That choice is never guaranteed. It has to be made, every time, by specific people in a specific moment.</p>
   </div>
 
   <!-- MANDELA -->
   <div class="counter-example fade-in">
     <h3>Counter-example 3 — Mandela, 1999</h3>
     <div class="ce-image"><img src="assets/takeaway-mandela-salute.jpg" alt="Nelson Mandela saluting a crowd"><div class="caption">Nelson Mandela, Galeshewe, South Africa.</div></div>
-    <p>Nelson Mandela spent twenty-seven years in prison and emerged to lead the dismantling of apartheid. He won South Africa's first democratic election in 1994 with 62% of the vote. His moral authority was absolute. No one would have objected to a second term — or a third.</p>
-    <p>He served one term and stepped down. In a continent where leaders routinely clung to power for decades, Mandela walked away from the presidency at the height of his influence. He chose the institution over himself.</p>
-    <p>But this is the hardest case — and we should be honest about why. De Gaulle was constrained by a vote. Roosevelt was constrained by the Senate. Mandela was constrained by nothing except his own judgment. If a different person had stood where Mandela stood — someone with the same charisma but less restraint — would South Africa's young institutions have held?</p>
-    <p>The answer is not obvious. And that is the point. Institutions are necessary but not sufficient. They must be built, and then they must be chosen — again and again, by people who have the power to ignore them.</p>
+    <p>Nelson Mandela spent twenty-seven years in prison and emerged to lead the dismantling of apartheid. He won South Africa's first democratic election in 1994 with 62% of the vote. His moral authority was absolute — no one would have objected to a second term, or a third. He served one and stepped down. In a continent where leaders routinely clung to power for decades, Mandela chose the institution over himself. But this is the hardest case: de Gaulle was constrained by a vote, Roosevelt was constrained by the Senate. Mandela was constrained by nothing except his own judgment. If a different person had stood where he stood — someone with the same charisma but less restraint — would South Africa's young institutions have held?</p>
     <div class="ce-image"><img src="assets/takeaway-mandela-portrait.jpg" alt="Portrait of Nelson Mandela"><div class="caption">The institution did not constrain him. He constrained himself. That is the exception, not the rule.</div></div>
   </div>
 
@@ -818,36 +825,103 @@ section{position:relative}
         <div class="sc-row"><div class="sc-key">Outcome</div><div class="sc-val">Stepped down. But — would the next leader?</div></div>
       </div>
     </div>
-    <div class="fade-in" style="margin-top:32px"><p>The pattern is not "good leaders versus bad leaders." It is: are there structures that hold when the pressure comes? De Gaulle designed a constitution and then submitted to it. Roosevelt's own party chose the judiciary over their president. Mandela chose the institution over himself — but his case is the fragile one, because it depended on one man's character rather than one system's design.</p><p>Every catastrophe in the preceding sections — the Enabling Act, the Cultural Revolution, the Great Purge, the Great Famine — happened because at the critical moment, no institution was strong enough, or no person inside the institution was willing, to say no.</p><p>The cages do not hold by themselves. They hold because someone, at some point, decides they matter more than the leader standing in front of them.</p></div>
+    <div class="fade-in" style="margin-top:32px"><p>Weber's third path — charisma constrained by institutions — held three times in the twentieth century. But Mandela's case reveals its fragility: sometimes the constraint is not the institution. It is one person's choice.</p><p>The pattern is not "good leaders versus bad leaders." It is: are there structures that hold when the pressure comes? De Gaulle designed a constitution and then submitted to it. Roosevelt's own party chose the judiciary over their president. Mandela chose the institution over himself — but his case is the fragile one, because it depended on one man's character rather than one system's design.</p><p>Every catastrophe in the preceding sections — the Enabling Act, the Cultural Revolution, the Great Purge, the Great Famine — happened because at the critical moment, no institution was strong enough, or no person inside the institution was willing, to say no.</p><p>The cages do not hold by themselves. They hold because someone, at some point, decides they matter more than the leader standing in front of them.</p></div>
+
+    <!-- ROUTINIZATION PATHWAY CALLBACK -->
+    <div class="routine-callback fade-in" id="routineCallback" style="margin-top:80px">
+      <div class="rc-label" style="font-size:12px;color:#888;text-transform:uppercase;letter-spacing:2px;margin-bottom:20px;text-align:center">The third path, answered</div>
+      <div class="routine-diagram">
+        <svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect class="node-charisma" x="320" y="20" width="120" height="44" rx="6"/>
+          <text x="380" y="48" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#fff">Charisma</text>
+          <path class="path-line lit" d="M 380 64 L 130 170" />
+          <path class="path-line lit" d="M 380 64 L 380 170" />
+          <path class="path-line lit" d="M 380 64 L 630 170" />
+          <rect class="node-down lit" x="20" y="170" width="220" height="80" rx="6"/>
+          <text class="path-label lit" x="130" y="202" text-anchor="middle" font-weight="500">Routinized into</text>
+          <text class="path-label lit" x="130" y="220" text-anchor="middle" font-weight="500">Bureaucracy</text>
+          <text class="path-sub lit" x="130" y="240" text-anchor="middle">Lenin → Stalin</text>
+          <rect class="node-down lit" x="270" y="170" width="220" height="80" rx="6"/>
+          <text class="path-label lit" x="380" y="202" text-anchor="middle" font-weight="500">Fractured into Competing</text>
+          <text class="path-label lit" x="380" y="220" text-anchor="middle" font-weight="500">Traditions</text>
+          <text class="path-sub lit" x="380" y="240" text-anchor="middle">Muhammad → The Schism</text>
+          <rect class="node-down lit" x="520" y="170" width="220" height="80" rx="6"/>
+          <text class="path-label lit" x="630" y="202" text-anchor="middle" font-weight="500">Constrained by</text>
+          <text class="path-label lit" x="630" y="220" text-anchor="middle" font-weight="500">Institutions</text>
+          <text class="path-sub lit rc-mandela-pulse" x="630" y="240" text-anchor="middle">De Gaulle / FDR / Mandela</text>
+        </svg>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- CLOSING -->
 <section class="closing-section" id="closingSection">
-  <div class="closing-line-text" id="closingText">The next charismatic leader will come. They always do. The cages have held before. Whether they hold again depends on whether anyone chooses to keep them closed.</div>
+  <div class="closing-line-text" id="closingHerbert">"The bottom line of the Dune trilogy is: beware of heroes. Much better rely on your own judgment, and your own mistakes."<cite class="closing-cite">— Frank Herbert, 1979</cite></div>
+  <div class="closing-line-text closing-final" id="closingText">The cages will not remind you they matter. That is something you have to remember on your own.</div>
 </section>
 
 <!-- REFERENCES -->
 <section id="references">
   <div class="content-wrap">
     <h3>References</h3>
-    <ul>
-      <li>Frank Herbert, UCLA Speech, April 17, 1985 (transcript: theaugustry.com)</li>
-      <li>Max Weber, <em>Economy and Society</em> (1922)</li>
-      <li>James Madison, <em>Federalist No. 51</em> (1788)</li>
-      <li>Eric Hoffer, <em>The True Believer</em> (1951)</li>
-      <li>Leon Festinger, <em>When Prophecy Fails</em> (1956)</li>
-      <li>Arthur Koestler, <em>Darkness at Noon</em> (1940)</li>
-      <li>Roderick MacFarquhar & Michael Schoenhals, <em>Mao's Last Revolution</em> (2006)</li>
-      <li>Richard J. Evans, <em>The Coming of the Third Reich</em> (2005)</li>
-      <li>Eli Pariser, <em>The Filter Bubble</em> (2011)</li>
-      <li>Jonathan Haidt, <em>The Righteous Mind</em> (2012)</li>
-      <li>Fred M. Donner, <em>Muhammad and the Believers</em> (2010)</li>
-      <li>Cass Sunstein, <em>Going to Extremes: How Like Minds Unite and Divide</em> (2009)</li>
-      <li>Julian Jackson, <em>De Gaulle</em> (2018)</li>
-      <li>Jeff Shesol, <em>Supreme Power: Franklin Roosevelt vs. the Supreme Court</em> (2010)</li>
-      <li>Nelson Mandela, <em>Long Walk to Freedom</em> (1994)</li>
-    </ul>
+    <div class="ref-group"><div class="ref-group-label">Primary sources and speeches</div><ol class="ref-list" start="1">
+      <li>Frank Herbert, Speech at UCLA, April 17, 1985. Transcript: The Augustry (theaugustry.com). Audio: UCLA Campus Events Commission archives.</li>
+      <li>Frank Herbert, "Dune Genesis," <em>Omni</em>, July 1980. Source of "beware of heroes" and "the bottom line of the Dune trilogy" statement.</li>
+      <li>James Madison, <em>Federalist No. 51</em> (1788). "If men were angels, no government would be necessary."</li>
+      <li>Max Weber, <em>Economy and Society</em> (Wirtschaft und Gesellschaft), ed. Guenther Roth and Claus Wittich, University of California Press, 1978 (original German publication 1922). Definition of charismatic authority: Part I, Chapter III, §10.</li>
+      <li>Leon Festinger, Henry Riecken, and Stanley Schachter, <em>When Prophecy Fails</em>, University of Minnesota Press, 1956. Festinger quote ("A man with a conviction…") from Leon Festinger, <em>A Theory of Cognitive Dissonance</em>, Stanford University Press, 1957, p. 3.</li>
+      <li>Eric Hoffer, <em>The True Believer: Thoughts on the Nature of Mass Movements</em>, Harper & Brothers, 1951. "Mass movements can rise and spread without belief in a God…": Part III, §65.</li>
+      <li>Arthur Koestler, <em>Darkness at Noon</em>, Macmillan, 1940.</li>
+      <li>Eli Pariser, <em>The Filter Bubble: What the Internet Is Hiding from You</em>, Penguin Press, 2011.</li>
+      <li>Cass Sunstein, <em>Going to Extremes: How Like Minds Unite and Divide</em>, Oxford University Press, 2009.</li>
+    </ol></div>
+    <div class="ref-group"><div class="ref-group-label">Historical sources — Section 1 (Reichstag / Cultural Revolution)</div><ol class="ref-list" start="10">
+      <li>Richard J. Evans, <em>The Coming of the Third Reich</em>, Penguin, 2005. Enabling Act vote count (441 to 94): Chapter 8, pp. 351–374.</li>
+      <li>Ian Kershaw, <em>Hitler: 1889–1936 — Hubris</em>, W.W. Norton, 1998. Reichstag context: Chapter 10.</li>
+      <li>Otto Wels, Speech to the Reichstag, March 23, 1933. "You can take our liberty and our lives…": reprinted in Evans (2005) and in the Reichstag Protocols (Verhandlungen des Reichstags), Vol. 457, p. 34.</li>
+      <li>Roderick MacFarquhar and Michael Schoenhals, <em>Mao's Last Revolution</em>, Harvard University Press, 2006. Cultural Revolution death toll estimate (500,000–2,000,000): Chapter 14 and Epilogue. "36 million persecuted" figure: pp. 262–263.</li>
+      <li>Frank Dikötter, <em>The Cultural Revolution: A People's History, 1962–1976</em>, Bloomsbury, 2016. Corroborating death toll estimates and provincial violence.</li>
+      <li>Mao Zedong, "Bombard the Headquarters — My First Big-Character Poster," August 5, 1966. Reprinted in Stuart Schram, ed., <em>Mao Tse-Tung Unrehearsed</em>, Penguin, 1974.</li>
+    </ol></div>
+    <div class="ref-group"><div class="ref-group-label">Historical sources — Section 2 (Lenin/Stalin, Islamic schism)</div><ol class="ref-list" start="16">
+      <li>Robert Service, <em>Lenin: A Biography</em>, Macmillan, 2000. Lenin's Testament: Chapter 33, pp. 466–475.</li>
+      <li>Lenin's Testament (Letter to the Congress), January 4, 1923. Published in <em>Kommunist</em> No. 9, 1956, following Khrushchev's Secret Speech. English translation in Robert C. Tucker, ed., <em>The Lenin Anthology</em>, W.W. Norton, 1975, pp. 725–728.</li>
+      <li>Stephen Kotkin, <em>Stalin: Paradoxes of Power, 1878–1928</em>, Penguin, 2014. Stalin's outmaneuvering of rivals: Chapters 11–14.</li>
+      <li>David King, <em>The Commissar Vanishes: The Falsification of Photographs and Art in Stalin's Russia</em>, Metropolitan Books, 1997. Source for both before/after photograph pairs (Lenin at Sverdlov Square; Stalin with Yezhov at the Moscow Canal).</li>
+      <li>Robert Conquest, <em>The Great Terror: A Reassessment</em>, Oxford University Press, 2008 (orig. 1968). Great Purge execution and gulag statistics: Chapters 8–13 and statistical appendix.</li>
+      <li>Oleg Khlevniuk, <em>The History of the Gulag</em>, Yale University Press, 2004. Corroborating gulag population numbers.</li>
+      <li>Fred M. Donner, <em>Muhammad and the Believers: At the Origins of Islam</em>, Harvard University Press, 2010. Succession crisis and early caliphate: Chapters 4–6.</li>
+      <li>Wilferd Madelung, <em>The Succession to Muhammad: A Study of the Early Caliphate</em>, Cambridge University Press, 1997. Ghadir Khumm and the Abu Bakr/Ali dispute.</li>
+      <li>Hugh Kennedy, <em>The Prophet and the Age of the Caliphates</em>, Longman, 2004. Assassination of early caliphs and Karbala.</li>
+      <li>Heinz Halm, <em>Shi'ism</em>, Edinburgh University Press, 2004. Ashura, Twelver/Ismaili/Zaidi branches.</li>
+    </ol></div>
+    <div class="ref-group"><div class="ref-group-label">Historical sources — Section 2 (Sectarian conflict death tolls)</div><ol class="ref-list" start="26">
+      <li>Iran-Iraq War (~1,000,000 dead): Pierre Razoux, <em>The Iran-Iraq War</em>, Harvard University Press, 2015. Also: Lawrence G. Potter and Gary G. Sick, eds., <em>Iran, Iraq, and the Legacies of War</em>, Palgrave, 2004.</li>
+      <li>Iraq Civil War (~200,000 dead): Iraq Body Count project (iraqbodycount.org); also <em>The Lancet</em> survey estimates (Gilbert Burnham et al., "Mortality after the 2003 invasion of Iraq," <em>The Lancet</em> 368, no. 9545, 2006).</li>
+      <li>Syrian Civil War (~500,000 dead): United Nations Office of the High Commissioner for Human Rights estimates, 2021; Syrian Observatory for Human Rights data through 2024.</li>
+      <li>Yemen Civil War (~150,000+ dead): Armed Conflict Location and Event Data Project (ACLED), 2019 report; United Nations Office for the Coordination of Humanitarian Affairs (OCHA).</li>
+    </ol></div>
+    <div class="ref-group"><div class="ref-group-label">Historical sources — Section 3 (Great Leap Forward, Moscow Trials)</div><ol class="ref-list" start="30">
+      <li>Frank Dikötter, <em>Mao's Great Famine: The History of China's Most Devastating Catastrophe, 1958–1962</em>, Bloomsbury, 2010. Death toll estimates (15–55 million, scholarly range): Chapter 37 and statistical appendix. Harvest inflation and Henan case studies: Chapters 5–8.</li>
+      <li>Yang Jisheng, <em>Tombstone: The Great Chinese Famine, 1958–1962</em>, Farrar, Straus and Giroux, 2012. Corroborating famine death toll and bureaucratic falsification of harvest numbers.</li>
+      <li>Peng Dehuai, "Letter of Opinion" (万言书), Lushan Conference, July 14, 1959. Discussed in Roderick MacFarquhar, <em>The Origins of the Cultural Revolution, Vol. 2: The Great Leap Forward, 1958–1960</em>, Columbia University Press, 1983, pp. 203–222.</li>
+      <li>Robert Conquest, <em>The Great Terror</em> (2008). Moscow Show Trials — Kamenev, Zinoviev (Trial of the Sixteen, 1936), Bukharin, Rykov, Radek (Trial of the Twenty-One, 1938): Part Two.</li>
+      <li>Stephen F. Cohen, <em>Bukharin and the Bolshevik Revolution</em>, Oxford University Press, 1980. Bukharin's confession: Chapter 12.</li>
+    </ol></div>
+    <div class="ref-group"><div class="ref-group-label">Historical sources — Takeaway (De Gaulle, FDR, Mandela)</div><ol class="ref-list" start="35">
+      <li>Julian Jackson, <em>De Gaulle</em>, Harvard University Press, 2018. 1969 referendum result (52.41% Non, 47.59% Oui): Chapter 27, pp. 735–741. Also: Serge Berstein, <em>The Republic of de Gaulle, 1958–1969</em>, Cambridge University Press, 1993.</li>
+      <li>Official results: French Constitutional Council, Proclamation of Referendum Results, April 28, 1969.</li>
+      <li>Jeff Shesol, <em>Supreme Power: Franklin Roosevelt vs. the Supreme Court</em>, W.W. Norton, 2010. Court-packing bill defeated 70–22 in the Senate Judiciary Committee: Chapters 20–22.</li>
+      <li>William E. Leuchtenburg, <em>The Supreme Court Reborn: The Constitutional Revolution in the Age of Roosevelt</em>, Oxford University Press, 1995. 1936 election (61%, 46 of 48 states): Chapter 4.</li>
+      <li>Nelson Mandela, <em>Long Walk to Freedom</em>, Little, Brown, 1994.</li>
+      <li>Tom Lodge, <em>Mandela: A Critical Life</em>, Oxford University Press, 2006. 1994 election (62.65% of the vote): Chapter 14. Decision not to seek second term.</li>
+    </ol></div>
+    <div class="ref-group"><div class="ref-group-label">Additional references</div><ol class="ref-list" start="41">
+      <li>Jonathan Haidt, <em>The Righteous Mind: Why Good People Are Divided by Politics and Religion</em>, Vintage Books, 2012.</li>
+      <li>Vietnam War U.S. military deaths (58,220): National Archives, Department of Defense records. Also: <em>Statistical Information about Fatal Casualties of the Vietnam War</em>, National Archives (archives.gov).</li>
+      <li>Frank Herbert, Introduction to <em>Eye</em> (short story collection), Berkley Books, 1985. "The mistakes made by a leader (or made in a leader's name) are amplified by the numbers who follow without question."</li>
+    </ol></div>
   </div>
 </section>
 
@@ -1370,35 +1444,6 @@ ScrollTrigger.create({
   }
 });
 
-// === SCOTUS BENCH ===
-(function(){
-  var origRow=document.getElementById('scotusOriginal');
-  var propRow=document.getElementById('scotusProposed');
-  if(!origRow)return;
-  var justices=['Hughes','VanDevanter','McReynolds','Brandeis','Sutherland','Butler','Stone','Roberts','Cardozo'];
-  justices.forEach(function(name){
-    var s=document.createElement('div');
-    s.className='scotus-seat';
-    s.title=name;
-    origRow.appendChild(s);
-  });
-  for(var i=0;i<6;i++){
-    var s=document.createElement('div');
-    s.className='scotus-seat proposed';
-    s.title='FDR proposed seat';
-    propRow.appendChild(s);
-  }
-  ScrollTrigger.create({
-    trigger:'#scotusBench',start:'top 70%',once:true,
-    onEnter:function(){
-      var proposed=propRow.querySelectorAll('.scotus-seat.proposed');
-      proposed.forEach(function(seat,i){
-        setTimeout(()=>seat.classList.add('cracked'),1200+i*250);
-      });
-    }
-  });
-})();
-
 // === SYNTH TABLE ===
 gsap.utils.toArray('#synthTable .synth-card').forEach(function(card,i){
   ScrollTrigger.create({trigger:card,start:'top 85%',once:true,onEnter:()=>{
@@ -1408,22 +1453,39 @@ gsap.utils.toArray('#synthTable .synth-card').forEach(function(card,i){
 
 // === CLOSING WORD BY WORD ===
 (function(){
-  var el=document.getElementById('closingText');
-  var text=el.textContent.trim();
-  el.innerHTML='';
-  text.split(/\s+/).forEach(function(w){
-    var span=document.createElement('span');
-    span.className='word';
-    span.textContent=w;
-    el.appendChild(span);
+  function splitWords(el){
+    var cite=el.querySelector('.closing-cite');
+    var citeHTML=cite?cite.outerHTML:'';
+    var text=(cite?el.childNodes[0].textContent:el.textContent).trim();
+    el.innerHTML='';
+    text.split(/\s+/).forEach(function(w){
+      var span=document.createElement('span');
+      span.className='word';
+      span.textContent=w;
+      el.appendChild(span);
+      el.appendChild(document.createTextNode(' '));
+    });
+    if(citeHTML){el.insertAdjacentHTML('beforeend',citeHTML);}
+  }
+  function animate(el,baseDelay){
+    var words=el.querySelectorAll('.word');
+    words.forEach(function(word,i){
+      gsap.to(word,{opacity:1,duration:0.3,delay:baseDelay+i*0.06});
+    });
+    var cite=el.querySelector('.closing-cite');
+    if(cite){gsap.to(cite,{opacity:1,duration:0.6,delay:baseDelay+words.length*0.06+0.2});}
+  }
+  var herbert=document.getElementById('closingHerbert');
+  var final=document.getElementById('closingText');
+  splitWords(herbert);
+  splitWords(final);
+  ScrollTrigger.create({
+    trigger:'#closingHerbert',start:'top 75%',once:true,
+    onEnter:function(){animate(herbert,0);}
   });
   ScrollTrigger.create({
-    trigger:'#closingSection',start:'top 60%',
-    onEnter:function(){
-      el.querySelectorAll('.word').forEach(function(word,i){
-        gsap.to(word,{opacity:1,duration:0.3,delay:i*0.08});
-      });
-    },once:true
+    trigger:'#closingText',start:'top 80%',once:true,
+    onEnter:function(){animate(final,0);}
   });
 })();
 </script>
