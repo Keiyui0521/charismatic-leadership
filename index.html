@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Dark Side of Charismatic Leadership</title>
+<meta name="description" content="How charismatic leaders dismantle institutions, how movements outlive their founders, and how followers seal themselves inside belief.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#a0a0a0;font-size:18px;line-height:1.75;overflow-x:hidden}
+h1{font-size:48px;font-weight:600;color:#f5f5f5;letter-spacing:-1px;line-height:1.2}
+h2{font-size:28px;font-weight:500;color:#f5f5f5;letter-spacing:-0.3px;line-height:1.3}
+h3{font-size:14px;font-weight:500;color:#666;text-transform:uppercase;letter-spacing:2px;margin-bottom:24px}
+p{margin-bottom:1.5em;max-width:680px}
+em{font-style:italic;color:#d0d0d0}
+strong{font-weight:600;color:#f5f5f5}
+blockquote{border-left:2px solid #c0392b;padding-left:24px;margin:2em 0;font-style:italic;color:#d0d0d0;font-size:20px;line-height:1.6;max-width:680px}
+blockquote cite{display:block;font-size:14px;font-style:normal;color:#666;margin-top:8px}
+.accent{color:#c0392b}
+.section-label{font-size:12px;font-weight:500;color:#c0392b;text-transform:uppercase;letter-spacing:3px;margin-bottom:16px}
+.content-wrap{max-width:780px;margin:0 auto;padding:0 40px}
+section{position:relative}
+.prose-section{padding:120px 0}
+/* === SCROLLYTELLING FRAMEWORK === */
+.scrolly{position:relative;display:flex;justify-content:flex-start}
+.scrolly-viz{position:sticky;top:0;width:50%;height:100vh;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.scrolly-steps{width:50%;padding:0 48px}
+.scrolly-step{min-height:80vh;display:flex;align-items:center;padding:40px 0}
+.scrolly-step:first-child{padding-top:40vh}
+.scrolly-step:last-child{padding-bottom:40vh}
+.scrolly-step .step-content{opacity:0.15;transform:translateY(10px);transition:opacity 0.5s,transform 0.5s}
+.scrolly-step.is-active .step-content{opacity:1;transform:translateY(0)}
+.scrolly-centered{position:relative}
+.scrolly-centered .scrolly-viz-center{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;z-index:1}
+.scrolly-centered .scrolly-steps-overlay{position:relative;z-index:2;max-width:480px;margin:-50vh auto 0;padding:0 40px}
+.scrolly-centered .scrolly-step{min-height:60vh}
+.fade-in{opacity:0;transform:translateY(30px)}
+
+/* === HERO === */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+#hero .hero-bg{position:absolute;inset:0;z-index:0}
+#hero .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:0.15;filter:grayscale(100%)}
+#hero .content-wrap{position:relative;z-index:1}
+.hero-quote{font-size:22px;font-style:italic;color:#d0d0d0;max-width:600px;margin-bottom:48px;opacity:0}
+.hero-quote cite{display:block;font-size:14px;font-style:normal;color:#666;margin-top:8px}
+.hero-title{font-size:56px;font-weight:600;color:#f5f5f5;letter-spacing:-1.5px;line-height:1.15;margin-bottom:48px;max-width:700px;opacity:0}
+.hero-body p{opacity:0}
+.hero-herbert{position:absolute;right:40px;bottom:40px;width:120px;height:160px;border-radius:4px;overflow:hidden;opacity:0;z-index:1}
+.hero-herbert img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%)}
+
+/* === IMAGES === */
+.section-image{width:100%;max-width:680px;margin:48px 0;border-radius:4px;overflow:hidden}
+.section-image img{width:100%;display:block;filter:grayscale(80%);transition:filter 0.5s}
+.section-image:hover img{filter:grayscale(40%)}
+.section-image .caption{font-size:13px;color:#555;margin-top:8px;font-style:italic}
+.section-image-full{width:100vw;position:relative;left:50%;transform:translateX(-50%);max-width:none;margin:64px 0;max-height:60vh;overflow:hidden}
+.section-image-full img{width:100%;height:100%;object-fit:cover;filter:grayscale(80%);display:block}
+
+/* === HEMICYCLE === */
+.hemicycle-container{width:100%;max-width:520px}
+.hemicycle-container svg{width:100%;height:auto}
+.hemicycle-count{display:flex;justify-content:center;align-items:baseline;gap:24px;margin-top:16px;opacity:0}
+.hemi-yes,.hemi-no{font-size:48px;font-weight:600;line-height:1}
+.hemi-yes{color:#c0392b}
+.hemi-no{color:#444}
+.hemi-count-label{font-size:12px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+.hemi-to{font-size:20px;color:#333}
+
+/* === CR TIMELINE === */
+.cr-timeline-viz{width:100%;max-width:400px;text-align:center}
+.cr-year-display{font-size:120px;font-weight:600;line-height:1;color:#1a1a1a;transition:color 0.6s,text-shadow 0.6s}
+.cr-year-display.active{color:#c0392b;text-shadow:0 0 80px rgba(192,57,43,0.3)}
+.cr-event-text{font-size:16px;color:#666;margin-top:16px;min-height:48px;transition:opacity 0.4s}
+.cr-intensity-bar{width:100%;height:4px;background:#1a1a1a;border-radius:2px;margin-top:32px;overflow:hidden}
+.cr-intensity-fill{height:100%;background:#c0392b;width:0%;border-radius:2px;transition:width 0.8s ease}
+.cr-death-toll{font-size:14px;color:#444;margin-top:12px;transition:opacity 0.5s,color 0.5s}
+/* === PURGE === */
+.purge-grid{display:flex;flex-wrap:wrap;gap:3px;max-width:680px;margin:32px 0}
+.purge-grid .person{width:8px;height:16px;border-radius:4px 4px 1px 1px;background:#1e1e1e;transition:background 0.3s}
+.purge-grid .person.executed{background:#c0392b}
+.purge-grid .person.gulag{background:#8b1a1a}
+.purge-stats{display:flex;gap:48px;margin:24px 0 48px}
+.purge-stat-num{font-size:48px;font-weight:600;color:#c0392b;line-height:1}
+.purge-stat-label{font-size:13px;color:#666;margin-top:4px}
+
+/* === ISLAMIC TREE === */
+.branch-tree{margin:64px 0;max-width:680px;overflow-x:auto;position:relative}
+.branch-tree svg{display:block;width:100%;height:auto}
+.branch-tree svg text{font-family:'Inter',sans-serif;fill:#a0a0a0}
+.branch-tree svg .node-rect{rx:4;ry:4;cursor:pointer}
+.branch-tree svg .branch-line{stroke:#333;stroke-width:1.5;fill:none}
+.branch-tree svg .branch-group{opacity:0}
+.branch-tree .conflict-tag{font-size:10px;fill:#c0392b}
+.tree-tooltip{position:absolute;background:#1a1a1a;border:1px solid #333;border-radius:6px;padding:12px 16px;font-size:13px;color:#ccc;max-width:260px;pointer-events:none;opacity:0;transition:opacity 0.2s;z-index:10;line-height:1.5}
+.tree-tooltip .tt-title{font-weight:500;color:#f5f5f5;margin-bottom:4px}
+.tree-tooltip .tt-detail{color:#888;font-size:12px}
+
+/* === INFLATE NUMBER === */
+.inflate-viz{text-align:center;pointer-events:none}
+.inflate-number{font-size:80px;font-weight:600;color:#2a2a2a;line-height:1;transition:font-size 0.6s ease,color 0.6s ease;white-space:nowrap}
+.inflate-role-label{font-size:14px;color:#444;margin-top:12px;text-transform:uppercase;letter-spacing:1px;transition:opacity 0.4s}
+.inflate-sublabel{font-size:13px;color:#333;margin-top:8px;transition:opacity 0.4s}
+.famine-counter{text-align:center;padding:80px 0;opacity:0}
+.famine-number{font-size:80px;font-weight:600;color:#c0392b;line-height:1}
+.famine-label{font-size:16px;color:#666;margin-top:12px}
+
+/* === TRIALS === */
+.trial-list{margin:48px 0;max-width:680px}
+.trial-row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid #1a1a1a;opacity:0;transform:translateY(10px)}
+.trial-name{font-size:18px;font-weight:500;color:#f5f5f5}
+.trial-role{font-size:14px;color:#666;flex:1;text-align:center}
+.trial-verdict{font-size:14px;font-weight:500;color:#c0392b;text-transform:uppercase;letter-spacing:1px}
+
+/* === TRANSITION + TAKEAWAY === */
+.transition-zone{height:100vh;position:relative}
+#takeaway{background:#fff;color:#222;padding:160px 0}
+#takeaway h2{color:#111}
+#takeaway p{color:#000;max-width:680px}
+#takeaway blockquote{color:#111;font-size:22px;border-left-color:#111}
+#takeaway blockquote cite{color:#999}
+#takeaway .section-label{color:#666}
+.principle{display:flex;gap:16px;align-items:baseline;margin:20px 0;max-width:680px;opacity:0;transform:translateY(20px)}
+.principle-num{font-size:14px;font-weight:500;color:#999;min-width:24px}
+.principle-text{font-size:18px;line-height:1.6;color:#000}
+.principle-text strong{color:#111}
+.trump-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:48px 0;max-width:680px}
+.trump-stat{background:#f5f5f5;border-radius:8px;padding:24px;opacity:0;transform:translateY(20px)}
+.trump-stat-num{font-size:36px;font-weight:600;color:#111;line-height:1}
+.trump-stat-label{font-size:13px;color:#999;margin-top:8px}
+
+/* === CLOSING === */
+.closing-section{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#fff;position:relative}
+.closing-line-text{font-size:28px;font-style:italic;color:#111;text-align:center;max-width:640px;line-height:1.5;font-weight:500;letter-spacing:-0.3px;padding:0 40px}
+.closing-line-text .word{display:inline-block;opacity:0;margin-right:0.3em}
+
+/* === PROGRESS NAV === */
+.progress-nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:12px}
+.progress-dot{width:8px;height:8px;border-radius:50%;background:#333;transition:background 0.3s,transform 0.3s;cursor:pointer}
+.progress-dot.active{background:#c0392b;transform:scale(1.4)}
+.progress-dot:hover{background:#666}
+.progress-dot.active:hover{background:#c0392b}
+
+/* === REFERENCES === */
+#references{background:#050505;padding:80px 0}
+#references h3{color:#444}
+#references ul{list-style:none;max-width:680px}
+#references li{font-size:14px;color:#555;padding:8px 0;border-bottom:1px solid #111}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){
+  .scrolly{flex-direction:column}
+  .scrolly-viz{width:100%;height:50vh}
+  .scrolly-steps{width:100%;padding:0 24px}
+  .scrolly-step:first-child{padding-top:20vh}
+}
+@media(max-width:768px){
+  body{font-size:16px}
+  h1,.hero-title{font-size:36px}
+  h2{font-size:22px}
+  .content-wrap{padding:0 24px}
+  .hemi-yes,.hemi-no{font-size:36px}
+  .famine-number{font-size:56px}
+  .purge-stat-num{font-size:36px}
+  .trump-stats{grid-template-columns:1fr}
+  .hero-herbert{display:none}
+  .cr-year-display{font-size:72px}
+  .closing-line-text{font-size:22px}
+  .progress-nav{display:none}
+}
+.no-js .fade-in,.no-js .hero-quote,.no-js .hero-title,.no-js .hero-body p,
+.no-js .scrolly-step .step-content,.no-js .principle,.no-js .trump-stat,
+.no-js .trial-row,.no-js .famine-counter{opacity:1!important;transform:none!important}
+</style>
+</head>
+<body class="no-js">
+<!-- PROGRESS NAV -->
+<nav class="progress-nav" aria-label="Section navigation">
+  <div class="progress-dot active" data-target="hero" title="Introduction"></div>
+  <div class="progress-dot" data-target="s1" title="When Charisma Meets Power"></div>
+  <div class="progress-dot" data-target="s2" title="The Movement Outlives the Leader"></div>
+  <div class="progress-dot" data-target="s3" title="Followers Are Self-Sealing"></div>
+  <div class="progress-dot" data-target="takeaway" title="Takeaway"></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"><img src="assets/opening-JFK-Nixon-debate.jpg" alt="John F. Kennedy and Richard Nixon at their first televised presidential debate, Chicago, 1960"></div>
+  <div class="content-wrap">
+    <div class="hero-quote">"I wrote the Dune series because I had this idea that charismatic leaders ought to come with a warning label on their forehead: 'May be dangerous to your health.'"<cite>— Frank Herbert, UCLA, 1985</cite></div>
+    <h1 class="hero-title">The Dark Side of<br>Charismatic Leadership</h1>
+    <div class="hero-body">
+      <p>The year is 1960. A man steps onto a television stage in Chicago. He is tan, composed, and effortlessly at ease. Across from him stands another man — pale, sweating, eyes darting toward the camera he has never learned to trust.</p>
+      <p>Seventy million Americans watch. The ones who listen on radio think Richard Nixon won. The ones who watch on television are certain it was John F. Kennedy. Same debate, same words. The only difference was the screen.</p>
+      <p>Kennedy won the presidency. Within three years, his charisma had pulled the nation into Vietnam — a war that would kill 58,000 Americans. Herbert called him "one of the most dangerous presidents this century — not because he was a bad guy, but because people didn't question him. People said, 'Yes sir, Mr. Charismatic Leader, what will we do next?'"</p>
+      <p>Nixon? Herbert thought he was the most <em>valuable</em> president. "Because he taught us to distrust government — and he did it by example."</p>
+      <p>Herbert spent twenty years writing about this. He watched a science fiction audience fall in love with Paul Atreides — the hero of Dune — and it horrified him. He had written Paul as a warning. Readers took him as a savior. So Herbert wrote sequel after sequel to make the point as brutal as possible: the hero will destroy you. Not because he wants to. Because you will let him.</p>
+      <p>That is what this website is about. What happens when people stop questioning. How institutions collapse. How movements outlive the people who started them. How followers seal themselves inside a belief until nothing can reach them.</p>
+    </div>
+  </div>
+  <div class="hero-herbert"><img src="assets/opening-frankherbert.jpg" alt="Portrait of Frank Herbert"></div>
+</section>
+
+<!-- SECTION 1 -->
+<section id="s1">
+  <div class="content-wrap prose-section">
+    <div class="section-label">Section 1</div>
+    <h2 class="fade-in">When Charisma Meets Power</h2>
+    <h3 class="fade-in" style="margin-top:64px">Part I — The Theory</h3>
+    <div class="fade-in"><p>In 1922, Max Weber identified three sources of political authority: tradition, law, and charisma. The first two are stable — they survive the death of any individual. Charisma does not. It lives in one person, and it demands total faith in that person.</p></div>
+    <blockquote class="fade-in">"A certain quality of an individual personality by virtue of which he is set apart from ordinary men and treated as endowed with supernatural, superhuman, or at least specifically exceptional powers."<cite>— Max Weber, Economy and Society, 1922</cite></blockquote>
+    <div class="fade-in"><p>Institutions — legislatures, courts, free presses — exist because the system expects leaders to be flawed. Madison put it plainly in Federalist No. 51: "If men were angels, no government would be necessary." Every check, every balance, every procedural delay is built on that assumption.</p><p>Charisma breaks the assumption. When followers believe a leader is exceptional, the checks start looking like obstacles. The followers want them gone. And the leader, surrounded by devotion, starts to agree.</p></div>
+  </div>
+
+  <!-- VOTE SCROLLY -->
+  <h3 class="fade-in" style="padding:0 40px;max-width:780px;margin:0 auto 32px">Part II — The Enabling</h3>
+  <div class="scrolly" id="voteScrolly">
+    <div class="scrolly-viz" id="voteViz">
+      <div class="hemicycle-container">
+        <svg id="hemicycleSvg" viewBox="0 0 520 320" role="img" aria-label="Reichstag vote visualization: 441 to 94"><title>Reichstag Enabling Act vote, March 1933</title></svg>
+        <div class="hemicycle-count" id="hemiCount">
+          <div style="text-align:center"><div class="hemi-yes" id="hemiYes">441</div><div class="hemi-count-label">In favor</div></div>
+          <div class="hemi-to">to</div>
+          <div style="text-align:center"><div class="hemi-no" id="hemiNo">94</div><div class="hemi-count-label">Against</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="scrolly-steps" id="voteSteps">
+      <div class="scrolly-step" data-step="0"><div class="step-content">
+        <div class="section-image"><img src="assets/s1-hitler-reichstag.jpg" alt="Hitler at the Kroll Opera House, March 1933"><div class="caption">The Kroll Opera House, Berlin, March 1933</div></div>
+        <p>Berlin, March 23, 1933. The Kroll Opera House, draped in swastika banners. Hitler stands before the Reichstag and asks for the legal authority to rule by decree.</p>
+        <p>The Enabling Act would let him bypass parliament, bypass the constitution, bypass every safeguard the Weimar Republic had built. A democracy would become a dictatorship — through a vote.</p>
+      </div></div>
+      <div class="scrolly-step" data-step="1"><div class="step-content">
+        <p><strong>The Nazi Party holds 288 seats.</strong> They don't have a two-thirds majority alone. But the SA stormtroopers stand outside the building. The Communist Party's 81 deputies have already been arrested or barred from attending.</p>
+      </div></div>
+      <div class="scrolly-step" data-step="2"><div class="step-content">
+        <p><strong>The Centre Party caves.</strong> Hitler promises to respect the Church. The promise is worthless, but the Centre's leader, Ludwig Kaas, tells his caucus to vote yes. One by one, the smaller parties fall in line. The pressure of the crowd, the SA outside, the momentum — resistance feels pointless.</p>
+      </div></div>
+      <div class="scrolly-step" data-step="3"><div class="step-content">
+        <p><strong>Only the Social Democrats hold.</strong> 94 votes against, in a room full of men who have already surrendered. Otto Wels, the SPD leader, stands to speak: "You can take our liberty and our lives, but you cannot take our honor."</p>
+        <p>No tanks. No gunfire. The institutions of German democracy were not destroyed by force. Elected officials handed them over, to a man whose crowds made resistance feel pointless.</p>
+      </div></div>
+    </div>
+  </div>
+  <!-- CR SCROLLY -->
+  <h3 class="fade-in" style="padding:64px 40px 32px;max-width:780px;margin:0 auto">Part III — The Fire</h3>
+  <div class="scrolly" id="crScrolly">
+    <div class="scrolly-viz" id="crViz">
+      <div class="cr-timeline-viz">
+        <div class="cr-year-display" id="crYear">1966</div>
+        <div class="cr-event-text" id="crEvent"></div>
+        <div class="cr-intensity-bar"><div class="cr-intensity-fill" id="crIntensity"></div></div>
+        <div class="cr-death-toll" id="crToll"></div>
+      </div>
+    </div>
+    <div class="scrolly-steps" id="crSteps">
+      <div class="scrolly-step" data-step="0"><div class="step-content">
+        <div class="section-image"><img src="assets/s1-cultural-revolution.jpg" alt="Red Guards rally in Beijing, 1966"><div class="caption">Red Guards rally, Beijing, 1966</div></div>
+        <p>Beijing, May 1966. Mao Zedong is 72. He has led the People's Republic for seventeen years, but his grip on the Party is slipping. Rivals in the Politburo are quietly sidelining him.</p>
+        <p>So Mao goes around them. He bypasses his own party, his own government, his own chain of command. He writes a big-character poster — "Bombard the Headquarters" — and calls on China's students to attack the system he built.</p>
+      </div></div>
+      <div class="scrolly-step" data-step="1"><div class="step-content">
+        <p>Mao mobilizes millions of Red Guards. They flood the streets, drag professors from classrooms, beat officials in public, destroy temples, burn books. The chaos is total. The loyalty is absolute.</p>
+      </div></div>
+      <div class="scrolly-step" data-step="2"><div class="step-content">
+        <p>Red Guard factions turn on each other. Provincial governments collapse. Liu Shaoqi — the second most powerful man in China — is dragged from his home and left to die in detention. The revolution is eating its own.</p>
+      </div></div>
+      <div class="scrolly-step" data-step="3"><div class="step-content">
+        <p>Even Mao cannot stop it. He sends the army to suppress the Red Guards — the very forces he summoned two years earlier. The weapon he built no longer answers to him.</p>
+      </div></div>
+      <div class="scrolly-step" data-step="4"><div class="step-content">
+        <p>The Cultural Revolution officially ends. The toll: an estimated 500,000 to 2 million dead, up to 36 million persecuted.</p>
+        <blockquote>"To rebel is justified — bombard the headquarters!"<cite>— Mao Zedong, 1966</cite></blockquote>
+        <p>Hitler got the institutions out of his way. Mao went further — he unleashed a force that got out of <em>his</em> way. The pattern keeps repeating. A leader rises above the system. The system yields. Then the leader discovers that the thing he unleashed does not answer to him either.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 -->
+<section id="s2">
+  <div class="content-wrap prose-section">
+    <div class="section-label fade-in">Section 2</div>
+    <h2 class="fade-in">The Movement Outlives the Leader</h2>
+    <h3 class="fade-in" style="margin-top:64px">Case A — Lenin → Stalin</h3>
+    <div class="section-image fade-in"><img src="assets/s2-lenin-stalin.jpg" alt="Lenin and Stalin at Gorki, 1922"><div class="caption">Lenin and Stalin, Gorki, 1922</div></div>
+    <div class="fade-in"><p>Vladimir Lenin died on January 21, 1924. He had spent his final months writing a document that the Party would later call his "Testament." In it, he warned that Stalin was "too rude" and should be removed from the position of General Secretary. He proposed replacing him with someone "more patient, more loyal, more polite."</p><p>The Testament was read aloud at the 13th Party Congress. The delegates listened, discussed it briefly, and did nothing.</p></div>
+    <div class="section-image fade-in"><img src="assets/s2-stalin-propaganda-1.jpg" alt="Soviet propaganda poster, 1933"><div class="caption">"With the banner of Lenin..." — Soviet propaganda, 1933</div></div>
+    <div class="fade-in"><p>Stalin kept his position. Within five years, he had outmaneuvered every rival. He renamed Petrograd — the city where the revolution began — to Leningrad. He turned Lenin's body into a public relic, preserved in a glass case on Red Square for pilgrims to visit. He wrapped every policy in Lenin's language, every purge in Lenin's authority. The dead man could not object.</p><p>By the mid-1930s, Stalin had built something Lenin never intended: a totalitarian state where disagreement was a death sentence. The Great Purge of 1936–1938 executed or imprisoned hundreds of thousands — party members, military officers, intellectuals, anyone who might one day challenge Stalin's reading of what Lenin "really meant."</p></div>
+    <div class="purge-stats fade-in"><div><div class="purge-stat-num" id="purgeExec">0</div><div class="purge-stat-label">Executed</div></div><div><div class="purge-stat-num" id="purgeGulag">0</div><div class="purge-stat-label">Sent to Gulag</div></div></div>
+    <div class="purge-grid fade-in" id="purgeGrid"></div>
+    <div class="section-image fade-in"><img src="assets/s2-gulag-workers.jpg" alt="Gulag prisoners building the White Sea-Baltic Canal"><div class="caption">Prisoners at Belbaltlag, building the White Sea–Baltic Canal</div></div>
+    <div class="fade-in"><p>Lenin's revolution was supposed to liberate the working class. Under Stalin, it became the justification for a system of forced labor camps stretching across Siberia. The ideology did not change. The words stayed the same. Only the meaning shifted — and there was no one left alive who was allowed to say so.</p></div>
+    <blockquote class="fade-in">"Stalin is too rude... I propose to find a way to remove Stalin from that position and appoint to it another man who is more patient, more loyal, more polite."<cite>— Lenin's Testament, January 4, 1923</cite></blockquote>
+    <h3 class="fade-in" style="margin-top:96px">Case B — Muhammad → The Fracture</h3>
+    <div class="section-image fade-in"><img src="assets/s2-muhammud.jpg" alt="The early Islamic world"><div class="caption">The early Islamic world</div></div>
+    <div class="fade-in"><p>Muhammad died in Medina on June 8, 632 CE. He left behind a community of believers, a rapidly expanding territory, and no clear successor.</p><p>Within hours, the crisis began. One faction backed Abu Bakr, Muhammad's closest companion. Another insisted on Ali, his cousin and son-in-law — the man they believed Muhammad had designated at Ghadir Khumm. Both sides were certain. Neither side could ask the only person whose answer would have settled it.</p></div>
+  </div>
+  <div class="section-image-full fade-in"><img src="assets/s2-karbala.webp" alt="The Battle of Karbala, 680 CE"></div>
+  <div class="content-wrap" style="padding-bottom:120px">
+    <div class="fade-in" style="margin-top:16px"><p style="font-size:13px;color:#555;font-style:italic;margin-bottom:48px">The Battle of Karbala, 680 CE</p><p>Abu Bakr became the first caliph. Over the next three decades, three of the first four caliphs were assassinated. In 680 CE, Ali's son Husayn marched to Karbala to challenge the Umayyad caliph Yazid. His forces were massacred. That death became the founding trauma of Shia Islam — a grief re-enacted every year during Ashura, fourteen centuries later.</p></div>
+    <div class="section-image fade-in"><img src="assets/s2-abura.jpeg" alt="Ashura commemoration"><div class="caption">Ashura commemoration — mourning Husayn, 1400 years later</div></div>
+
+    <!-- ISLAMIC TREE -->
+    <div class="branch-tree fade-in" id="branchTree">
+      <div class="tree-tooltip" id="treeTooltip"><div class="tt-title"></div><div class="tt-detail"></div></div>
+      <svg viewBox="0 0 760 560" xmlns="http://www.w3.org/2000/svg">
+        <g class="branch-group" data-depth="0">
+          <rect class="node-rect" x="320" y="10" width="120" height="36" fill="#c0392b" data-info="Muhammad|Prophet of Islam, d. 632 CE in Medina. His death without a clear successor triggered the central schism of Islamic history."/>
+          <text x="380" y="33" text-anchor="middle" font-size="13" font-weight="600" fill="#f5f5f5">Muhammad</text>
+          <text x="380" y="58" text-anchor="middle" font-size="10" fill="#666">d. 632 CE</text>
+        </g>
+        <g class="branch-group" data-depth="1">
+          <path class="branch-line" d="M380,46 L380,80 L190,80 L190,95"/>
+          <path class="branch-line" d="M380,46 L380,80 L570,80 L570,95"/>
+          <rect class="node-rect" x="130" y="95" width="120" height="32" fill="#1e1e1e" stroke="#c0392b" stroke-width="1" data-info="Sunni Islam|~85% of Muslims worldwide. Recognize Abu Bakr as rightful first caliph. Authority from community consensus."/>
+          <text x="190" y="115" text-anchor="middle" font-size="12" font-weight="500" fill="#f5f5f5">Sunni</text>
+          <rect class="node-rect" x="510" y="95" width="120" height="32" fill="#1e1e1e" stroke="#c0392b" stroke-width="1" data-info="Shia Islam|~15% of Muslims worldwide. Believe Ali was Muhammad's designated successor. Authority through the Prophet's bloodline."/>
+          <text x="570" y="115" text-anchor="middle" font-size="12" font-weight="500" fill="#f5f5f5">Shia</text>
+        </g>
+        <g class="branch-group" data-depth="2">
+          <path class="branch-line" d="M190,127 L190,155 M190,155 L55,155 L55,170 M190,155 L145,155 L145,170 M190,155 L235,155 L235,170 M190,155 L325,155 L325,170"/>
+          <rect class="node-rect" x="15" y="170" width="80" height="28" fill="#141414" stroke="#333" stroke-width="0.5" data-info="Hanafi|Largest Sunni school. Dominant in Turkey, Central/South Asia. Emphasizes reason and analogy."/>
+          <text x="55" y="188" text-anchor="middle" font-size="10" fill="#a0a0a0">Hanafi</text>
+          <rect class="node-rect" x="105" y="170" width="80" height="28" fill="#141414" stroke="#333" stroke-width="0.5" data-info="Maliki|Dominant in North/West Africa. Emphasizes the practice of Medina as legal source."/>
+          <text x="145" y="188" text-anchor="middle" font-size="10" fill="#a0a0a0">Maliki</text>
+          <rect class="node-rect" x="195" y="170" width="80" height="28" fill="#141414" stroke="#333" stroke-width="0.5" data-info="Shafi'i|Dominant in Southeast Asia, East Africa. Systematized Islamic legal sources."/>
+          <text x="235" y="188" text-anchor="middle" font-size="10" fill="#a0a0a0">Shafi'i</text>
+          <rect class="node-rect" x="285" y="170" width="80" height="28" fill="#141414" stroke="#333" stroke-width="0.5" data-info="Hanbali|Most conservative school. Dominant in Saudi Arabia. Source of Wahhabism and Salafism."/>
+          <text x="325" y="188" text-anchor="middle" font-size="10" fill="#a0a0a0">Hanbali</text>
+        </g>
+        <g class="branch-group" data-depth="3">
+          <path class="branch-line" d="M570,127 L570,155 M570,155 L480,155 L480,170 M570,155 L570,170 M570,155 L660,155 L660,170"/>
+          <rect class="node-rect" x="435" y="170" width="90" height="28" fill="#141414" stroke="#333" stroke-width="0.5" data-info="Twelver Shia|Largest Shia branch (~85% of Shia). Believe in 12 divinely appointed Imams. Dominant in Iran, Iraq, Lebanon."/>
+          <text x="480" y="188" text-anchor="middle" font-size="10" fill="#a0a0a0">Twelvers</text>
+          <rect class="node-rect" x="530" y="170" width="80" height="28" fill="#141414" stroke="#333" stroke-width="0.5" data-info="Ismaili|Split over the 7th Imam. Led by the Aga Khan. Prominent in South/Central Asia, East Africa."/>
+          <text x="570" y="188" text-anchor="middle" font-size="10" fill="#a0a0a0">Ismailis</text>
+          <rect class="node-rect" x="620" y="170" width="80" height="28" fill="#141414" stroke="#333" stroke-width="0.5" data-info="Zaidi|Closest to Sunni theology. Concentrated in Yemen."/>
+          <text x="660" y="188" text-anchor="middle" font-size="10" fill="#a0a0a0">Zaidis</text>
+        </g>
+        <g class="branch-group" data-depth="4">
+          <path class="branch-line" d="M325,198 L325,230 M325,230 L275,230 L275,245 M325,230 L375,230 L375,245"/>
+          <rect class="node-rect" x="230" y="245" width="90" height="26" fill="#141414" stroke="#444" stroke-width="0.5" data-info="Wahhabism|18th-century revivalist movement. Allied with House of Saud. State ideology of Saudi Arabia."/>
+          <text x="275" y="262" text-anchor="middle" font-size="10" fill="#a0a0a0">Wahhabism</text>
+          <rect class="node-rect" x="335" y="245" width="80" height="26" fill="#141414" stroke="#444" stroke-width="0.5" data-info="Salafism|Modern fundamentalist movement. Includes quietist, activist, and jihadist strands."/>
+          <text x="375" y="262" text-anchor="middle" font-size="10" fill="#a0a0a0">Salafism</text>
+          <path class="branch-line" d="M480,198 L480,230 M480,230 L480,245 M480,230 L600,230 L600,245"/>
+          <rect class="node-rect" x="435" y="245" width="90" height="26" fill="#141414" stroke="#444" stroke-width="0.5" data-info="Usuli / Akhbari|Competing Twelver schools on clerical authority. Usuli dominates modern Iran."/>
+          <text x="480" y="262" text-anchor="middle" font-size="10" fill="#a0a0a0">Usuli / Akhbari</text>
+          <rect class="node-rect" x="545" y="245" width="110" height="26" fill="#141414" stroke="#444" stroke-width="0.5" data-info="Iranian Theocracy|Est. 1979. Velayat-e faqih: rule by Islamic jurist. Fusion of Twelver theology and state power."/>
+          <text x="600" y="262" text-anchor="middle" font-size="10" fill="#a0a0a0">Iranian Theocracy</text>
+        </g>
+        <g class="branch-group" data-depth="5">
+          <text x="380" y="315" text-anchor="middle" font-size="11" font-weight="500" fill="#666" letter-spacing="2">MODERN FRAGMENTATION</text>
+          <line x1="60" y1="325" x2="700" y2="325" stroke="#1e1e1e" stroke-width="1"/>
+          <rect class="node-rect" x="25" y="342" width="110" height="28" fill="#1e1e1e" stroke="#444" stroke-width="0.5"/><text x="80" y="360" text-anchor="middle" font-size="10" fill="#a0a0a0">Fundamentalists</text>
+          <rect class="node-rect" x="150" y="342" width="90" height="28" fill="#1e1e1e" stroke="#c0392b" stroke-width="1"/><text x="195" y="360" text-anchor="middle" font-size="10" fill="#c0392b">Extremists</text>
+          <rect class="node-rect" x="255" y="342" width="85" height="28" fill="#1e1e1e" stroke="#444" stroke-width="0.5"/><text x="297" y="360" text-anchor="middle" font-size="10" fill="#a0a0a0">Secularists</text>
+          <rect class="node-rect" x="355" y="342" width="85" height="28" fill="#1e1e1e" stroke="#444" stroke-width="0.5"/><text x="397" y="360" text-anchor="middle" font-size="10" fill="#a0a0a0">Reformists</text>
+          <rect class="node-rect" x="455" y="342" width="95" height="28" fill="#1e1e1e" stroke="#444" stroke-width="0.5"/><text x="502" y="360" text-anchor="middle" font-size="10" fill="#a0a0a0">Nationalists</text>
+          <rect class="node-rect" x="565" y="342" width="95" height="28" fill="#1e1e1e" stroke="#444" stroke-width="0.5"/><text x="612" y="360" text-anchor="middle" font-size="10" fill="#a0a0a0">Modernists</text>
+        </g>
+        <g class="branch-group" data-depth="6">
+          <text x="380" y="415" text-anchor="middle" font-size="11" font-weight="500" fill="#666" letter-spacing="2">SECTARIAN CONFLICTS — DEATH TOLL</text>
+          <line x1="60" y1="425" x2="700" y2="425" stroke="#1e1e1e" stroke-width="1"/>
+          <rect class="node-rect" x="30" y="442" width="155" height="44" fill="#141414" stroke="#8b1a1a" stroke-width="1" data-info="Iran-Iraq War (1980–1988)|Shia Iran vs Sunni-led Iraq. One of the deadliest wars of the 20th century."/><text x="107" y="460" text-anchor="middle" font-size="11" fill="#a0a0a0">Iran-Iraq War</text><text x="107" y="478" text-anchor="middle" class="conflict-tag" font-weight="600">~1,000,000 dead</text>
+          <rect class="node-rect" x="205" y="442" width="140" height="44" fill="#141414" stroke="#8b1a1a" stroke-width="1" data-info="Iraq Civil War (2003–2011)|Sunni-Shia sectarian violence after the US invasion."/><text x="275" y="460" text-anchor="middle" font-size="11" fill="#a0a0a0">Iraq Civil War</text><text x="275" y="478" text-anchor="middle" class="conflict-tag" font-weight="600">~200,000 dead</text>
+          <rect class="node-rect" x="365" y="442" width="130" height="44" fill="#141414" stroke="#8b1a1a" stroke-width="1" data-info="Syrian Civil War (2011–present)|Multi-faction war with strong sectarian dimensions."/><text x="430" y="460" text-anchor="middle" font-size="11" fill="#a0a0a0">Syrian War</text><text x="430" y="478" text-anchor="middle" class="conflict-tag" font-weight="600">~500,000 dead</text>
+          <rect class="node-rect" x="515" y="442" width="130" height="44" fill="#141414" stroke="#8b1a1a" stroke-width="1" data-info="Yemen Civil War (2014–present)|Zaidi Shia Houthis vs Saudi-backed Sunni government."/><text x="580" y="460" text-anchor="middle" font-size="11" fill="#a0a0a0">Yemen War</text><text x="580" y="478" text-anchor="middle" class="conflict-tag" font-weight="600">~150,000+ dead</text>
+          <text x="380" y="530" text-anchor="middle" font-size="14" font-weight="600" fill="#c0392b">1,850,000+ lives — from one succession crisis in 632 CE</text>
+        </g>
+      </svg>
+    </div>
+    <div class="fade-in"><p>The split did not heal. It widened. Sunni Islam fractured into schools of jurisprudence — Hanafi, Maliki, Shafi'i, Hanbali. Shia Islam split further — Twelvers, Ismailis, Zaidis. The fracturing continued beyond theology: fundamentalists, extremists, secularists, reformists, each claiming to carry the authentic legacy of a man who died in 632.</p><p>The line from that original succession crisis to the modern Middle East is not straight — fourteen centuries of empire, colonialism, Cold War proxy conflicts, and oil politics all shaped what followed. But the fault line that keeps cracking open is the one Muhammad's death created. The Iran-Iraq War: one million dead. The Iraqi civil war after 2003. The Saudi-Iran proxy conflicts burning through Yemen, Syria, Lebanon.</p><p>One leader died in 632. He left a vacuum that no one could fill, because his authority was personal — it lived in him and could not be inherited. Fourteen hundred years later, that vacuum is still producing corpses.</p></div>
+  </div>
+</section>
+<!-- SECTION 3 -->
+<section id="s3">
+  <div class="content-wrap prose-section" style="padding-bottom:48px">
+    <div class="section-label fade-in">Section 3</div>
+    <h2 class="fade-in">Followers Are Self-Sealing</h2>
+    <div class="section-image fade-in" style="margin-top:48px"><img src="assets/Great-Leap-Forward-China-Yingshuichiao-Iron-Smelting-works-1950s_副本.jpg" alt="Backyard steel furnaces during China's Great Leap Forward"><div class="caption">Backyard steel furnaces, China, late 1950s</div></div>
+    <div class="fade-in"><p>Somewhere in rural Henan province, 1959. A local Party secretary stands in a field. The wheat is thin. He knows the harvest will fall short — maybe thirty percent of last year. He also knows what happened to the last official who reported low numbers. The man was denounced as a rightist, stripped of his position, and sent to a labor camp. His family was not told where.</p><p>The secretary writes his report. Record yield. Twice the actual harvest. He sends it up the chain.</p></div>
+  </div>
+
+  <!-- INFLATE SCROLLY -->
+  <div class="scrolly-centered" id="inflateScrolly">
+    <div class="scrolly-viz-center" id="inflateViz">
+      <div class="inflate-viz">
+        <div class="inflate-number" id="inflateNum">100 tons</div>
+        <div class="inflate-role-label" id="inflateRole">Actual harvest</div>
+        <div class="inflate-sublabel" id="inflateSub"></div>
+      </div>
+    </div>
+    <div class="scrolly-steps-overlay" id="inflateSteps">
+      <div class="scrolly-step" data-step="0"><div class="step-content" style="background:rgba(10,10,10,0.85);border-radius:8px;padding:24px;border:1px solid #1a1a1a"><p style="margin-bottom:0">The actual harvest: roughly <strong>100 tons</strong>. The Party secretary knows this. Everyone in the village knows this.</p></div></div>
+      <div class="scrolly-step" data-step="1"><div class="step-content" style="background:rgba(10,10,10,0.85);border-radius:8px;padding:24px;border:1px solid #1a1a1a"><p style="margin-bottom:0">The village secretary writes <strong>200 tons</strong>. Double the truth. He has seen what happens to those who report low numbers.</p></div></div>
+      <div class="scrolly-step" data-step="2"><div class="step-content" style="background:rgba(10,10,10,0.85);border-radius:8px;padding:24px;border:1px solid #1a1a1a"><p style="margin-bottom:0">The county official receives six reports, all inflated. He adds his own margin. <strong>350 tons.</strong></p></div></div>
+      <div class="scrolly-step" data-step="3"><div class="step-content" style="background:rgba(10,10,10,0.85);border-radius:8px;padding:24px;border:1px solid #1a1a1a"><p style="margin-bottom:0">The prefecture consolidates. Nobody wants to be the one with lower numbers. <strong>600 tons.</strong></p></div></div>
+      <div class="scrolly-step" data-step="4"><div class="step-content" style="background:rgba(10,10,10,0.85);border-radius:8px;padding:24px;border:1px solid #1a1a1a"><p style="margin-bottom:0">The provincial report reaches Beijing. <strong>1,000 tons.</strong> Ten times reality. Mao reads this and orders the surplus exported.</p></div></div>
+      <div class="scrolly-step" data-step="5"><div class="step-content" style="background:rgba(10,10,10,0.85);border-radius:8px;padding:24px;border:1px solid #c0392b"><p style="margin-bottom:0;color:#c0392b"><strong>The number collapses into reality.</strong> There is no surplus. There is famine.</p></div></div>
+    </div>
+  </div>
+
+  <div class="famine-counter" id="famineCounter"><div class="famine-number" id="famineNum">0</div><div class="famine-label">estimated deaths, 1959–1961</div></div>
+
+  <div class="content-wrap prose-section" style="padding-top:48px">
+    <div class="fade-in"><p>Every local official in the chain knew the real numbers. The information that could have prevented the famine existed at every level of the system. It could not travel upward, because traveling upward meant telling Mao he was wrong, and telling Mao he was wrong meant you were the enemy. The system did not lack information. It was sealed against it.</p></div>
+    <blockquote class="fade-in">"A man with a conviction is a hard man to change. Tell him you disagree and he turns away. Show him facts or figures and he questions your sources. Appeal to logic and he fails to see your point."<cite>— Leon Festinger, 1957</cite></blockquote>
+    <div class="fade-in"><p>Leon Festinger had a name for this. He called it cognitive dissonance — the mind's refusal to hold two contradictory beliefs at the same time. When reality threatens a belief you have staked your identity on, the mind does not update the belief. It rejects the reality. Festinger tested this on a doomsday cult in 1954: when the apocalypse failed to arrive, the cult members did not leave. They doubled down. They started recruiting.</p><p>Eric Hoffer, writing around the same time, went further. In <em>The True Believer</em>, he argued that people join mass movements for the identity, not the ideas. Once your sense of self is fused with the cause, criticizing the cause is an attack on who you are. The mind will not allow it.</p></div>
+    <h3 class="fade-in" style="margin-top:64px">The Confession</h3>
+    <div class="section-image fade-in"><img src="assets/s3-moscow-trial.jpg" alt="Moscow Show Trials courtroom, 1936-1938"><div class="caption">Moscow Show Trials, 1936–1938</div></div>
+    <div class="fade-in"><p>Moscow, 1936. Stalin's prosecutors put a group of Old Bolsheviks on trial. These men — Kamenev, Zinoviev, Bukharin — had fought alongside Lenin. They had built the Soviet state. The charge was treason.</p><p>They confessed. In open court, in front of foreign journalists, they declared themselves enemies of the people. Some had been tortured. But Bukharin's confession was different. He spoke at length, with apparent conviction. Arthur Koestler tried to explain it in <em>Darkness at Noon</em>: if you have spent your entire life believing that the Party is the instrument of history, then admitting the Party is wrong means your life was pointless. Confession — even false confession — is the last way to remain loyal.</p></div>
+    <div class="trial-list" id="trialList">
+      <div class="trial-row"><div class="trial-name">Lev Kamenev</div><div class="trial-role">Politburo member, revolutionary</div><div class="trial-verdict">Confessed → Executed</div></div>
+      <div class="trial-row"><div class="trial-name">Grigory Zinoviev</div><div class="trial-role">Comintern chairman</div><div class="trial-verdict">Confessed → Executed</div></div>
+      <div class="trial-row"><div class="trial-name">Nikolai Bukharin</div><div class="trial-role">Party theoretician, Pravda editor</div><div class="trial-verdict">Confessed → Executed</div></div>
+      <div class="trial-row"><div class="trial-name">Alexei Rykov</div><div class="trial-role">Chairman of the Council</div><div class="trial-verdict">Confessed → Executed</div></div>
+      <div class="trial-row"><div class="trial-name">Karl Radek</div><div class="trial-role">Revolutionary journalist</div><div class="trial-verdict">Confessed → Imprisoned → Died</div></div>
+    </div>
+    <div class="fade-in"><p>The Party secretary who lied about the harvest and the Old Bolshevik who confessed to a crime he did not commit are doing the same thing. They are protecting the belief at the cost of everything else. The system is sealed. Information that contradicts the belief cannot enter.</p></div>
+    <div class="fade-in"><p>Today this runs on infrastructure Festinger could not have imagined. Social media algorithms optimize for engagement. Devotion engages. Doubt does not. Eli Pariser called this the filter bubble — an environment where the information you see is pre-selected to confirm what you already believe. The technology is new. The psychology is Festinger's. The scale is what changed.</p></div>
+    <blockquote class="fade-in">"Mass movements can rise and spread without belief in a God, but never without belief in a devil."<cite>— Eric Hoffer, The True Believer, 1951</cite></blockquote>
+  </div>
+</section>
+
+<!-- TRANSITION -->
+<div class="transition-zone" id="transitionZone"></div>
+<!-- TAKEAWAY -->
+<section id="takeaway">
+  <div class="content-wrap">
+    <div class="section-label fade-in">Takeaway</div>
+    <div class="fade-in"><p>If you have read this far, you might be thinking: we need better leaders. Wiser ones. More careful ones.</p><p>That thought is the trap. It is the same logic that dismantled the Weimar Republic, that fueled the Cultural Revolution, that turned Lenin's revolution into Stalin's prison state. Every one of those catastrophes began with a population convinced they had found the right person.</p></div>
+    <blockquote class="fade-in" style="border-left-color:#111">The founders of the American republic read their history. They did not design for angels. They designed for men who would inevitably become corrupt, cowardly, or deluded — and they tried to build a system that could survive them anyway.</blockquote>
+    <div class="fade-in"><p>Madison and his contemporaries built what they called "auxiliary precautions" — structures that keep functioning even when the people inside them fail:</p></div>
+    <div class="principle" id="p1"><div class="principle-num">1.</div><div class="principle-text"><strong>Separation of powers.</strong> No single person holds enough authority to act alone. This is slow by design.</div></div>
+    <div class="principle" id="p2"><div class="principle-num">2.</div><div class="principle-text"><strong>Term limits and succession rules.</strong> Written in advance, enforced without exception. The leader leaves. The system stays.</div></div>
+    <div class="principle" id="p3"><div class="principle-num">3.</div><div class="principle-text"><strong>Independent press and judiciary.</strong> Their job is to say no — to the leader, to the crowd, to the mood of the moment.</div></div>
+    <div class="fade-in" style="margin-top:48px"><p>Nobody chants for judicial independence. There are no rallies for procedural checks. You cannot build a mass movement around the separation of powers. These things are boring. That is why they work.</p><p>The founders spent a summer in Philadelphia designing these cages. They read Thucydides, studied Rome, argued for months over how to constrain ambition. They were meticulous.</p><p>It took 240 years to find someone willing to take them apart.</p></div>
+    <div class="fade-in"><p>In his first year back in office, Donald Trump signed over 250 executive orders — governing by decree in a system designed to prevent exactly that. He created DOGE, an unelected body with no congressional authorization, and gave it access to Treasury payment systems, Medicare records, and Social Security data. When a federal judge ordered his administration to stop deporting Venezuelan immigrants mid-flight, the planes kept flying. When the Supreme Court ruled that a man mistakenly deported to El Salvador must be brought back, the administration said it was El Salvador's problem. One in three court rulings against the administration was met with noncompliance.</p></div>
+    <div class="trump-stats" id="trumpStats">
+      <div class="trump-stat"><div class="trump-stat-num" id="tsOrders">0</div><div class="trump-stat-label">Executive orders in year one</div></div>
+      <div class="trump-stat"><div class="trump-stat-num" id="tsArrest">0%</div><div class="trump-stat-label">Increase in no-record arrests</div></div>
+      <div class="trump-stat"><div class="trump-stat-num" id="tsDetain">0</div><div class="trump-stat-label">People in ICE detention, Dec 2025</div></div>
+      <div class="trump-stat"><div class="trump-stat-num" id="tsDefy">0</div><div class="trump-stat-label">Court rulings defied (1 in 3)</div></div>
+    </div>
+    <div class="fade-in"><p>ICE agents began arresting people at immigration courthouses — the very hearings the government required them to attend. Arrests of people with no criminal record rose 2,450 percent in a single year. By December 2025, ICE was holding 66,000 people in detention, the highest number ever recorded.</p><p>The cages are still standing — most of them. But they are being opened from the inside, with keys the founders themselves provided. Norms turned out not to be laws. Institutions turned out not to enforce themselves. And a country that was designed to distrust its leaders turned out to be perfectly capable of worshipping one.</p><p>The founders designed for corruption, for ambition, even for delusion. They did not design for an audience that would watch the dismantling and call it entertainment.</p></div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing-section" id="closingSection">
+  <div class="closing-line-text" id="closingText">The next charismatic leader will come. They always do. Whether anyone still cares about the cages — that we do not know yet.</div>
+</section>
+
+<!-- REFERENCES -->
+<section id="references">
+  <div class="content-wrap">
+    <h3>References</h3>
+    <ul>
+      <li>Frank Herbert, UCLA Speech, April 17, 1985 (transcript: theaugustry.com)</li>
+      <li>Max Weber, <em>Economy and Society</em> (1922)</li>
+      <li>James Madison, <em>Federalist No. 51</em> (1788)</li>
+      <li>Eric Hoffer, <em>The True Believer</em> (1951)</li>
+      <li>Leon Festinger, <em>When Prophecy Fails</em> (1956)</li>
+      <li>Arthur Koestler, <em>Darkness at Noon</em> (1940)</li>
+      <li>Roderick MacFarquhar & Michael Schoenhals, <em>Mao's Last Revolution</em> (2006)</li>
+      <li>Richard J. Evans, <em>The Coming of the Third Reich</em> (2005)</li>
+      <li>Eli Pariser, <em>The Filter Bubble</em> (2011)</li>
+      <li>Jonathan Haidt, <em>The Righteous Mind</em> (2012)</li>
+      <li>Fred M. Donner, <em>Muhammad and the Believers</em> (2010)</li>
+    </ul>
+  </div>
+</section>
+<!-- SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+document.body.classList.remove('no-js');
+gsap.registerPlugin(ScrollTrigger);
+
+// === HERO ===
+gsap.to('.hero-quote',{opacity:1,duration:1.5,delay:0.5});
+gsap.to('.hero-title',{opacity:1,duration:1.2,delay:1.5});
+gsap.to('.hero-herbert',{opacity:0.6,duration:1,delay:2});
+gsap.utils.toArray('.hero-body p').forEach((p,i)=>{
+  gsap.to(p,{opacity:1,duration:0.8,delay:2.2+i*0.3,scrollTrigger:{trigger:p,start:'top 85%'}});
+});
+
+// === FADE-IN ===
+gsap.utils.toArray('.fade-in').forEach(el=>{
+  gsap.to(el,{opacity:1,y:0,duration:0.8,scrollTrigger:{trigger:el,start:'top 85%'}});
+});
+
+// === PROGRESS NAV ===
+var sections=['hero','s1','s2','s3','takeaway'];
+var dots=document.querySelectorAll('.progress-dot');
+sections.forEach(function(id,i){
+  ScrollTrigger.create({
+    trigger:'#'+id,start:'top center',end:'bottom center',
+    onEnter:function(){dots.forEach(function(d){d.classList.remove('active')});dots[i].classList.add('active')},
+    onEnterBack:function(){dots.forEach(function(d){d.classList.remove('active')});dots[i].classList.add('active')}
+  });
+});
+dots.forEach(function(d){
+  d.addEventListener('click',function(){document.getElementById(d.dataset.target).scrollIntoView({behavior:'smooth'})});
+});
+
+// === HEMICYCLE ===
+(function(){
+  var svg=document.getElementById('hemicycleSvg');
+  var cx=260,cy=280;
+  var seatsPerRow=[25,30,34,38,42,46,50,52,54,56,54,54];
+  var rMin=80,rMax=260;
+  var allSeats=[];
+  var seatIndex=0;
+  for(var row=0;row<12;row++){
+    var r=rMin+(rMax-rMin)*(row/11);
+    var n=seatsPerRow[row];
+    for(var s=0;s<n;s++){
+      var angle=Math.PI-(Math.PI*(s+0.5)/n);
+      var x=cx+r*Math.cos(angle);
+      var y=cy-r*Math.sin(angle);
+      var circle=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      circle.setAttribute('cx',x.toFixed(1));
+      circle.setAttribute('cy',y.toFixed(1));
+      circle.setAttribute('r','4');
+      circle.setAttribute('fill','#222');
+      circle.dataset.idx=seatIndex;
+      svg.appendChild(circle);
+      allSeats.push(circle);
+      seatIndex++;
+    }
+  }
+  // Sort left to right, assign parties
+  var sortedByAngle=[].slice.call(allSeats).sort(function(a,b){
+    return parseFloat(a.getAttribute('cx'))-parseFloat(b.getAttribute('cx'));
+  });
+  sortedByAngle.forEach(function(seat,i){
+    if(i<94) seat.dataset.party='spd';
+    else if(i<94+153) seat.dataset.party='otherYes';
+    else seat.dataset.party='nazi';
+  });
+
+  var voteSteps=document.querySelectorAll('#voteSteps .scrolly-step');
+  var currentVoteStep=-1;
+  function updateVoteViz(step){
+    if(step===currentVoteStep) return;
+    currentVoteStep=step;
+    var hemiCount=document.getElementById('hemiCount');
+    allSeats.forEach(function(seat){
+      var party=seat.dataset.party;
+      if(step===0) seat.setAttribute('fill','#222');
+      else if(step===1) seat.setAttribute('fill',party==='nazi'?'#c0392b':'#222');
+      else if(step===2) seat.setAttribute('fill',(party==='nazi'||party==='otherYes')?'#c0392b':'#222');
+      else if(step===3) seat.setAttribute('fill',party==='spd'?'#444':'#c0392b');
+    });
+    if(step>=3) gsap.to(hemiCount,{opacity:1,duration:0.5});
+    else gsap.to(hemiCount,{opacity:0,duration:0.3});
+  }
+  voteSteps.forEach(function(stepEl,i){
+    ScrollTrigger.create({
+      trigger:stepEl,start:'top 60%',end:'bottom 40%',
+      onEnter:function(){stepEl.classList.add('is-active');updateVoteViz(i)},
+      onEnterBack:function(){stepEl.classList.add('is-active');updateVoteViz(i)},
+      onLeave:function(){stepEl.classList.remove('is-active')},
+      onLeaveBack:function(){stepEl.classList.remove('is-active')}
+    });
+  });
+})();
+
+// === CULTURAL REVOLUTION ===
+(function(){
+  var crData=[
+    {year:'1966',event:'Mao mobilizes Red Guards',intensity:25,toll:''},
+    {year:'1967',event:'Factions turn on each other. Governments collapse.',intensity:55,toll:''},
+    {year:'1968',event:'Army deployed to suppress Red Guards',intensity:80,toll:''},
+    {year:'1969',event:'Violence continues in provinces',intensity:65,toll:''},
+    {year:'1976',event:'Cultural Revolution ends',intensity:100,toll:'500,000 – 2,000,000 dead'}
+  ];
+  var yearEl=document.getElementById('crYear');
+  var eventEl=document.getElementById('crEvent');
+  var intensityEl=document.getElementById('crIntensity');
+  var tollEl=document.getElementById('crToll');
+  var crSteps=document.querySelectorAll('#crSteps .scrolly-step');
+  var currentCrStep=-1;
+  function updateCrViz(step){
+    if(step===currentCrStep) return;
+    currentCrStep=step;
+    var d=crData[step]||crData[0];
+    yearEl.textContent=d.year;
+    yearEl.classList.toggle('active',step>=0);
+    eventEl.textContent=d.event;
+    intensityEl.style.width=d.intensity+'%';
+    tollEl.textContent=d.toll;
+    tollEl.style.opacity=d.toll?1:0;
+    if(d.toll) tollEl.style.color='#c0392b';
+  }
+  crSteps.forEach(function(stepEl,i){
+    ScrollTrigger.create({
+      trigger:stepEl,start:'top 60%',end:'bottom 40%',
+      onEnter:function(){stepEl.classList.add('is-active');updateCrViz(i)},
+      onEnterBack:function(){stepEl.classList.add('is-active');updateCrViz(i)},
+      onLeave:function(){stepEl.classList.remove('is-active')},
+      onLeaveBack:function(){stepEl.classList.remove('is-active')}
+    });
+  });
+})();
+
+// === PURGE GRID ===
+(function(){
+  var grid=document.getElementById('purgeGrid');
+  for(var i=0;i<200;i++){
+    var p=document.createElement('div');
+    p.className='person';
+    grid.appendChild(p);
+  }
+  ScrollTrigger.create({
+    trigger:grid,start:'top 80%',
+    onEnter:function(){
+      grid.querySelectorAll('.person').forEach(function(p,i){
+        setTimeout(function(){p.classList.add(i<74?'executed':'gulag')},i*15);
+      });
+    },once:true
+  });
+})();
+function animateCounter(el,target,duration){
+  var obj={val:0};
+  gsap.to(obj,{val:target,duration:duration,ease:'power2.out',
+    onUpdate:function(){el.textContent=Math.round(obj.val).toLocaleString()},
+    scrollTrigger:{trigger:el,start:'top 80%'}
+  });
+}
+animateCounter(document.getElementById('purgeExec'),750000,2.5);
+animateCounter(document.getElementById('purgeGulag'),1300000,2.5);
+
+// === ISLAMIC TREE (interactive) ===
+(function(){
+  var tooltip=document.getElementById('treeTooltip');
+  var ttTitle=tooltip.querySelector('.tt-title');
+  var ttDetail=tooltip.querySelector('.tt-detail');
+  var treeContainer=document.getElementById('branchTree');
+  gsap.utils.toArray('#branchTree .branch-group').forEach(function(g){
+    var depth=parseInt(g.dataset.depth);
+    gsap.to(g,{opacity:1,duration:0.6,delay:depth*0.3,scrollTrigger:{trigger:'#branchTree',start:'top 75%'}});
+  });
+  treeContainer.addEventListener('mousemove',function(e){
+    var target=e.target.closest('[data-info]');
+    if(target){
+      var info=target.dataset.info.split('|');
+      ttTitle.textContent=info[0];
+      ttDetail.textContent=info[1]||'';
+      tooltip.style.opacity='1';
+      var rect=treeContainer.getBoundingClientRect();
+      var tx=e.clientX-rect.left+16;
+      var ty=e.clientY-rect.top-20;
+      if(tx+260>rect.width) tx=e.clientX-rect.left-270;
+      tooltip.style.left=tx+'px';
+      tooltip.style.top=ty+'px';
+      target.setAttribute('stroke-width','2.5');
+    }else{
+      tooltip.style.opacity='0';
+    }
+  });
+  treeContainer.addEventListener('mouseleave',function(){tooltip.style.opacity='0'});
+})();
+
+// === INFLATING NUMBER ===
+(function(){
+  var numEl=document.getElementById('inflateNum');
+  var roleEl=document.getElementById('inflateRole');
+  var subEl=document.getElementById('inflateSub');
+  var inflateData=[
+    {num:'100 tons',size:80,color:'#3a7a3a',role:'Actual harvest',sub:''},
+    {num:'200 tons',size:110,color:'#8a7a2a',role:'Village secretary',sub:'×2 actual'},
+    {num:'350 tons',size:130,color:'#b5751a',role:'County official',sub:'×3.5 actual'},
+    {num:'600 tons',size:160,color:'#c05a1a',role:'Prefecture',sub:'×6 actual'},
+    {num:'1,000 tons',size:200,color:'#c0392b',role:'Beijing reads',sub:'×10 actual'},
+    {num:'',size:80,color:'#c0392b',role:'',sub:''}
+  ];
+  var inflateSteps=document.querySelectorAll('#inflateSteps .scrolly-step');
+  var currentInflateStep=-1;
+  var famineTriggered=false;
+  function updateInflateViz(step){
+    if(step===currentInflateStep) return;
+    currentInflateStep=step;
+    var d=inflateData[step]||inflateData[0];
+    if(step===5){
+      numEl.style.fontSize='80px';
+      numEl.style.color='#1a1a1a';
+      numEl.textContent='';
+      roleEl.textContent='';
+      subEl.textContent='';
+      if(!famineTriggered){
+        famineTriggered=true;
+        gsap.to('#famineCounter',{opacity:1,duration:0.5});
+        var obj={val:0};
+        gsap.to(obj,{val:36000000,duration:4,ease:'power1.in',
+          onUpdate:function(){document.getElementById('famineNum').textContent=Math.round(obj.val).toLocaleString()}
+        });
+      }
+    }else{
+      numEl.textContent=d.num;
+      numEl.style.fontSize=d.size+'px';
+      numEl.style.color=d.color;
+      roleEl.textContent=d.role;
+      roleEl.style.opacity=d.role?1:0;
+      subEl.textContent=d.sub;
+      subEl.style.opacity=d.sub?1:0;
+    }
+  }
+  inflateSteps.forEach(function(stepEl,i){
+    ScrollTrigger.create({
+      trigger:stepEl,start:'top 60%',end:'bottom 40%',
+      onEnter:function(){stepEl.classList.add('is-active');updateInflateViz(i)},
+      onEnterBack:function(){stepEl.classList.add('is-active');updateInflateViz(i)},
+      onLeave:function(){stepEl.classList.remove('is-active')},
+      onLeaveBack:function(){stepEl.classList.remove('is-active')}
+    });
+  });
+})();
+
+// === TRIALS ===
+gsap.utils.toArray('.trial-row').forEach(function(row,i){
+  gsap.to(row,{opacity:1,y:0,duration:0.5,delay:i*0.3,scrollTrigger:{trigger:row,start:'top 85%'}});
+});
+
+// === TRANSITION DARK→WHITE ===
+(function(){
+  var zone=document.getElementById('transitionZone');
+  ScrollTrigger.create({
+    trigger:zone,start:'top top',end:'bottom top',scrub:true,
+    onUpdate:function(self){
+      var p=self.progress;
+      var bg=Math.round(p*255);
+      zone.style.background='rgb('+bg+','+bg+','+bg+')';
+    }
+  });
+})();
+
+// === PRINCIPLES ===
+['#p1','#p2','#p3'].forEach(function(id,i){
+  gsap.to(id,{opacity:1,y:0,duration:0.6,delay:i*0.2,scrollTrigger:{trigger:id,start:'top 85%'}});
+});
+
+// === TRUMP STATS ===
+ScrollTrigger.create({
+  trigger:'#trumpStats',start:'top 80%',
+  onEnter:function(){
+    gsap.utils.toArray('.trump-stat').forEach(function(stat,i){
+      gsap.to(stat,{opacity:1,y:0,duration:0.5,delay:i*0.15});
+    });
+    var o1={v:0},o2={v:0},o3={v:0},o4={v:0};
+    gsap.to(o1,{v:250,duration:1.5,onUpdate:function(){document.getElementById('tsOrders').textContent=Math.round(o1.v)+'+'}});
+    gsap.to(o2,{v:2450,duration:2,onUpdate:function(){document.getElementById('tsArrest').textContent=Math.round(o2.v).toLocaleString()+'%'}});
+    gsap.to(o3,{v:66000,duration:2,onUpdate:function(){document.getElementById('tsDetain').textContent=Math.round(o3.v).toLocaleString()}});
+    gsap.to(o4,{v:33,duration:1.5,onUpdate:function(){document.getElementById('tsDefy').textContent=Math.round(o4.v)+'%'}});
+  },once:true
+});
+
+// === CLOSING WORD BY WORD ===
+(function(){
+  var el=document.getElementById('closingText');
+  var text=el.textContent.trim();
+  el.innerHTML='';
+  text.split(/\s+/).forEach(function(w){
+    var span=document.createElement('span');
+    span.className='word';
+    span.textContent=w;
+    el.appendChild(span);
+  });
+  ScrollTrigger.create({
+    trigger:'#closingSection',start:'top 60%',
+    onEnter:function(){
+      el.querySelectorAll('.word').forEach(function(word,i){
+        gsap.to(word,{opacity:1,duration:0.3,delay:i*0.08});
+      });
+    },once:true
+  });
+})();
+</script>
+</body>
+</html>
