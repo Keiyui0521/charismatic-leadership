@@ -41,7 +41,7 @@ section{position:relative}
 .fade-in{opacity:0;transform:translateY(30px)}
 
 /* === HERO === */
-#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-start;padding:120px 0 100px;position:relative;overflow:hidden}
 #hero .hero-bg{position:absolute;inset:0;z-index:0}
 #hero .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:0.15;filter:grayscale(100%)}
 #hero .content-wrap{position:relative;z-index:1}
@@ -49,8 +49,52 @@ section{position:relative}
 .hero-quote cite{display:block;font-size:14px;font-style:normal;color:#666;margin-top:8px}
 .hero-title{font-size:56px;font-weight:600;color:#f5f5f5;letter-spacing:-1.5px;line-height:1.15;margin-bottom:48px;max-width:700px;opacity:0}
 .hero-body p{opacity:0}
-.hero-herbert{position:absolute;right:40px;bottom:40px;width:120px;height:160px;border-radius:4px;overflow:hidden;opacity:0;z-index:1}
+.hero-herbert{position:absolute;right:40px;top:120px;width:100px;height:132px;border-radius:4px;overflow:hidden;opacity:0;z-index:1}
 .hero-herbert img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%)}
+.hero-intro{position:absolute;inset:0;z-index:10;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px}
+.hero-intro .intro-number{font-size:clamp(90px,18vw,240px);font-weight:600;color:#c0392b;letter-spacing:-4px;line-height:1;opacity:0}
+.hero-intro .intro-sub1{font-size:20px;color:#d0d0d0;margin-top:32px;opacity:0;letter-spacing:0.5px}
+.hero-intro .intro-sub2{font-size:16px;color:#888;margin-top:14px;opacity:0;max-width:520px;line-height:1.6;font-style:italic}
+.weber-bars{display:flex;justify-content:center;align-items:flex-end;gap:56px;height:300px;margin:72px auto 56px;max-width:600px;padding-bottom:40px}
+.weber-bar{position:relative;width:72px;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end}
+.weber-bar .bar-fill{width:100%;height:130px;background:#2a2a2a;border-radius:4px 4px 0 0;transition:height 1.4s cubic-bezier(.4,0,.2,1),background 0.8s;position:relative;overflow:hidden}
+.weber-bar .bar-label{position:absolute;bottom:-28px;font-size:11px;color:#666;text-transform:uppercase;letter-spacing:2px;white-space:nowrap}
+.weber-bar.charisma .bar-fill{background:#c0392b;box-shadow:0 0 50px rgba(192,57,43,0.55);animation:weberPulse 2.2s ease-in-out infinite}
+.weber-bar.broken .bar-fill{background:#1a1a1a;animation:none;box-shadow:none}
+.weber-bar.broken .bar-fill::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0,transparent 10px,#0a0a0a 10px,#0a0a0a 12px);pointer-events:none}
+.weber-bar.active.charisma .bar-fill{animation:none;box-shadow:0 0 70px rgba(192,57,43,0.7)}
+@keyframes weberPulse{0%,100%{box-shadow:0 0 40px rgba(192,57,43,0.45)}50%{box-shadow:0 0 70px rgba(192,57,43,0.75)}}
+.ba-erasure-intro{font-size:14px;color:#888;text-align:center;max-width:560px;margin:48px auto 16px;font-style:italic;line-height:1.6}
+.ba-slider{max-width:680px;margin:24px auto 48px}
+.ba-slider .ba-wrap{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#1a1a1a;cursor:ew-resize;user-select:none}
+.ba-slider .ba-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);pointer-events:none}
+.ba-slider .ba-after{clip-path:inset(0 0 0 50%)}
+.ba-divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#c0392b;transform:translateX(-50%);pointer-events:none;box-shadow:0 0 12px rgba(192,57,43,0.5)}
+.ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;background:#c0392b;border:2px solid #fff;border-radius:50%;pointer-events:none;z-index:2;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;font-weight:500}
+.ba-labels{display:flex;justify-content:space-between;font-size:10px;color:#666;text-transform:uppercase;letter-spacing:2px;margin-top:10px;padding:0 4px}
+.ba-caption{font-size:13px;color:#555;margin-top:6px;font-style:italic;text-align:center}
+.year-counter{position:relative;height:220vh}
+.year-counter .yc-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;text-align:center}
+.year-counter .yc-viz{max-width:720px;margin:0 auto;padding:0 40px}
+.year-counter .yc-number{font-size:clamp(96px,16vw,200px);font-weight:600;color:#f5f5f5;letter-spacing:-3px;line-height:1;font-variant-numeric:tabular-nums}
+.year-counter .yc-years{font-size:18px;color:#888;margin-top:28px;font-variant-numeric:tabular-nums;letter-spacing:0.5px}
+.year-counter .yc-subline{font-size:14px;color:#555;margin-top:8px;font-style:italic}
+.year-counter .yc-toll{font-size:26px;color:#c0392b;margin-top:56px;opacity:0;font-weight:500;letter-spacing:0.5px;transition:opacity 1.2s}
+.dissonance-demo{max-width:560px;margin:56px auto;padding:48px 40px;background:#121212;border:1px solid #222;border-radius:6px;text-align:center}
+.dissonance-demo .dd-step{font-size:18px;color:#d0d0d0;line-height:1.6;opacity:0;transform:translateY(8px);transition:opacity 0.6s,transform 0.6s}
+.dissonance-demo .dd-step.show{opacity:1;transform:translateY(0)}
+.dissonance-demo .dd-fact{margin-bottom:12px}
+.dissonance-demo .dd-claim{color:#c0392b;margin-bottom:28px}
+.dissonance-demo .dd-prompt{font-size:13px;color:#666;text-transform:uppercase;letter-spacing:2px;margin-bottom:20px}
+.dissonance-demo .dd-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.dissonance-demo .dd-btn{background:transparent;border:1px solid #444;color:#d0d0d0;padding:12px 24px;font-family:inherit;font-size:14px;letter-spacing:0.5px;cursor:pointer;border-radius:3px;transition:all 0.25s}
+.dissonance-demo .dd-btn:hover{border-color:#c0392b;color:#f5f5f5;background:rgba(192,57,43,0.08)}
+.dissonance-demo.locked .dd-btn{opacity:0.3;pointer-events:none}
+.dissonance-demo.locked .dd-btn.chosen{opacity:1;border-color:#c0392b;color:#c0392b}
+.dissonance-demo .dd-result{margin-top:32px;max-height:0;opacity:0;overflow:hidden;transition:max-height 0.7s,opacity 0.7s,margin-top 0.7s}
+.dissonance-demo.locked .dd-result{max-height:200px;opacity:1;margin-top:40px}
+.dissonance-demo .dd-result-line{font-size:18px;color:#f5f5f5;font-weight:500;line-height:1.5}
+.dissonance-demo .dd-result-sub{font-size:14px;color:#777;margin-top:10px;font-style:italic;line-height:1.6}
 
 /* === IMAGES === */
 .section-image{width:100%;max-width:680px;margin:48px 0;border-radius:4px;overflow:hidden}
@@ -127,10 +171,12 @@ section{position:relative}
 .principle-num{font-size:14px;font-weight:500;color:#999;min-width:24px}
 .principle-text{font-size:18px;line-height:1.6;color:#000}
 .principle-text strong{color:#111}
-.trump-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:48px 0;max-width:680px}
-.trump-stat{background:#f5f5f5;border-radius:8px;padding:24px;opacity:0;transform:translateY(20px)}
-.trump-stat-num{font-size:36px;font-weight:600;color:#111;line-height:1}
-.trump-stat-label{font-size:13px;color:#999;margin-top:8px}
+.trump-pair{display:grid;grid-template-columns:1fr 220px;gap:40px;align-items:start;margin:32px 0;max-width:860px}
+.trump-pair p{margin-bottom:0;max-width:none}
+.trump-stat{background:#f5f5f5;border-left:3px solid #c0392b;border-radius:4px;padding:20px 22px;opacity:0;transform:translateY(16px);transition:opacity 0.7s,transform 0.7s}
+.trump-stat.show{opacity:1;transform:translateY(0)}
+.trump-stat-num{font-size:32px;font-weight:600;color:#111;line-height:1;font-variant-numeric:tabular-nums}
+.trump-stat-label{font-size:12px;color:#777;margin-top:8px;line-height:1.4}
 
 /* === CLOSING === */
 .closing-section{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#fff;position:relative}
@@ -165,7 +211,7 @@ section{position:relative}
   .hemi-yes,.hemi-no{font-size:36px}
   .famine-number{font-size:56px}
   .purge-stat-num{font-size:36px}
-  .trump-stats{grid-template-columns:1fr}
+  .trump-pair{grid-template-columns:1fr;gap:16px}
   .hero-herbert{display:none}
   .cr-year-display{font-size:72px}
   .closing-line-text{font-size:22px}
@@ -188,17 +234,19 @@ section{position:relative}
 
 <!-- HERO -->
 <section id="hero">
+  <div class="hero-intro">
+    <div class="intro-number">58,000</div>
+    <div class="intro-sub1">Americans killed in Vietnam.</div>
+    <div class="intro-sub2">Because no one questioned a charismatic president.</div>
+  </div>
   <div class="hero-bg"><img src="assets/opening-JFK-Nixon-debate.jpg" alt="John F. Kennedy and Richard Nixon at their first televised presidential debate, Chicago, 1960"></div>
   <div class="content-wrap">
     <div class="hero-quote">"I wrote the Dune series because I had this idea that charismatic leaders ought to come with a warning label on their forehead: 'May be dangerous to your health.'"<cite>— Frank Herbert, UCLA, 1985</cite></div>
     <h1 class="hero-title">The Dark Side of<br>Charismatic Leadership</h1>
     <div class="hero-body">
-      <p>The year is 1960. A man steps onto a television stage in Chicago. He is tan, composed, and effortlessly at ease. Across from him stands another man — pale, sweating, eyes darting toward the camera he has never learned to trust.</p>
-      <p>Seventy million Americans watch. The ones who listen on radio think Richard Nixon won. The ones who watch on television are certain it was John F. Kennedy. Same debate, same words. The only difference was the screen.</p>
-      <p>Kennedy won the presidency. Within three years, his charisma had pulled the nation into Vietnam — a war that would kill 58,000 Americans. Herbert called him "one of the most dangerous presidents this century — not because he was a bad guy, but because people didn't question him. People said, 'Yes sir, Mr. Charismatic Leader, what will we do next?'"</p>
-      <p>Nixon? Herbert thought he was the most <em>valuable</em> president. "Because he taught us to distrust government — and he did it by example."</p>
-      <p>Herbert spent twenty years writing about this. He watched a science fiction audience fall in love with Paul Atreides — the hero of Dune — and it horrified him. He had written Paul as a warning. Readers took him as a savior. So Herbert wrote sequel after sequel to make the point as brutal as possible: the hero will destroy you. Not because he wants to. Because you will let him.</p>
-      <p>That is what this website is about. What happens when people stop questioning. How institutions collapse. How movements outlive the people who started them. How followers seal themselves inside a belief until nothing can reach them.</p>
+      <p>Seventy million Americans watched that debate. The ones who listened on radio thought Richard Nixon won. The ones who watched on television were certain it was John F. Kennedy. Same debate, same words. The only difference was the screen.</p>
+      <p>Frank Herbert watched a science fiction audience fall in love with Paul Atreides — the hero of <em>Dune</em> — and it horrified him. He had written Paul as a warning. Readers took him as a savior. So Herbert wrote sequel after sequel to make the point as brutal as possible: the hero will destroy you. Not because he wants to. Because you will let him.</p>
+      <p>This website is about what happens when people stop questioning. How institutions collapse. How movements outlive the people who started them. How followers seal themselves inside a belief until nothing can reach them.</p>
     </div>
   </div>
   <div class="hero-herbert"><img src="assets/opening-frankherbert.jpg" alt="Portrait of Frank Herbert"></div>
@@ -211,6 +259,11 @@ section{position:relative}
     <h2 class="fade-in">When Charisma Meets Power</h2>
     <h3 class="fade-in" style="margin-top:64px">Part I — The Theory</h3>
     <div class="fade-in"><p>In 1922, Max Weber identified three sources of political authority: tradition, law, and charisma. The first two are stable — they survive the death of any individual. Charisma does not. It lives in one person, and it demands total faith in that person.</p></div>
+    <div class="weber-bars fade-in" id="weberBars">
+      <div class="weber-bar" data-auth="tradition"><div class="bar-fill"></div><div class="bar-label">Tradition</div></div>
+      <div class="weber-bar" data-auth="law"><div class="bar-fill"></div><div class="bar-label">Law</div></div>
+      <div class="weber-bar charisma" data-auth="charisma"><div class="bar-fill"></div><div class="bar-label">Charisma</div></div>
+    </div>
     <blockquote class="fade-in">"A certain quality of an individual personality by virtue of which he is set apart from ordinary men and treated as endowed with supernatural, superhuman, or at least specifically exceptional powers."<cite>— Max Weber, Economy and Society, 1922</cite></blockquote>
     <div class="fade-in"><p>Institutions — legislatures, courts, free presses — exist because the system expects leaders to be flawed. Madison put it plainly in Federalist No. 51: "If men were angels, no government would be necessary." Every check, every balance, every procedural delay is built on that assumption.</p><p>Charisma breaks the assumption. When followers believe a leader is exceptional, the checks start looking like obstacles. The followers want them gone. And the leader, surrounded by devotion, starts to agree.</p></div>
   </div>
@@ -291,6 +344,27 @@ section{position:relative}
     <div class="fade-in"><p>Vladimir Lenin died on January 21, 1924. He had spent his final months writing a document that the Party would later call his "Testament." In it, he warned that Stalin was "too rude" and should be removed from the position of General Secretary. He proposed replacing him with someone "more patient, more loyal, more polite."</p><p>The Testament was read aloud at the 13th Party Congress. The delegates listened, discussed it briefly, and did nothing.</p></div>
     <div class="section-image fade-in"><img src="assets/s2-stalin-propaganda-1.jpg" alt="Soviet propaganda poster, 1933"><div class="caption">"With the banner of Lenin..." — Soviet propaganda, 1933</div></div>
     <div class="fade-in"><p>Stalin kept his position. Within five years, he had outmaneuvered every rival. He renamed Petrograd — the city where the revolution began — to Leningrad. He turned Lenin's body into a public relic, preserved in a glass case on Red Square for pilgrims to visit. He wrapped every policy in Lenin's language, every purge in Lenin's authority. The dead man could not object.</p><p>By the mid-1930s, Stalin had built something Lenin never intended: a totalitarian state where disagreement was a death sentence. The Great Purge of 1936–1938 executed or imprisoned hundreds of thousands — party members, military officers, intellectuals, anyone who might one day challenge Stalin's reading of what Lenin "really meant."</p></div>
+    <p class="ba-erasure-intro fade-in">Execution was not enough. The Party rewrote the visual record, erasing rivals from official photographs. Drag the slider to see what was removed.</p>
+    <div class="ba-slider fade-in">
+      <div class="ba-wrap">
+        <img class="ba-before" src="assets/s2-lenin-origianl.jpg" alt="Lenin speaking at Sverdlov Square, 1920, with Trotsky and Kamenev beside the podium">
+        <img class="ba-after" src="assets/s2-lenin_removed.jpg" alt="The same photograph after Stalin-era retouching, with Trotsky and Kamenev erased">
+        <div class="ba-divider"></div>
+        <div class="ba-handle">⇆</div>
+      </div>
+      <div class="ba-labels"><span>Original (1920)</span><span>Retouched</span></div>
+      <div class="ba-caption">Lenin at Sverdlov Square, 1920. Trotsky and Kamenev stood beside the podium — until they didn't.</div>
+    </div>
+    <div class="ba-slider fade-in">
+      <div class="ba-wrap">
+        <img class="ba-before" src="assets/s2_stalin_original.jpg" alt="Stalin walking with Nikolai Yezhov along the Moscow-Volga Canal">
+        <img class="ba-after" src="assets/s2_stalin_removed.jpg" alt="The same photograph after Yezhov's execution, with Yezhov erased">
+        <div class="ba-divider"></div>
+        <div class="ba-handle">⇆</div>
+      </div>
+      <div class="ba-labels"><span>Original</span><span>After Yezhov's execution</span></div>
+      <div class="ba-caption">Stalin and secret police chief Nikolai Yezhov at the Moscow Canal. After Yezhov was shot in 1940, he vanished from the photograph too.</div>
+    </div>
     <div class="purge-stats fade-in"><div><div class="purge-stat-num" id="purgeExec">0</div><div class="purge-stat-label">Executed</div></div><div><div class="purge-stat-num" id="purgeGulag">0</div><div class="purge-stat-label">Sent to Gulag</div></div></div>
     <div class="purge-grid fade-in" id="purgeGrid"></div>
     <div class="section-image fade-in"><img src="assets/s2-gulag-workers.jpg" alt="Gulag prisoners building the White Sea-Baltic Canal"><div class="caption">Prisoners at Belbaltlag, building the White Sea–Baltic Canal</div></div>
@@ -375,7 +449,16 @@ section{position:relative}
         </g>
       </svg>
     </div>
-    <div class="fade-in"><p>The split did not heal. It widened. Sunni Islam fractured into schools of jurisprudence — Hanafi, Maliki, Shafi'i, Hanbali. Shia Islam split further — Twelvers, Ismailis, Zaidis. The fracturing continued beyond theology: fundamentalists, extremists, secularists, reformists, each claiming to carry the authentic legacy of a man who died in 632.</p><p>The line from that original succession crisis to the modern Middle East is not straight — fourteen centuries of empire, colonialism, Cold War proxy conflicts, and oil politics all shaped what followed. But the fault line that keeps cracking open is the one Muhammad's death created. The Iran-Iraq War: one million dead. The Iraqi civil war after 2003. The Saudi-Iran proxy conflicts burning through Yemen, Syria, Lebanon.</p><p>One leader died in 632. He left a vacuum that no one could fill, because his authority was personal — it lived in him and could not be inherited. Fourteen hundred years later, that vacuum is still producing corpses.</p></div>
+  </div>
+  <div class="year-counter" id="yearCounter">
+    <div class="yc-sticky">
+      <div class="yc-viz">
+        <div class="yc-number" id="ycNum">632</div>
+        <div class="yc-years" id="ycYears">0 years</div>
+        <div class="yc-subline">since the succession crisis in Medina</div>
+        <div class="yc-toll" id="ycToll">1,850,000+ dead</div>
+      </div>
+    </div>
   </div>
 </section>
 <!-- SECTION 3 -->
@@ -411,7 +494,19 @@ section{position:relative}
   <div class="content-wrap prose-section" style="padding-top:48px">
     <div class="fade-in"><p>Every local official in the chain knew the real numbers. The information that could have prevented the famine existed at every level of the system. It could not travel upward, because traveling upward meant telling Mao he was wrong, and telling Mao he was wrong meant you were the enemy. The system did not lack information. It was sealed against it.</p></div>
     <blockquote class="fade-in">"A man with a conviction is a hard man to change. Tell him you disagree and he turns away. Show him facts or figures and he questions your sources. Appeal to logic and he fails to see your point."<cite>— Leon Festinger, 1957</cite></blockquote>
-    <div class="fade-in"><p>Leon Festinger had a name for this. He called it cognitive dissonance — the mind's refusal to hold two contradictory beliefs at the same time. When reality threatens a belief you have staked your identity on, the mind does not update the belief. It rejects the reality. Festinger tested this on a doomsday cult in 1954: when the apocalypse failed to arrive, the cult members did not leave. They doubled down. They started recruiting.</p><p>Eric Hoffer, writing around the same time, went further. In <em>The True Believer</em>, he argued that people join mass movements for the identity, not the ideas. Once your sense of self is fused with the cause, criticizing the cause is an attack on who you are. The mind will not allow it.</p></div>
+    <div class="dissonance-demo fade-in" id="dissonanceDemo">
+      <div class="dd-step dd-fact">The harvest was <strong>100 tons.</strong></div>
+      <div class="dd-step dd-claim">The Party says the harvest was <strong>1,000 tons.</strong></div>
+      <div class="dd-step dd-prompt">What do you report?</div>
+      <div class="dd-buttons">
+        <button class="dd-btn" data-choice="accept">Accept the fact</button>
+        <button class="dd-btn" data-choice="reject">Reject the fact</button>
+      </div>
+      <div class="dd-result" id="ddResult">
+        <div class="dd-result-line">In 1959, every official chose <span class="accent">"Reject."</span></div>
+        <div class="dd-result-sub">Belief in the Party outranked the evidence of their own fields.</div>
+      </div>
+    </div>
     <h3 class="fade-in" style="margin-top:64px">The Confession</h3>
     <div class="section-image fade-in"><img src="assets/s3-moscow-trial.jpg" alt="Moscow Show Trials courtroom, 1936-1938"><div class="caption">Moscow Show Trials, 1936–1938</div></div>
     <div class="fade-in"><p>Moscow, 1936. Stalin's prosecutors put a group of Old Bolsheviks on trial. These men — Kamenev, Zinoviev, Bukharin — had fought alongside Lenin. They had built the Soviet state. The charge was treason.</p><p>They confessed. In open court, in front of foreign journalists, they declared themselves enemies of the people. Some had been tortured. But Bukharin's confession was different. He spoke at length, with apparent conviction. Arthur Koestler tried to explain it in <em>Darkness at Noon</em>: if you have spent your entire life believing that the Party is the instrument of history, then admitting the Party is wrong means your life was pointless. Confession — even false confession — is the last way to remain loyal.</p></div>
@@ -441,14 +536,23 @@ section{position:relative}
     <div class="principle" id="p2"><div class="principle-num">2.</div><div class="principle-text"><strong>Term limits and succession rules.</strong> Written in advance, enforced without exception. The leader leaves. The system stays.</div></div>
     <div class="principle" id="p3"><div class="principle-num">3.</div><div class="principle-text"><strong>Independent press and judiciary.</strong> Their job is to say no — to the leader, to the crowd, to the mood of the moment.</div></div>
     <div class="fade-in" style="margin-top:48px"><p>Nobody chants for judicial independence. There are no rallies for procedural checks. You cannot build a mass movement around the separation of powers. These things are boring. That is why they work.</p><p>The founders spent a summer in Philadelphia designing these cages. They read Thucydides, studied Rome, argued for months over how to constrain ambition. They were meticulous.</p><p>It took 240 years to find someone willing to take them apart.</p></div>
-    <div class="fade-in"><p>In his first year back in office, Donald Trump signed over 250 executive orders — governing by decree in a system designed to prevent exactly that. He created DOGE, an unelected body with no congressional authorization, and gave it access to Treasury payment systems, Medicare records, and Social Security data. When a federal judge ordered his administration to stop deporting Venezuelan immigrants mid-flight, the planes kept flying. When the Supreme Court ruled that a man mistakenly deported to El Salvador must be brought back, the administration said it was El Salvador's problem. One in three court rulings against the administration was met with noncompliance.</p></div>
-    <div class="trump-stats" id="trumpStats">
-      <div class="trump-stat"><div class="trump-stat-num" id="tsOrders">0</div><div class="trump-stat-label">Executive orders in year one</div></div>
-      <div class="trump-stat"><div class="trump-stat-num" id="tsArrest">0%</div><div class="trump-stat-label">Increase in no-record arrests</div></div>
-      <div class="trump-stat"><div class="trump-stat-num" id="tsDetain">0</div><div class="trump-stat-label">People in ICE detention, Dec 2025</div></div>
-      <div class="trump-stat"><div class="trump-stat-num" id="tsDefy">0</div><div class="trump-stat-label">Court rulings defied (1 in 3)</div></div>
+    <div class="trump-pair fade-in">
+      <p>In his first year back in office, Donald Trump signed hundreds of executive orders — governing by decree in a system designed to prevent exactly that. He created DOGE, an unelected body with no congressional authorization, and gave it access to Treasury payment systems, Medicare records, and Social Security data.</p>
+      <aside class="trump-stat" data-target="250" data-suffix="+" data-id="tsOrders"><div class="trump-stat-num">0</div><div class="trump-stat-label">Executive orders in year one</div></aside>
     </div>
-    <div class="fade-in"><p>ICE agents began arresting people at immigration courthouses — the very hearings the government required them to attend. Arrests of people with no criminal record rose 2,450 percent in a single year. By December 2025, ICE was holding 66,000 people in detention, the highest number ever recorded.</p><p>The cages are still standing — most of them. But they are being opened from the inside, with keys the founders themselves provided. Norms turned out not to be laws. Institutions turned out not to enforce themselves. And a country that was designed to distrust its leaders turned out to be perfectly capable of worshipping one.</p><p>The founders designed for corruption, for ambition, even for delusion. They did not design for an audience that would watch the dismantling and call it entertainment.</p></div>
+    <div class="trump-pair fade-in">
+      <p>When a federal judge ordered his administration to stop deporting Venezuelan immigrants mid-flight, the planes kept flying. When the Supreme Court ruled that a man mistakenly deported to El Salvador must be brought back, the administration said it was El Salvador's problem.</p>
+      <aside class="trump-stat" data-target="33" data-suffix="%" data-id="tsDefy"><div class="trump-stat-num">0</div><div class="trump-stat-label">Court rulings defied (1 in 3)</div></aside>
+    </div>
+    <div class="trump-pair fade-in">
+      <p>ICE agents began arresting people at immigration courthouses — the very hearings the government required them to attend. Arrests of people with no criminal record rose sharply in a single year.</p>
+      <aside class="trump-stat" data-target="2450" data-suffix="%" data-id="tsArrest"><div class="trump-stat-num">0</div><div class="trump-stat-label">Increase in no-record arrests</div></aside>
+    </div>
+    <div class="trump-pair fade-in">
+      <p>By December 2025, ICE was holding people in detention at the highest number ever recorded.</p>
+      <aside class="trump-stat" data-target="66000" data-suffix="" data-id="tsDetain"><div class="trump-stat-num">0</div><div class="trump-stat-label">People in ICE detention, Dec 2025</div></aside>
+    </div>
+    <div class="fade-in"><p>The cages are still standing — most of them. But they are being opened from the inside, with keys the founders themselves provided. Norms turned out not to be laws. Institutions turned out not to enforce themselves. And a country that was designed to distrust its leaders turned out to be perfectly capable of worshipping one.</p><p>The founders designed for corruption, for ambition, even for delusion. They did not design for an audience that would watch the dismantling and call it entertainment.</p></div>
   </div>
 </section>
 
@@ -484,11 +588,102 @@ document.body.classList.remove('no-js');
 gsap.registerPlugin(ScrollTrigger);
 
 // === HERO ===
-gsap.to('.hero-quote',{opacity:1,duration:1.5,delay:0.5});
-gsap.to('.hero-title',{opacity:1,duration:1.2,delay:1.5});
-gsap.to('.hero-herbert',{opacity:0.6,duration:1,delay:2});
+const heroTL = gsap.timeline();
+heroTL.to('.intro-number',{opacity:1,duration:1.2},0.4)
+      .to('.intro-sub1',{opacity:1,duration:1},2.4)
+      .to('.intro-sub2',{opacity:1,duration:1},3.6)
+      .to('.hero-intro',{opacity:0,duration:1.2,pointerEvents:'none'},5.2)
+      .set('.hero-intro',{display:'none'})
+      .to('.hero-quote',{opacity:1,duration:1.2},5.8)
+      .to('.hero-title',{opacity:1,duration:1.2},6.6)
+      .to('.hero-herbert',{opacity:0.6,duration:1},7.2);
 gsap.utils.toArray('.hero-body p').forEach((p,i)=>{
-  gsap.to(p,{opacity:1,duration:0.8,delay:2.2+i*0.3,scrollTrigger:{trigger:p,start:'top 85%'}});
+  gsap.to(p,{opacity:1,duration:0.8,scrollTrigger:{trigger:p,start:'top 85%'}});
+});
+
+// === WEBER BARS ===
+ScrollTrigger.create({
+  trigger:'#weberBars',start:'top 55%',
+  onEnter:()=>{
+    const bars=document.querySelectorAll('#weberBars .weber-bar');
+    bars.forEach(b=>b.classList.add('active'));
+    document.querySelector('#weberBars [data-auth=charisma] .bar-fill').style.height='260px';
+    document.querySelector('#weberBars [data-auth=tradition] .bar-fill').style.height='48px';
+    document.querySelector('#weberBars [data-auth=law] .bar-fill').style.height='48px';
+    setTimeout(()=>{
+      document.querySelector('#weberBars [data-auth=tradition]').classList.add('broken');
+      document.querySelector('#weberBars [data-auth=law]').classList.add('broken');
+    },700);
+  }
+});
+
+// === DISSONANCE DEMO ===
+(()=>{
+  const demo=document.getElementById('dissonanceDemo');
+  if(!demo)return;
+  const steps=demo.querySelectorAll('.dd-step');
+  const btns=demo.querySelector('.dd-buttons');
+  ScrollTrigger.create({trigger:demo,start:'top 70%',onEnter:()=>{
+    steps.forEach((s,i)=>setTimeout(()=>s.classList.add('show'),i*700));
+    setTimeout(()=>btns.style.opacity='1',steps.length*700);
+  }});
+  btns.style.opacity='0';btns.style.transition='opacity 0.6s';
+  demo.querySelectorAll('.dd-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      if(demo.classList.contains('locked'))return;
+      btn.classList.add('chosen');
+      demo.classList.add('locked');
+    });
+  });
+})();
+
+// === YEAR COUNTER 632 → 2026 ===
+(()=>{
+  const ycNum=document.getElementById('ycNum');
+  const ycYears=document.getElementById('ycYears');
+  const ycToll=document.getElementById('ycToll');
+  if(!ycNum)return;
+  const state={year:632};
+  gsap.to(state,{
+    year:2026,ease:'none',
+    scrollTrigger:{trigger:'#yearCounter',start:'top top',end:'bottom bottom',scrub:0.6,
+      onUpdate:(self)=>{
+        const y=Math.round(state.year);
+        ycNum.textContent=y;
+        ycYears.textContent=(y-632).toLocaleString()+' years';
+        ycToll.style.opacity=self.progress>0.75?'1':'0';
+      }
+    }
+  });
+})();
+
+// === BEFORE/AFTER SLIDERS ===
+document.querySelectorAll('.ba-slider').forEach(slider=>{
+  const wrap=slider.querySelector('.ba-wrap');
+  const after=slider.querySelector('.ba-after');
+  const divider=slider.querySelector('.ba-divider');
+  const handle=slider.querySelector('.ba-handle');
+  let dragging=false;
+  const setPos=(pct)=>{
+    pct=Math.max(0,Math.min(100,pct));
+    after.style.clipPath=`inset(0 0 0 ${pct}%)`;
+    divider.style.left=pct+'%';
+    handle.style.left=pct+'%';
+  };
+  const getX=(e)=>e.touches?e.touches[0].clientX:e.clientX;
+  const onMove=(e)=>{
+    if(!dragging)return;
+    const r=wrap.getBoundingClientRect();
+    setPos(((getX(e)-r.left)/r.width)*100);
+    if(e.cancelable)e.preventDefault();
+  };
+  const start=(e)=>{dragging=true;onMove(e)};
+  wrap.addEventListener('mousedown',start);
+  wrap.addEventListener('touchstart',start,{passive:false});
+  window.addEventListener('mousemove',onMove);
+  window.addEventListener('touchmove',onMove,{passive:false});
+  window.addEventListener('mouseup',()=>dragging=false);
+  window.addEventListener('touchend',()=>dragging=false);
 });
 
 // === FADE-IN ===
@@ -748,18 +943,20 @@ gsap.utils.toArray('.trial-row').forEach(function(row,i){
 });
 
 // === TRUMP STATS ===
-ScrollTrigger.create({
-  trigger:'#trumpStats',start:'top 80%',
-  onEnter:function(){
-    gsap.utils.toArray('.trump-stat').forEach(function(stat,i){
-      gsap.to(stat,{opacity:1,y:0,duration:0.5,delay:i*0.15});
-    });
-    var o1={v:0},o2={v:0},o3={v:0},o4={v:0};
-    gsap.to(o1,{v:250,duration:1.5,onUpdate:function(){document.getElementById('tsOrders').textContent=Math.round(o1.v)+'+'}});
-    gsap.to(o2,{v:2450,duration:2,onUpdate:function(){document.getElementById('tsArrest').textContent=Math.round(o2.v).toLocaleString()+'%'}});
-    gsap.to(o3,{v:66000,duration:2,onUpdate:function(){document.getElementById('tsDetain').textContent=Math.round(o3.v).toLocaleString()}});
-    gsap.to(o4,{v:33,duration:1.5,onUpdate:function(){document.getElementById('tsDefy').textContent=Math.round(o4.v)+'%'}});
-  },once:true
+document.querySelectorAll('.trump-stat[data-target]').forEach(function(stat){
+  var target=parseInt(stat.dataset.target,10);
+  var suffix=stat.dataset.suffix||'';
+  var numEl=stat.querySelector('.trump-stat-num');
+  ScrollTrigger.create({
+    trigger:stat,start:'top 85%',once:true,
+    onEnter:function(){
+      stat.classList.add('show');
+      var o={v:0};
+      gsap.to(o,{v:target,duration:1.6,ease:'power2.out',onUpdate:function(){
+        numEl.textContent=Math.round(o.v).toLocaleString()+suffix;
+      }});
+    }
+  });
 });
 
 // === CLOSING WORD BY WORD ===
