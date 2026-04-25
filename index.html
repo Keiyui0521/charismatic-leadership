@@ -40,21 +40,36 @@ section{position:relative}
 .scrolly-step.is-active .step-content{opacity:1;transform:translateY(0)}
 .scrolly-centered{position:relative}
 .scrolly-centered .scrolly-viz-center{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;z-index:1}
-.scrolly-centered .scrolly-steps-overlay{position:relative;z-index:2;max-width:480px;margin:-50vh auto 0;padding:0 40px}
-.scrolly-centered .scrolly-step{min-height:60vh}
+.scrolly-centered .scrolly-steps-overlay{position:relative;z-index:2;max-width:min(70vw,640px);margin:-50vh auto 0;padding:0 40px}
+.scrolly-centered .scrolly-step{min-height:80vh}
 .fade-in{opacity:0;transform:translateY(30px)}
 
+/* === G3: ONE-ELEMENT-PER-SCROLL SPACING === */
+.prose-section .fade-in{margin-bottom:max(18vh,140px)}
+.prose-section .fade-in:last-child{margin-bottom:0}
+.prose-section blockquote.fade-in{margin-top:max(12vh,100px);margin-bottom:max(18vh,140px)}
+.prose-section h3.fade-in{margin-bottom:48px}
+.prose-section .section-image.fade-in{margin-top:max(18vh,140px)}
+.viewport-step{min-height:90vh;display:flex;flex-direction:column;justify-content:center}
+
 /* === HERO === */
-#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-start;padding:120px 0 100px;position:relative;overflow:hidden}
-#hero .hero-bg{position:absolute;inset:0;z-index:0}
+#hero{position:relative;overflow:hidden}
+.hero-phase{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 40px;text-align:center}
+.hero-phase-3{text-align:left;align-items:flex-start}
+#hero .hero-bg{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity 1.6s ease}
+#hero .hero-bg.lit{opacity:1}
 #hero .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:0.15;filter:grayscale(100%)}
-#hero .content-wrap{position:relative;z-index:1}
-.hero-quote{font-size:22px;font-style:italic;color:#d0d0d0;max-width:600px;margin-bottom:48px;opacity:0}
-.hero-quote cite{display:block;font-size:14px;font-style:normal;color:#666;margin-top:8px}
-.hero-title{font-size:56px;font-weight:600;color:#f5f5f5;letter-spacing:-1.5px;line-height:1.15;margin-bottom:48px;max-width:700px;opacity:0}
-.hero-body p{opacity:0}
-.hero-herbert{position:absolute;right:40px;top:120px;width:100px;height:132px;border-radius:4px;overflow:hidden;opacity:0;z-index:1}
-.hero-herbert img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%)}
+.hero-phase-3 .content-wrap{position:relative;z-index:1}
+.hero-portrait{width:min(40vw,400px);margin:0 auto 48px;border-radius:4px;overflow:hidden;opacity:0}
+.hero-portrait img{width:100%;display:block;filter:grayscale(100%)}
+.hero-portrait-caption{font-size:13px;color:#555;margin-top:14px;font-style:italic;letter-spacing:0.3px}
+.hero-quote{font-size:24px;font-style:italic;color:#d0d0d0;max-width:680px;margin:0 auto;line-height:1.6;opacity:0}
+.hero-quote cite{display:block;font-size:14px;font-style:normal;color:#666;margin-top:18px}
+.hero-title{font-size:clamp(44px,7vw,72px);font-weight:600;color:#f5f5f5;letter-spacing:-1.5px;line-height:1.1;max-width:900px;opacity:0;text-align:center}
+.hero-body{max-width:680px;margin:0 auto}
+.hero-body p{opacity:0;margin-bottom:max(18vh,140px)}
+.hero-body p:last-child{margin-bottom:0}
+.hero-body .section-image{margin:max(14vh,120px) 0;opacity:0}
 #heroIntro{position:relative;height:300vh;background:#0a0a0a}
 #heroIntro .hero-intro-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px}
 #heroIntro .intro-number{font-size:clamp(90px,18vw,240px);font-weight:600;color:#c0392b;letter-spacing:-4px;line-height:1}
@@ -64,9 +79,9 @@ section{position:relative}
 @keyframes introScrollBob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
 
 /* === WEBER BARS === */
-.weber-bars{display:flex;justify-content:center;align-items:flex-end;gap:56px;height:300px;margin:72px auto 56px;max-width:600px;padding-bottom:40px}
-.weber-bar{position:relative;width:72px;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end}
-.weber-bar .bar-fill{width:100%;height:130px;background:#2a2a2a;border-radius:4px 4px 0 0;transition:height 1.4s cubic-bezier(.4,0,.2,1),background 0.8s;position:relative;overflow:hidden}
+.weber-bars{display:flex;justify-content:center;align-items:flex-end;gap:80px;height:min(70vh,500px);margin:80px auto;max-width:800px;padding:0 24px 48px}
+.weber-bar{position:relative;width:96px;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end}
+.weber-bar .bar-fill{width:100%;height:40%;background:#2a2a2a;border-radius:4px 4px 0 0;transition:height 1.4s cubic-bezier(.4,0,.2,1),background 0.8s;position:relative;overflow:hidden}
 .weber-bar .bar-label{position:absolute;bottom:-28px;font-size:11px;color:#666;text-transform:uppercase;letter-spacing:2px;white-space:nowrap}
 .weber-bar.charisma .bar-fill{background:#c0392b;box-shadow:0 0 50px rgba(192,57,43,0.55);animation:weberPulse 2.2s ease-in-out infinite}
 .weber-bar.broken .bar-fill{background:#1a1a1a;animation:none;box-shadow:none}
@@ -77,7 +92,7 @@ section{position:relative}
 /* === ROUTINIZATION PATHWAY === */
 .routine-wrap{position:relative;height:200vh;margin:64px 0}
 .routine-wrap .routine-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;padding:0 24px}
-.routine-diagram{margin:0 auto;max-width:760px;width:100%}
+.routine-diagram{margin:0 auto;max-width:min(80vw,900px);width:100%}
 .routine-diagram svg{width:100%;height:auto;display:block}
 .routine-diagram svg .path-line{stroke:#2a2a2a;stroke-width:2;fill:none;transition:stroke 0.8s,stroke-width 0.8s}
 .routine-diagram svg .path-line.lit{stroke:#c0392b;stroke-width:2.5}
@@ -121,14 +136,18 @@ section{position:relative}
 .year-counter .yc-year-label span{color:#d0d0d0;font-weight:500}
 .year-counter .yc-toll{font-size:clamp(80px,14vw,180px);font-weight:600;color:#c0392b;letter-spacing:-3px;line-height:1;font-variant-numeric:tabular-nums;text-shadow:0 0 60px rgba(192,57,43,0.25)}
 .year-counter .yc-toll-label{font-size:16px;color:#888;margin-top:28px;font-style:italic;letter-spacing:0.5px;max-width:600px;margin-left:auto;margin-right:auto}
+.year-counter .yc-event-label{margin-top:24px;min-height:48px;font-size:18px;color:#c0392b;letter-spacing:0.3px;opacity:0;transition:opacity 0.5s,color 0.5s}
+.year-counter .yc-event-label.muted{color:#666;opacity:0.7}
 
 /* === DISSONANCE === */
-.dissonance-demo{max-width:560px;margin:56px auto;padding:48px 40px;background:#121212;border:1px solid #222;border-radius:6px;text-align:center}
-.dissonance-demo .dd-step{font-size:18px;color:#d0d0d0;line-height:1.6;opacity:0;transform:translateY(8px);transition:opacity 0.6s,transform 0.6s}
+.dissonance-demo{max-width:min(70vw,780px);margin:80px auto;padding:64px 56px;background:#121212;border:1px solid #222;border-radius:6px;text-align:center;min-height:60vh;display:flex;flex-direction:column;justify-content:center}
+.dissonance-demo .dd-step{font-size:18px;color:#d0d0d0;line-height:1.7;opacity:0;transform:translateY(8px);transition:opacity 0.6s,transform 0.6s;margin-bottom:16px}
 .dissonance-demo .dd-step.show{opacity:1;transform:translateY(0)}
-.dissonance-demo .dd-fact{margin-bottom:12px}
-.dissonance-demo .dd-claim{color:#c0392b;margin-bottom:28px}
-.dissonance-demo .dd-prompt{font-size:13px;color:#666;text-transform:uppercase;letter-spacing:2px;margin-bottom:20px}
+.dissonance-demo .dd-scene{font-style:italic;color:#999;margin-bottom:32px;font-size:16px}
+.dissonance-demo .dd-fact{font-size:24px}
+.dissonance-demo .dd-claim{color:#c0392b;font-size:24px;margin-bottom:28px}
+.dissonance-demo .dd-context{font-size:14px;color:#777;font-style:italic;margin-bottom:32px;max-width:560px;margin-left:auto;margin-right:auto}
+.dissonance-demo .dd-prompt{font-size:13px;color:#666;text-transform:uppercase;letter-spacing:3px;margin-bottom:24px;font-weight:500}
 .dissonance-demo .dd-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .dissonance-demo .dd-btn{background:transparent;border:1px solid #444;color:#d0d0d0;padding:12px 24px;font-family:inherit;font-size:14px;letter-spacing:0.5px;cursor:pointer;border-radius:3px;transition:all 0.25s}
 .dissonance-demo .dd-btn:hover{border-color:#c0392b;color:#f5f5f5;background:rgba(192,57,43,0.08)}
@@ -142,14 +161,14 @@ section{position:relative}
 /* === POLARIZATION DRIFT === */
 .polarization-wrap{position:relative;height:240vh;margin:64px 0}
 .polarization-wrap .polarization-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;padding:0 24px}
-.polarization-viz{position:relative;width:100%;max-width:680px;height:380px;background:#0d0d0d;border:1px solid #1a1a1a;border-radius:4px;overflow:hidden}
-.polarization-viz .pol-stage{position:relative;width:100%;height:260px}
+.polarization-viz{position:relative;width:100%;max-width:min(80vw,900px);height:min(70vh,550px);background:#0d0d0d;border:1px solid #1a1a1a;border-radius:4px;overflow:hidden}
+.polarization-viz .pol-stage{position:relative;width:100%;height:calc(100% - 80px)}
 .polarization-viz .pol-axis{position:absolute;left:5%;right:5%;bottom:60px;height:1px;background:#1f1f1f}
 .polarization-viz .pol-axis-labels{position:absolute;left:5%;right:5%;bottom:38px;display:flex;justify-content:space-between;font-size:10px;color:#444;text-transform:uppercase;letter-spacing:2px}
 .polarization-viz .pol-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#888;transition:left 1.6s cubic-bezier(.4,0,.2,1),top 1.6s cubic-bezier(.4,0,.2,1),background 1s}
 .polarization-viz .pol-bubble{position:absolute;border-radius:50%;border:1px dashed #c0392b;opacity:0;transition:opacity 1.2s;pointer-events:none}
 .polarization-viz.bubbles-on .pol-bubble{opacity:0.45}
-.polarization-viz .pol-label{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-size:13px;color:#a0a0a0;letter-spacing:1px;font-style:italic;transition:opacity 0.5s}
+.polarization-viz .pol-label{position:absolute;bottom:24px;left:5%;right:5%;text-align:center;font-size:14px;color:#a0a0a0;line-height:1.5;font-style:italic;transition:opacity 0.5s;max-width:none}
 
 /* === IMAGES === */
 .section-image{width:100%;max-width:680px;margin:48px 0;border-radius:4px;overflow:hidden}
@@ -162,7 +181,7 @@ section{position:relative}
 .image-pair .section-image{margin:0}
 
 /* === HEMICYCLE === */
-.hemicycle-container{width:100%;max-width:520px}
+.hemicycle-container{width:100%;max-width:min(60vw,700px)}
 .hemicycle-container svg{width:100%;height:auto}
 .hemicycle-count{display:flex;justify-content:center;align-items:baseline;gap:24px;margin-top:16px;opacity:0}
 .hemi-yes,.hemi-no{font-size:48px;font-weight:600;line-height:1}
@@ -172,8 +191,8 @@ section{position:relative}
 .hemi-to{font-size:20px;color:#333}
 
 /* === CR TIMELINE === */
-.cr-timeline-viz{width:100%;max-width:400px;text-align:center}
-.cr-year-display{font-size:120px;font-weight:600;line-height:1;color:#1a1a1a;transition:color 0.6s,text-shadow 0.6s}
+.cr-timeline-viz{width:100%;max-width:min(50vw,600px);text-align:center}
+.cr-year-display{font-size:min(14vw,160px);font-weight:600;line-height:1;color:#1a1a1a;transition:color 0.6s,text-shadow 0.6s;letter-spacing:-3px}
 .cr-year-display.active{color:#c0392b;text-shadow:0 0 80px rgba(192,57,43,0.3)}
 .cr-event-text{font-size:16px;color:#666;margin-top:16px;min-height:48px;transition:opacity 0.4s}
 .cr-intensity-bar{width:100%;height:4px;background:#1a1a1a;border-radius:2px;margin-top:32px;overflow:hidden}
@@ -182,17 +201,19 @@ section{position:relative}
 .cr-causal{font-size:12px;color:#555;margin-top:14px;font-style:italic;line-height:1.6;max-width:340px;margin-left:auto;margin-right:auto;opacity:0;transition:opacity 0.6s}
 
 /* === PURGE === */
-.purge-grid{display:flex;flex-wrap:wrap;gap:3px;max-width:680px;margin:32px 0}
-.purge-grid .person{width:8px;height:16px;border-radius:4px 4px 1px 1px;background:#1e1e1e;transition:background 0.3s}
+.purge-counter-wrap{position:relative;height:150vh;margin:64px 0}
+.purge-counter-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;padding:0 24px}
+.purge-grid{display:flex;flex-wrap:wrap;gap:3px;max-width:min(80vw,800px);margin:0 auto;justify-content:center}
+.purge-grid .person{width:10px;height:20px;border-radius:4px 4px 1px 1px;background:#1e1e1e;transition:background 0.3s}
 .purge-grid .person.executed{background:#c0392b}
 .purge-grid .person.gulag{background:#8b1a1a}
-.purge-stats{display:flex;gap:48px;margin:24px 0 48px}
-.purge-stat-num{font-size:48px;font-weight:600;color:#c0392b;line-height:1}
-.purge-stat-label{font-size:13px;color:#666;margin-top:4px}
+.purge-stats{display:flex;gap:max(8vw,80px);margin:0;text-align:center}
+.purge-stat-num{font-size:min(9vw,96px);font-weight:600;color:#c0392b;line-height:1;font-variant-numeric:tabular-nums}
+.purge-stat-label{font-size:14px;color:#666;margin-top:8px;text-transform:uppercase;letter-spacing:2px}
 
 /* === ISLAMIC TREE === */
-.branch-tree{margin:64px 0;max-width:680px;overflow-x:auto;position:relative}
-.branch-tree svg{display:block;width:100%;height:auto}
+.branch-tree{margin:80px 0;width:100vw;max-width:none;position:relative;left:50%;transform:translateX(-50%);min-height:70vh;padding:0 40px;overflow-x:auto}
+.branch-tree svg{display:block;width:100%;height:auto;min-height:70vh}
 .branch-tree svg text{font-family:'Inter',sans-serif;fill:#a0a0a0}
 .branch-tree svg .node-rect{rx:4;ry:4;cursor:pointer}
 .branch-tree svg .branch-line{stroke:#333;stroke-width:1.5;fill:none}
@@ -202,9 +223,18 @@ section{position:relative}
 .tree-tooltip .tt-title{font-weight:500;color:#f5f5f5;margin-bottom:4px}
 .tree-tooltip .tt-detail{color:#888;font-size:12px}
 
+/* === PENG SCROLL SEQUENCE === */
+.peng-scroll{margin:max(20vh,160px) 0}
+.peng-step{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 40px;text-align:center;opacity:0;transform:translateY(30px)}
+.peng-step .peng-image{max-width:min(60vw,720px);width:100%;margin:0 auto 32px;border-radius:4px;overflow:hidden}
+.peng-step .peng-image img{width:100%;display:block;filter:grayscale(80%)}
+.peng-step .peng-caption{font-size:14px;color:#666;margin-top:14px;font-style:italic}
+.peng-step .peng-text{max-width:680px;margin:0 auto;font-size:19px;line-height:1.7;color:#d0d0d0}
+.peng-step .peng-text strong{color:#f5f5f5}
+
 /* === INFLATE NUMBER === */
 .inflate-viz{text-align:center;pointer-events:none}
-.inflate-number{font-size:80px;font-weight:600;color:#f5f5f5;line-height:1;transition:font-size 0.6s ease,color 0.6s ease;white-space:nowrap}
+.inflate-number{font-size:min(15vw,160px);font-weight:600;color:#f5f5f5;line-height:1;transition:font-size 0.6s ease,color 0.6s ease;white-space:nowrap;letter-spacing:-3px}
 .inflate-role-label{font-size:14px;color:#666;margin-top:12px;text-transform:uppercase;letter-spacing:1px;transition:opacity 0.4s}
 .inflate-sublabel{font-size:13px;color:#555;margin-top:8px;transition:opacity 0.4s}
 .famine-block{background:#050505;padding:80px 0;text-align:center}
@@ -248,8 +278,8 @@ section{position:relative}
 .counter-example .ce-image .caption{font-size:13px;color:#777;margin-top:8px;font-style:italic}
 
 /* Referendum bar */
-.referendum-bar{margin:48px 0;max-width:600px}
-.referendum-bar .rb-track{position:relative;height:48px;background:#eee;border-radius:4px;overflow:hidden;display:flex}
+.referendum-bar{margin:64px 0;max-width:min(70vw,800px)}
+.referendum-bar .rb-track{position:relative;height:72px;background:#eee;border-radius:4px;overflow:hidden;display:flex}
 .referendum-bar .rb-non{height:100%;background:#1f4d8c;width:0%;transition:width 1.6s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;justify-content:flex-start;padding-left:12px;color:#fff;font-size:13px;font-weight:500;letter-spacing:0.5px}
 .referendum-bar .rb-oui{height:100%;background:#c0392b;width:0%;transition:width 1.6s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;justify-content:flex-end;padding-right:12px;color:#fff;font-size:13px;font-weight:500;letter-spacing:0.5px}
 .referendum-bar .rb-caption{font-size:12px;color:#777;margin-top:8px;text-align:center;font-style:italic}
@@ -313,7 +343,7 @@ section{position:relative}
 /* === RESPONSIVE === */
 @media(max-width:900px){
   .scrolly{flex-direction:column}
-  .scrolly-viz{width:100%;height:50vh}
+  .scrolly-viz{width:100%;height:50vh;background:#0a0a0a;box-shadow:0 8px 24px rgba(10,10,10,0.95)}
   .scrolly-steps{width:100%;padding:0 24px}
   .scrolly-step:first-child{padding-top:20vh}
   .synth-table{grid-template-columns:1fr}
@@ -328,15 +358,17 @@ section{position:relative}
   .famine-number{font-size:56px}
   .purge-stat-num{font-size:36px}
   .image-pair{grid-template-columns:1fr}
-  .hero-herbert{display:none}
+  .hero-portrait{width:70vw}
+  .hero-title{font-size:36px}
   .cr-year-display{font-size:72px}
   .closing-line-text{font-size:22px}
   .progress-nav{display:none}
   .scotus-seat{width:28px;height:38px}
 }
 .no-js .fade-in,.no-js .hero-quote,.no-js .hero-title,.no-js .hero-body p,
+.no-js .hero-body .section-image,.no-js .hero-portrait,.no-js .hero-bg,
 .no-js .scrolly-step .step-content,.no-js .principle,.no-js .synth-card,
-.no-js .trial-row,.no-js .famine-counter{opacity:1!important;transform:none!important}
+.no-js .trial-row,.no-js .famine-counter,.no-js .yc-event-label{opacity:1!important;transform:none!important}
 </style>
 </head>
 <body class="no-js">
@@ -361,17 +393,32 @@ section{position:relative}
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg"><img src="assets/opening-JFK-Nixon-debate.jpg" alt="John F. Kennedy and Richard Nixon at their first televised presidential debate, Chicago, 1960"></div>
-  <div class="content-wrap">
+  <div class="hero-bg" id="heroBg"><img src="assets/opening-JFK-Nixon-debate.jpg" alt="John F. Kennedy and Richard Nixon at their first televised presidential debate, Chicago, 1960"></div>
+
+  <!-- Phase 1: The Warning -->
+  <div class="hero-phase hero-phase-1">
+    <div class="hero-portrait" id="heroPortrait">
+      <img src="assets/opening-frankherbert.jpg" alt="Portrait of Frank Herbert">
+    </div>
     <div class="hero-quote">"I wrote the Dune series because I had this idea that charismatic leaders ought to come with a warning label on their forehead: 'May be dangerous to your health.'"<cite>— Frank Herbert, UCLA, 1985</cite></div>
+  </div>
+
+  <!-- Phase 2: The Title -->
+  <div class="hero-phase hero-phase-2">
     <h1 class="hero-title">The Dark Side of<br>Charismatic Leadership</h1>
-    <div class="hero-body">
-      <p>Seventy million Americans watched that debate. The ones who listened on radio thought Richard Nixon won. The ones who watched on television were certain it was John F. Kennedy. Same debate, same words. The only difference was the screen.</p>
-      <p>Frank Herbert watched a science fiction audience fall in love with Paul Atreides — the hero of <em>Dune</em> — and it horrified him. He had written Paul as a warning. Readers took him as a savior. So Herbert wrote sequel after sequel to make the point as brutal as possible: the hero will destroy you. Not because he wants to. Because you will let him.</p>
-      <p>This website is about what happens when people stop questioning. How institutions collapse. How movements outlive the people who started them. How followers seal themselves inside a belief until nothing can reach them.</p>
+  </div>
+
+  <!-- Phase 3: The Context -->
+  <div class="hero-phase hero-phase-3">
+    <div class="content-wrap">
+      <div class="hero-body">
+        <p>Seventy million Americans watched that debate. The ones who listened on radio thought Richard Nixon won. The ones who watched on television were certain it was Kennedy. Same words. The only difference was the screen.</p>
+        <p>Frank Herbert watched a science fiction audience fall in love with Paul Atreides — the hero of <em>Dune</em> — and it horrified him. He had written Paul as a warning. Readers took him as a savior. So Herbert wrote sequel after sequel to make the point as brutal as possible: the hero will destroy you. Not because he wants to. Because you will let him.</p>
+        <div class="section-image"><img src="assets/opening-paul-atreides.png" alt="Paul Atreides"><div class="caption">The hero Herbert tried to warn you about.</div></div>
+        <p>What happens when people stop questioning. How institutions collapse. How movements outlive the people who started them. How followers seal themselves inside a belief until nothing can reach them.</p>
+      </div>
     </div>
   </div>
-  <div class="hero-herbert"><img src="assets/opening-frankherbert.jpg" alt="Portrait of Frank Herbert"></div>
 </section>
 
 <!-- SECTION 1 -->
@@ -379,10 +426,11 @@ section{position:relative}
   <div class="content-wrap prose-section">
     <div class="section-label">Section 1</div>
     <h2 class="fade-in">When Charisma Meets Power</h2>
-    <div class="section-image-full fade-in" style="margin-top:48px;max-height:50vh"><img src="assets/s1-charismatic-leadership.jpg" alt="Crowd raising hands toward a charismatic leader on a podium"></div>
+    <div class="section-image-full fade-in" style="margin-top:48px;max-height:50vh"><img src="assets/s1-nuremberg-rally-1934.jpg" alt="SA and SS formations at the Nuremberg Rally, 1934"></div>
     <h3 class="fade-in" style="margin-top:64px">Part I — The Theory</h3>
-    <div class="fade-in"><p>In 1922, Max Weber identified three sources of political authority: tradition, law, and charisma. The first two are stable — they survive the death of any individual. Charisma does not. It lives in one person, and it demands total faith in that person.</p></div>
-    <div class="section-image fade-in" style="max-width:200px"><img src="assets/s1-weber-portrait-1918.jpg" alt="Max Weber, 1918"><div class="caption">Max Weber, 1918</div></div>
+    <div class="fade-in"><p>In 1922, Max Weber identified three sources of political authority: tradition, law, and charisma. The first two are stable — they survive the death of any individual. Charisma does not. It lives in one person, and demands total faith in that person.</p></div>
+    <div class="section-image fade-in" style="max-width:min(50vw,400px);margin:max(14vh,120px) auto"><img src="assets/s1-weber-portrait-1918.jpg" alt="Max Weber, 1918"><div class="caption">Max Weber, 1918</div></div>
+    <div class="fade-in"><p>Weber's three types of authority are not equal in practice. When charisma enters the room, the other two buckle.</p></div>
     <div class="weber-bars fade-in" id="weberBars">
       <div class="weber-bar" data-auth="tradition"><div class="bar-fill"></div><div class="bar-label">Tradition</div></div>
       <div class="weber-bar" data-auth="law"><div class="bar-fill"></div><div class="bar-label">Law</div></div>
@@ -390,7 +438,9 @@ section{position:relative}
     </div>
     <blockquote class="fade-in">"A certain quality of an individual personality by virtue of which he is set apart from ordinary men and treated as endowed with supernatural, superhuman, or at least specifically exceptional powers."<cite>— Max Weber, Economy and Society, 1922</cite></blockquote>
     <div class="section-image fade-in"><img src="assets/s1-weber-oratory.png" alt="Illustration of an early-20th-century crowd listening to a charismatic orator"><div class="caption">The kind of scene Weber had in mind: a crowd listening, all at once, to one man.</div></div>
-    <div class="fade-in"><p>Institutions — legislatures, courts, free presses — exist because the system expects leaders to be flawed. Madison put it plainly in Federalist No. 51: "If men were angels, no government would be necessary." Every check, every balance, every procedural delay is built on that assumption.</p><p>Charisma breaks the assumption. When followers believe a leader is exceptional, the checks start looking like obstacles. The followers want them gone. And the leader, surrounded by devotion, starts to agree.</p><p>But Weber saw further than the moment of seizure. He argued that charismatic authority is inherently unstable — it cannot sustain itself beyond the leader's lifetime. It must undergo what he called <em>routinization</em>: either it hardens into bureaucratic rule, fractures into competing traditions, or the institutions hold and charisma simply fades. What follows in the next sections are three variations of that process — and the question of whether there is a fourth.</p></div>
+    <div class="fade-in"><p>Institutions — legislatures, courts, free presses — exist because the system expects leaders to be flawed. Madison put it plainly in Federalist No. 51: "If men were angels, no government would be necessary." Every check, every balance, every procedural delay is built on that assumption.</p></div>
+    <div class="fade-in"><p>Charisma breaks the assumption. When followers believe a leader is exceptional, the checks start looking like obstacles. The followers want them gone. The leader, surrounded by devotion, starts to agree.</p></div>
+    <div class="fade-in"><p>Weber saw further than the moment of seizure. Charismatic authority is unstable — it cannot outlast the leader. It must undergo what he called <em>routinization</em>: it hardens into bureaucratic rule, fractures into competing traditions, or the institutions hold and charisma fades. The next sections are three variations of that process — and the question of whether there is a fourth.</p></div>
 
     <!-- ROUTINIZATION PATHWAY -->
     <div class="routine-wrap" id="routineWrap">
@@ -472,9 +522,11 @@ section{position:relative}
         <div class="section-image"><img src="assets/s1-mao-tiananmen.jpg" alt="Mao Zedong reviewing Red Guards from atop the Tiananmen Gate"><div class="caption">Mao reviews the Red Guards from Tiananmen Gate, August 1966.</div></div>
         <p>Beijing, May 1966. Mao Zedong is 72. He has led the People's Republic for seventeen years, but his grip on the Party is slipping. Rivals in the Politburo are quietly sidelining him.</p>
         <p>So Mao goes around them. He bypasses his own party, his own government, his own chain of command. He writes a big-character poster — "Bombard the Headquarters" — and calls on China's students to attack the system he built.</p>
+        <blockquote>"To rebel is justified — bombard the headquarters!"<cite>— Mao Zedong, 1966</cite></blockquote>
       </div></div>
       <div class="scrolly-step" data-step="1"><div class="step-content">
         <p>Mao mobilizes millions of Red Guards. They flood the streets, drag professors from classrooms, beat officials in public, destroy temples, burn books. The chaos is total. The loyalty is absolute.</p>
+        <div class="section-image"><img src="assets/s1-cr-rebellion-poster-1967.jpg" alt="Cultural Revolution woodcut propaganda poster, 1967 — 'Revolution is innocent, rebellion is justified'"><div class="caption">1967. "Revolution is innocent, rebellion is justified."</div></div>
       </div></div>
       <div class="scrolly-step" data-step="2"><div class="step-content">
         <p>Red Guard factions turn on each other. Provincial governments collapse. Liu Shaoqi — the second most powerful man in China — is dragged from his home and left to die in detention. The revolution is eating its own.</p>
@@ -482,11 +534,11 @@ section{position:relative}
       </div></div>
       <div class="scrolly-step" data-step="3"><div class="step-content">
         <p>Even Mao cannot stop it. He sends the army to suppress the Red Guards — the very forces he summoned two years earlier. The weapon he built no longer answers to him.</p>
+        <div class="section-image"><img src="assets/s1-cr-pla-revolutionary-committee.jpg" alt="People's Liberation Army troops massed with rifles and red flags at a rally celebrating the Beijing Revolutionary Committee"><div class="caption">The PLA takes control. The revolution Mao started now requires an army to contain.</div></div>
       </div></div>
       <div class="scrolly-step" data-step="4"><div class="step-content">
         <p>The Cultural Revolution officially ends. The toll: an estimated 500,000 to 2 million dead, up to 36 million persecuted.</p>
-        <blockquote>"To rebel is justified — bombard the headquarters!"<cite>— Mao Zedong, 1966</cite></blockquote>
-        <p>Hitler got the institutions out of his way. Mao went further — he unleashed a force that got out of <em>his</em> way. The pattern keeps repeating. A leader rises above the system. The system yields. Then the leader discovers that the thing he unleashed does not answer to him either.</p>
+        <p>Hitler got the institutions out of his way. Mao went further — he unleashed a force that got out of <em>his</em> way.</p>
       </div></div>
     </div>
   </div>
@@ -522,12 +574,14 @@ section{position:relative}
     </div>
 
     <div class="section-image fade-in"><img src="assets/s2-stalin-propaganda-1.jpg" alt="Soviet propaganda poster, 1933"><div class="caption">"With the banner of Lenin..." — Soviet propaganda, 1933</div></div>
-    <div class="fade-in"><p>Stalin kept his position. Within five years, he had outmaneuvered every rival. He renamed Petrograd — the city where the revolution began — to Leningrad. He turned Lenin's body into a public relic, preserved in a glass case on Red Square for pilgrims to visit. He wrapped every policy in Lenin's language, every purge in Lenin's authority. The dead man could not object.</p><p>By the mid-1930s, Stalin had built something Lenin never intended: a totalitarian state where disagreement was a death sentence. The Great Purge of 1936–1938 executed or imprisoned hundreds of thousands — party members, military officers, intellectuals, anyone who might one day challenge Stalin's reading of what Lenin "really meant."</p></div>
+    <div class="fade-in"><p>Stalin kept his position. Within five years, he had outmaneuvered every rival. He renamed Petrograd — the city where the revolution began — to Leningrad. He turned Lenin's body into a public relic, preserved in a glass case on Red Square. He wrapped every policy in Lenin's language, every purge in Lenin's authority. The dead man could not object.</p></div>
+    <div class="fade-in"><p>By the mid-1930s, Stalin had built something Lenin never intended: a totalitarian state where disagreement was a death sentence. The Great Purge of 1936–1938 executed or imprisoned hundreds of thousands — party members, military officers, intellectuals, anyone who might challenge Stalin's reading of what Lenin "really meant."</p></div>
     <p class="ba-erasure-intro fade-in">Execution was not enough. The Party rewrote the visual record, erasing rivals from official photographs. Drag the slider to see what was removed.</p>
+    <div class="fade-in"><p>These alterations were not digital. Soviet retouchers used airbrushes, ink, and darkroom compositing to paint people out of negatives and prints by hand. The process could take days. The results were distributed as official history — the doctored versions replaced the originals in archives, newspapers, and textbooks. What you see below is not a Photoshop exercise. It is what the state actually did.</p></div>
     <div class="ba-slider fade-in">
       <div class="ba-wrap">
-        <img class="ba-before" src="assets/s2-lenin-origianl.jpg" alt="Lenin speaking at Sverdlov Square, 1920, with Trotsky and Kamenev beside the podium">
-        <img class="ba-after" src="assets/s2-lenin_removed.jpg" alt="The same photograph after Stalin-era retouching, with Trotsky and Kamenev erased">
+        <img class="ba-before" src="assets/s2-lenin-original.jpg" alt="Lenin speaking at Sverdlov Square, 1920, with Trotsky and Kamenev beside the podium">
+        <img class="ba-after" src="assets/s2-lenin-removed.jpg" alt="The same photograph after Stalin-era retouching, with Trotsky and Kamenev erased">
         <div class="ba-divider"></div>
         <div class="ba-handle">⇆</div>
       </div>
@@ -536,31 +590,34 @@ section{position:relative}
     </div>
     <div class="ba-slider fade-in">
       <div class="ba-wrap">
-        <img class="ba-before" src="assets/s2_stalin_original.jpg" alt="Stalin walking with Nikolai Yezhov along the Moscow-Volga Canal">
-        <img class="ba-after" src="assets/s2_stalin_removed.jpg" alt="The same photograph after Yezhov's execution, with Yezhov erased">
+        <img class="ba-before" src="assets/s2-stalin-original.jpg" alt="Stalin walking with Nikolai Yezhov along the Moscow-Volga Canal">
+        <img class="ba-after" src="assets/s2-stalin-removed.jpg" alt="The same photograph after Yezhov's execution, with Yezhov erased">
         <div class="ba-divider"></div>
         <div class="ba-handle">⇆</div>
       </div>
       <div class="ba-labels"><span>Original</span><span>After Yezhov's execution</span></div>
       <div class="ba-caption">Stalin and secret police chief Nikolai Yezhov at the Moscow Canal. After Yezhov was shot in 1940, he vanished from the photograph too.</div>
     </div>
-    <div class="purge-stats fade-in"><div><div class="purge-stat-num" id="purgeExec">0</div><div class="purge-stat-label">Executed</div></div><div><div class="purge-stat-num" id="purgeGulag">0</div><div class="purge-stat-label">Sent to Gulag</div></div></div>
-    <div class="purge-grid fade-in" id="purgeGrid"></div>
+    <div class="purge-counter-wrap" id="purgeCounterWrap">
+      <div class="purge-counter-sticky">
+        <div class="purge-stats"><div><div class="purge-stat-num" id="purgeExec">0</div><div class="purge-stat-label">Executed</div></div><div><div class="purge-stat-num" id="purgeGulag">0</div><div class="purge-stat-label">Sent to Gulag</div></div></div>
+        <div class="purge-grid" id="purgeGrid"></div>
+      </div>
+    </div>
     <div class="section-image fade-in"><img src="assets/s2-stalin-propaganda-2.jpg" alt="Soviet poster glorifying Stalin alongside Lenin's image"><div class="caption">As the purges intensified, Stalin's image multiplied — always beside Lenin's, always borrowing his authority.</div></div>
     <div class="section-image fade-in"><img src="assets/s2-gulag-workers.jpg" alt="Gulag prisoners building the White Sea-Baltic Canal"><div class="caption">Prisoners at Belbaltlag, building the White Sea–Baltic Canal</div></div>
-    <div class="fade-in"><p>Lenin's revolution was supposed to liberate the working class. Under Stalin, it became the justification for a system of forced labor camps stretching across Siberia. The ideology did not change. The words stayed the same. Only the meaning shifted — and there was no one left alive who was allowed to say so.</p></div>
-    <blockquote class="fade-in">"Stalin is too rude... I propose to find a way to remove Stalin from that position and appoint to it another man who is more patient, more loyal, more polite."<cite>— Lenin's Testament, January 4, 1923</cite></blockquote>
+    <div class="fade-in"><p>Lenin's revolution was supposed to liberate the working class. Under Stalin, it became the justification for a system of forced labor camps stretching across Siberia. The ideology did not change. The words stayed the same. Only the meaning shifted — and no one was left alive who was allowed to say so.</p></div>
 
     <h3 class="fade-in" style="margin-top:96px">Case B — Muhammad → The Fracture</h3>
     <div class="disclaimer fade-in">A note on framing: for nearly two billion Muslims, Muhammad is not a case study in political leadership — he is the Prophet. This section uses Weber's secular academic framework to analyze the political consequences of a succession crisis, not to pass judgment on faith or religious authority. The analysis that follows concerns institutions, not theology.</div>
     <div class="framing-prose fade-in"><p>Where Lenin's charisma was routinized into a single bureaucratic tyranny, Muhammad's faced a different fate. Without a clear succession mechanism, charismatic authority did not harden into one structure — it fractured into competing claims of legitimate inheritance. Weber's routinization, split in two.</p></div>
-    <div class="section-image fade-in"><img src="assets/s2-muhammud.jpg" alt="The early Islamic world"><div class="caption">The early Islamic world</div></div>
+    <div class="section-image fade-in"><img src="assets/s2-muhammad.jpg" alt="Conceptual artistic portrait of the Prophet Muhammad"><div class="caption">A conceptual portrait. In Islamic tradition, figurative depictions of the Prophet vary by era and region.</div></div>
     <div class="fade-in"><p>Muhammad died in Medina on June 8, 632 CE. He left behind a community of believers, a rapidly expanding territory, and no clear successor.</p><p>Within hours, the crisis began. One faction backed Abu Bakr, Muhammad's closest companion. Another insisted on Ali, his cousin and son-in-law — the man they believed Muhammad had designated at Ghadir Khumm. Both sides were certain. Neither side could ask the only person whose answer would have settled it.</p></div>
   </div>
-  <div class="section-image-full fade-in"><img src="assets/s2-karbala.webp" alt="The Battle of Karbala, 680 CE"></div>
+  <div class="section-image-full fade-in"><img src="assets/s2-karbala-battle.jpg" alt="The Battle of Karbala, 680 CE — oil painting depicting the close-combat massacre of Husayn's forces"></div>
   <div class="content-wrap" style="padding-bottom:120px">
     <div class="fade-in" style="margin-top:16px"><p style="font-size:13px;color:#555;font-style:italic;margin-bottom:48px">The Battle of Karbala, 680 CE</p><p>Abu Bakr became the first caliph. Over the next three decades, three of the first four caliphs were assassinated. In 680 CE, Ali's son Husayn marched to Karbala to challenge the Umayyad caliph Yazid. His forces were massacred. That death became the founding trauma of Shia Islam — a grief re-enacted every year during Ashura, fourteen centuries later.</p></div>
-    <div class="section-image fade-in"><img src="assets/s2-abura.jpeg" alt="Ashura commemoration"><div class="caption">Ashura commemoration — mourning Husayn, 1400 years later</div></div>
+    <div class="section-image fade-in"><img src="assets/s2-ashura.jpeg" alt="Ashura commemoration"><div class="caption">Ashura commemoration — mourning Husayn, 1400 years later</div></div>
 
     <!-- ISLAMIC TREE -->
     <div class="branch-tree fade-in" id="branchTree">
@@ -643,6 +700,7 @@ section{position:relative}
       <div class="yc-viz">
         <div class="yc-year-label">Year <span id="ycNum">632</span></div>
         <div class="yc-toll" id="ycToll">0</div>
+        <div class="yc-event-label" id="ycEvent"></div>
         <div class="yc-toll-label">killed in conflicts with sectarian dimensions — each triggered by its own political crisis, none reducible to religion alone</div>
       </div>
     </div>
@@ -655,13 +713,32 @@ section{position:relative}
     <div class="section-label fade-in">Section 3</div>
     <h2 class="fade-in">Followers Are Self-Sealing</h2>
     <div class="section-image fade-in" style="margin-top:48px"><img src="assets/s3-great-leap-forward-furnaces.jpg" alt="Backyard steel furnaces during China's Great Leap Forward"><div class="caption">Backyard steel furnaces, China, late 1950s</div></div>
-    <div class="fade-in"><p>Somewhere in rural Henan province, 1959. A local Party secretary stands in a field. The wheat is thin. He knows the harvest will fall short — maybe thirty percent of last year. He also knows what happened to the last official who reported low numbers. The man was denounced as a rightist, stripped of his position, and sent to a labor camp. His family was not told where.</p><p>The secretary writes his report. Record yield. Twice the actual harvest. He sends it up the chain.</p></div>
-    <div class="fade-in" style="margin-top:48px"><p>Not everyone lied. In July 1959, Marshal Peng Dehuai — China's defense minister and one of the most decorated commanders of the Korean War — wrote a private letter to Mao at the Lushan Conference. He called the backyard steel campaign "a waste of resources and manpower." He said the harvest numbers were inflated. He was right about everything.</p></div>
-    <div class="image-pair fade-in">
-      <div class="section-image"><img src="assets/s1-peng-dehuai-military-portrait.jpg" alt="Marshal Peng Dehuai in military uniform before persecution"><div class="caption">Peng Dehuai — defense minister, war hero, veteran of Korea.</div></div>
-      <div class="section-image"><img src="assets/s1-peng-dehuai-struggle-session.jpg" alt="Marshal Peng Dehuai subjected to a struggle session by Red Guards"><div class="caption">The same man, after. Beaten until his back was broken. Died in prison, 1974.</div></div>
+    <div class="fade-in"><p>Somewhere in rural Henan province, 1959. A local Party secretary stands in a field. The wheat is thin. He knows the harvest will fall short — maybe thirty percent of last year. He also knows what happened to the last official who reported low numbers. The man was denounced as a rightist, stripped of his position, and sent to a labor camp. His family was not told where.</p></div>
+    <div class="fade-in"><p>The secretary writes his report. Record yield. Twice the actual harvest. He sends it up the chain.</p></div>
+  </div>
+
+  <!-- PENG DEHUAI 5-STEP SCROLL -->
+  <div class="peng-scroll" id="pengScroll">
+    <div class="peng-step" data-peng-step="1">
+      <div class="peng-image"><img src="assets/s1-peng-dehuai-military-portrait.jpg" alt="Marshal Peng Dehuai in military uniform before persecution"></div>
+      <div class="peng-caption">Peng Dehuai — defense minister, war hero, veteran of Korea.</div>
     </div>
-    <div class="fade-in"><p>Mao read the letter aloud to the Politburo — not to act on it, but to force everyone in the room to choose a side. Peng was stripped of all positions, placed under house arrest, and eventually handed to the Red Guards. The message was clear: the system does not lack information. It punishes the people who carry it. Every official in the chain below Peng understood what his fate meant for theirs.</p></div>
+    <div class="peng-step" data-peng-step="2">
+      <p class="peng-text">Not everyone lied. In July 1959, Marshal Peng Dehuai — China's defense minister and one of the most decorated commanders of the Korean War — wrote a private letter to Mao at the Lushan Conference. He called the backyard steel campaign "a waste of resources and manpower." He said the harvest numbers were inflated. He was right about everything.</p>
+    </div>
+    <div class="peng-step" data-peng-step="3">
+      <p class="peng-text" style="margin-bottom:48px">Mao read the letter aloud to the Politburo — not to act on it, but to force everyone in the room to choose a side.</p>
+      <div class="peng-image"><img src="assets/s3-mao-lushan-conference-1959.jpeg" alt="Mao Zedong at the Lushan Conference, 1959"></div>
+      <div class="peng-caption">Lushan, July 1959. Mao turns Peng's letter into a loyalty test.</div>
+    </div>
+    <div class="peng-step" data-peng-step="4">
+      <div class="peng-image"><img src="assets/s1-peng-dehuai-struggle-session.jpg" alt="Marshal Peng Dehuai subjected to a struggle session by Red Guards"></div>
+      <div class="peng-caption" style="margin-bottom:32px">The same man, after. Beaten until his back was broken. Died in prison, 1974.</div>
+      <p class="peng-text">Peng was stripped of all positions, placed under house arrest, and eventually handed to the Red Guards.</p>
+    </div>
+    <div class="peng-step" data-peng-step="5">
+      <p class="peng-text">The message was clear: the system does not lack information. It punishes the people who carry it. Every official in the chain below Peng understood what his fate meant for theirs.</p>
+    </div>
   </div>
 
   <!-- INFLATE SCROLLY -->
@@ -679,7 +756,7 @@ section{position:relative}
       <div class="scrolly-step" data-step="2"><div class="step-content" style="background:rgba(10,10,10,0.85);border-radius:8px;padding:24px;border:1px solid #1a1a1a"><p style="margin-bottom:0">The county official receives six reports, all inflated. He adds his own margin. <strong>350 tons.</strong></p></div></div>
       <div class="scrolly-step" data-step="3"><div class="step-content" style="background:rgba(10,10,10,0.85);border-radius:8px;padding:24px;border:1px solid #1a1a1a"><p style="margin-bottom:0">The prefecture consolidates. Nobody wants to be the one with lower numbers. <strong>600 tons.</strong></p></div></div>
       <div class="scrolly-step" data-step="4"><div class="step-content" style="background:rgba(10,10,10,0.85);border-radius:8px;padding:24px;border:1px solid #1a1a1a"><p style="margin-bottom:0">The provincial report reaches Beijing. <strong>1,000 tons.</strong> Ten times reality. Mao reads this and orders the surplus exported.</p></div></div>
-      <div class="scrolly-step" data-step="5"><div class="step-content" style="background:rgba(10,10,10,0.85);border-radius:8px;padding:24px;border:1px solid #c0392b"><p style="margin-bottom:0;color:#c0392b"><strong>The number collapses into reality.</strong> There is no surplus. There is famine.</p></div></div>
+      <div class="scrolly-step" data-step="5"><div class="step-content" style="background:rgba(10,10,10,0.92);border-radius:8px;padding:32px;border:1px solid #c0392b"><p style="margin-bottom:0;color:#e8d4d0;line-height:1.7"><strong style="color:#c0392b">The number collapses into reality.</strong> Beijing believed the inflated harvest reports. Grain was exported to repay Soviet debts and fund industrialization. Local food reserves were seized for redistribution to cities. No one sent food back — because the numbers said there was more than enough. There was famine not because the crops failed, but because the system acted on lies as if they were true.</p></div></div>
     </div>
   </div>
 
@@ -693,24 +770,27 @@ section{position:relative}
   </div>
 
   <div class="content-wrap prose-section" style="padding-top:48px">
-    <div class="fade-in"><p>Every local official in the chain knew the real numbers. The information that could have prevented the famine existed at every level of the system. It could not travel upward, because traveling upward meant telling Mao he was wrong, and telling Mao he was wrong meant you were the enemy. The system did not lack information. It was sealed against it.</p></div>
+    <div class="fade-in"><p>Every local official in the chain knew the real numbers. The information that could have prevented the famine existed at every level. It could not travel upward, because traveling upward meant telling Mao he was wrong, and telling Mao he was wrong meant destruction. The system did not lack information. It was sealed against it.</p></div>
     <blockquote class="fade-in">"A man with a conviction is a hard man to change. Tell him you disagree and he turns away. Show him facts or figures and he questions your sources. Appeal to logic and he fails to see your point."<cite>— Leon Festinger, 1957</cite></blockquote>
     <div class="dissonance-demo fade-in" id="dissonanceDemo">
+      <div class="dd-step dd-scene">You are a county official in Henan province, 1959. You have just inspected the fields yourself.</div>
       <div class="dd-step dd-fact">The harvest was <strong>100 tons.</strong></div>
       <div class="dd-step dd-claim">The Party says the harvest was <strong>1,000 tons.</strong></div>
-      <div class="dd-step dd-prompt">What do you report?</div>
+      <div class="dd-step dd-context">The last official who reported real numbers was sent to a labor camp. His family does not know where he is.</div>
+      <div class="dd-step dd-prompt">WHAT DO YOU REPORT?</div>
       <div class="dd-buttons">
-        <button class="dd-btn" data-choice="accept">Accept the fact</button>
-        <button class="dd-btn" data-choice="reject">Reject the fact</button>
+        <button class="dd-btn" data-choice="truth">Report 100 tons (the truth)</button>
+        <button class="dd-btn" data-choice="party">Report 1,000 tons (the Party line)</button>
       </div>
       <div class="dd-result" id="ddResult">
-        <div class="dd-result-line">In 1959, every official chose <span class="accent">"Reject."</span></div>
-        <div class="dd-result-sub">Belief in the Party outranked the evidence of their own fields.</div>
+        <div class="dd-result-line" id="ddResultLine"></div>
+        <div class="dd-result-sub" id="ddResultSub">In 1959, every official chose the Party line. Not because they believed it — but because the cost of honesty was higher than the cost of famine.</div>
       </div>
     </div>
 
     <h3 class="fade-in" style="margin-top:80px">From Individual to Crowd</h3>
-    <div class="fade-in"><p>Festinger described a defense mechanism inside one person's head. But people do not believe alone. Cass Sunstein studied what happens when people who share a belief are placed together: the group does not settle at the average of its members' views. It moves toward the extreme. He called this <em>group polarization</em> — and he demonstrated it in jury deliberations, political caucuses, and online forums. The mechanism is simple: in a room where everyone agrees, the most forceful voice sets the new anchor. Moderate positions feel like betrayal.</p></div>
+    <div class="fade-in"><p>Festinger described a defense mechanism inside one person's head. Cass Sunstein studied what happens when people who share a belief are placed together: the group does not settle at the average. It moves toward the extreme. He called this <em>group polarization</em>. In a room where everyone agrees, the most forceful voice sets the new anchor. Moderate positions feel like betrayal.</p></div>
+    <div class="fade-in"><p>The simulation below shows how this works. Each dot is a person. Watch what happens when they find others who agree with them — and what happens when the algorithm decides what they see.</p></div>
 
     <div class="polarization-wrap" id="polarizationWrap">
       <div class="polarization-sticky">
@@ -723,12 +803,12 @@ section{position:relative}
       </div>
     </div>
 
-    <div class="fade-in"><p>Eli Pariser identified the infrastructure that automates Sunstein's process. Social media algorithms optimize for engagement. Devotion engages. Doubt does not. The <em>filter bubble</em> is an environment where the information you see is pre-selected to confirm what you already believe. The technology is new. The individual psychology is Festinger's. The group dynamics are Sunstein's. The scale is what changed.</p></div>
+    <div class="fade-in"><p>Eli Pariser identified the infrastructure that automates Sunstein's process. Social media algorithms optimize for engagement. Devotion engages. Doubt does not. The <em>filter bubble</em> is an environment where the information you see is pre-selected to confirm what you already believe. The technology is new. The psychology is Festinger's. The group dynamics are Sunstein's. The scale is what changed.</p></div>
 
     <h3 class="fade-in" style="margin-top:80px">The Confession</h3>
     <div class="section-image fade-in"><img src="assets/s3-moscow-trial.jpg" alt="Moscow Show Trials courtroom, 1936-1938"><div class="caption">Moscow Show Trials, 1936–1938</div></div>
     <div class="bukharin-block fade-in">
-      <div class="section-image"><img src="assets/s3-bukharin-portrait.jpg" alt="Nikolai Bukharin, Party theoretician and editor of Pravda, before his arrest"><div class="caption">Nikolai Bukharin — confessed to treason he did not commit. Executed, 1938.</div></div>
+      <div class="section-image"><img src="assets/s3-bukharin-portrait.jpg" alt="Nikolai Bukharin, Party theoretician and editor of Pravda, before his arrest"><div class="caption">Nikolai Bukharin — revolutionary, theoretician, editor of Pravda. Confessed to treason he did not commit. Executed, 1938.</div></div>
       <div>
         <p>Moscow, 1936. Stalin's prosecutors put a group of Old Bolsheviks on trial. These men — Kamenev, Zinoviev, Bukharin — had fought alongside Lenin. They had built the Soviet state. The charge was treason.</p>
         <p>They confessed. In open court, in front of foreign journalists, they declared themselves enemies of the people. Some had been tortured. But Bukharin's confession was different. He spoke at length, with apparent conviction. Arthur Koestler tried to explain it in <em>Darkness at Noon</em>: if you have spent your entire life believing that the Party is the instrument of history, then admitting the Party is wrong means your life was pointless. Confession — even false confession — is the last way to remain loyal.</p>
@@ -754,22 +834,24 @@ section{position:relative}
   <div class="content-wrap">
     <div class="section-label fade-in">Takeaway</div>
     <h2 class="fade-in">When the Cages Held</h2>
-    <div class="fade-in" style="margin-top:32px"><p>If you have read this far, you might be thinking: we need better leaders. Wiser ones. More careful ones.</p><p>That thought is the trap. It is the same logic that dismantled the Weimar Republic, that fueled the Cultural Revolution, that turned Lenin's revolution into Stalin's prison state. Every one of those catastrophes began with a population convinced they had found the right person.</p></div>
-    <blockquote class="fade-in">The founders of the American republic read their history. They did not design for angels. They designed for men who would inevitably become corrupt, cowardly, or deluded — and they tried to build a system that could survive them anyway.</blockquote>
-    <div class="fade-in"><p>Madison and his contemporaries built what they called "auxiliary precautions" — structures that keep functioning even when the people inside them fail:</p></div>
-    <div class="principle" id="p1"><div class="principle-num">1.</div><div class="principle-text"><strong>Separation of powers.</strong> No single person holds enough authority to act alone. This is slow by design.</div></div>
+    <div class="fade-in" style="margin-top:32px"><p>If you have read this far, you might be thinking: we need better leaders.</p></div>
+    <div class="fade-in"><p>That thought is the trap.</p></div>
+    <blockquote class="fade-in">The founders of the American republic did not design for angels. They designed for men who would inevitably become corrupt, cowardly, or deluded — and they tried to build a system that could survive them anyway.</blockquote>
+    <div class="fade-in"><p>Madison called them "auxiliary precautions":</p></div>
+    <div class="principle" id="p1"><div class="principle-num">1.</div><div class="principle-text"><strong>Separation of powers.</strong> No single person holds enough authority to act alone.</div></div>
     <div class="principle" id="p2"><div class="principle-num">2.</div><div class="principle-text"><strong>Term limits and succession rules.</strong> Written in advance, enforced without exception. The leader leaves. The system stays.</div></div>
-    <div class="principle" id="p3"><div class="principle-num">3.</div><div class="principle-text"><strong>Independent press and judiciary.</strong> Their job is to say no — to the leader, to the crowd, to the mood of the moment.</div></div>
-    <div class="fade-in" style="margin-top:48px"><p>Nobody chants for judicial independence. There are no rallies for procedural checks. You cannot build a mass movement around the separation of powers. These things are boring. That is why they work.</p><p>But do they? Everything you have read so far is a story of cages that failed. Institutions that yielded, followers who sealed themselves, movements that outlived their founders and became something worse. It would be easy to conclude that the cages never hold.</p><p><strong>They have held.</strong> Three times in the twentieth century, charismatic leaders met institutional resistance — and the institutions won.</p></div>
+    <div class="principle" id="p3"><div class="principle-num">3.</div><div class="principle-text"><strong>Independent press and judiciary.</strong> Their job is to say no.</div></div>
+    <div class="fade-in" style="margin-top:48px"><p>Nobody rallies for judicial independence. You cannot build a mass movement around the separation of powers. These things are boring. That is why they work.</p></div>
+    <div class="fade-in"><p>But do they? Everything above is a story of cages that failed. Three times in the twentieth century, the cages held.</p></div>
   </div>
 
   <!-- DE GAULLE -->
   <div class="counter-example fade-in">
     <h3>Counter-example 1 — De Gaulle, 1969</h3>
     <div class="ce-image"><img src="assets/takeaway-degaulle-portrait.jpeg" alt="Charles de Gaulle"><div class="caption">Charles de Gaulle, founder of the Fifth Republic.</div></div>
-    <p>Charles de Gaulle was the most powerful democratic leader in postwar Europe. He had liberated France, founded the Fifth Republic, and written a constitution that concentrated executive power in the presidency — around himself. He was, by any definition, a charismatic leader who had reshaped his country's institutions in his own image.</p>
-    <div class="ce-image"><img src="assets/takeaway-degaulle-speech.jpg" alt="Charles de Gaulle addressing journalists at a press conference"><div class="caption">De Gaulle in office — the constitution he wrote put him at the center of the Fifth Republic.</div></div>
-    <p>In April 1969, de Gaulle put a package of constitutional reforms to a national referendum. He announced in advance that if the vote failed, he would resign. It was a gamble — the same kind of gamble Hitler had made in 1933, staking everything on a single vote. The difference was the outcome.</p>
+    <p>Charles de Gaulle liberated France, founded the Fifth Republic, and wrote a constitution that concentrated executive power in the presidency — around himself. By any definition, a charismatic leader who had reshaped his country's institutions in his own image.</p>
+    <div class="ce-image"><img src="assets/takeaway-degaulle-speech.jpg" alt="Charles de Gaulle addressing journalists at a press conference"><div class="caption">De Gaulle in office.</div></div>
+    <p>In April 1969, de Gaulle put a package of constitutional reforms to a national referendum. He announced that if the vote failed, he would resign. The same kind of gamble Hitler had made in 1933, staking everything on a single vote.</p>
     <div class="ce-image"><img src="assets/takeaway-degaulle-voting.jpg" alt="Charles de Gaulle casting his vote in the 1969 referendum"><div class="caption">De Gaulle casts his own vote, April 27, 1969.</div></div>
 
     <div class="referendum-bar" id="referendumBar">
@@ -782,7 +864,6 @@ section{position:relative}
     <div class="ce-image"><img src="assets/takeaway-degaulle-referendum.jpeg" alt="Newspaper headlines reporting the results of the 1969 French referendum"><div class="caption">The morning after: a 'Non' the founder of the Republic chose to honor.</div></div>
 
     <p>The French voted Non. De Gaulle resigned the next day. No tanks, no emergency powers, no attempt to circumvent the result. The man who had built the cage walked into it and closed the door behind him.</p>
-    <p>The Fifth Republic continued without him. The institutions he had designed survived the departure of the personality they had been designed around. Weber would have recognized the pattern: charismatic authority, successfully routinized into law.</p>
     <div class="ce-image"><img src="assets/takeaway-degaulle-retirement.jpg" alt="Charles de Gaulle walking on a beach after his resignation"><div class="caption">Colombey-les-Deux-Églises, 1969. The day after.</div></div>
   </div>
 
@@ -790,7 +871,7 @@ section{position:relative}
   <div class="counter-example fade-in">
     <h3>Counter-example 2 — FDR, 1937</h3>
     <div class="ce-image"><img src="assets/takeaway-fdr-portrait.jpg" alt="Franklin D. Roosevelt"><div class="caption">Franklin D. Roosevelt, 32nd President of the United States.</div></div>
-    <p>Franklin Roosevelt won the 1936 election with 61% of the vote — the largest mandate since Monroe ran unopposed — and carried 46 of 48 states. When the Supreme Court kept striking down his New Deal legislation, he proposed packing the bench: adding up to six new justices, one for every sitting justice over seventy. The transparent goal was to fill the Court with allies. His own party killed the bill. The Senate voted 70 to 22 against their own president — the most popular leader in American history — because the institutional principle mattered more than the political alliance. Roosevelt remained president. He won two more elections. But the Court stayed at nine.</p>
+    <p>Roosevelt won the 1936 election with 61% of the vote — the largest mandate since Monroe ran unopposed — and carried 46 of 48 states. When the Supreme Court kept striking down his New Deal legislation, he proposed packing the bench: adding up to six new justices. His own party killed the bill. The Senate voted 70 to 22 against their own president — because the institutional principle mattered more than the political alliance. Roosevelt remained president. The Court stayed at nine.</p>
     <div class="ce-image"><img src="assets/takeaway-fdr-supreme-court-1937.png" alt="The nine justices of the U.S. Supreme Court, 1937"><div class="caption">The Hughes Court, 1937. Nine seats. Roosevelt wanted fifteen. The Senate said no.</div></div>
   </div>
 
@@ -798,7 +879,7 @@ section{position:relative}
   <div class="counter-example fade-in">
     <h3>Counter-example 3 — Mandela, 1999</h3>
     <div class="ce-image"><img src="assets/takeaway-mandela-salute.jpg" alt="Nelson Mandela saluting a crowd"><div class="caption">Nelson Mandela, Galeshewe, South Africa.</div></div>
-    <p>Nelson Mandela spent twenty-seven years in prison and emerged to lead the dismantling of apartheid. He won South Africa's first democratic election in 1994 with 62% of the vote. His moral authority was absolute — no one would have objected to a second term, or a third. He served one and stepped down. In a continent where leaders routinely clung to power for decades, Mandela chose the institution over himself. But this is the hardest case: de Gaulle was constrained by a vote, Roosevelt was constrained by the Senate. Mandela was constrained by nothing except his own judgment. If a different person had stood where he stood — someone with the same charisma but less restraint — would South Africa's young institutions have held?</p>
+    <p>Mandela spent twenty-seven years in prison. He won South Africa's first democratic election in 1994 with 62% of the vote. His moral authority was absolute. He served one term and stepped down. De Gaulle was constrained by a vote. Roosevelt was constrained by the Senate. Mandela was constrained by nothing except his own judgment.</p>
     <div class="ce-image"><img src="assets/takeaway-mandela-portrait.jpg" alt="Portrait of Nelson Mandela"><div class="caption">The institution did not constrain him. He constrained himself. That is the exception, not the rule.</div></div>
   </div>
 
@@ -825,7 +906,8 @@ section{position:relative}
         <div class="sc-row"><div class="sc-key">Outcome</div><div class="sc-val">Stepped down. But — would the next leader?</div></div>
       </div>
     </div>
-    <div class="fade-in" style="margin-top:32px"><p>Weber's third path — charisma constrained by institutions — held three times in the twentieth century. But Mandela's case reveals its fragility: sometimes the constraint is not the institution. It is one person's choice.</p><p>The pattern is not "good leaders versus bad leaders." It is: are there structures that hold when the pressure comes? De Gaulle designed a constitution and then submitted to it. Roosevelt's own party chose the judiciary over their president. Mandela chose the institution over himself — but his case is the fragile one, because it depended on one man's character rather than one system's design.</p><p>Every catastrophe in the preceding sections — the Enabling Act, the Cultural Revolution, the Great Purge, the Great Famine — happened because at the critical moment, no institution was strong enough, or no person inside the institution was willing, to say no.</p><p>The cages do not hold by themselves. They hold because someone, at some point, decides they matter more than the leader standing in front of them.</p></div>
+    <div class="fade-in" style="margin-top:32px"><p>Weber's third path — charisma constrained by institutions — held three times. But Mandela's case is the fragile one. His restraint came from character, not from design.</p></div>
+    <div class="fade-in"><p>The cages do not hold by themselves. They hold because someone decides they matter more than the leader standing in front of them.</p></div>
 
     <!-- ROUTINIZATION PATHWAY CALLBACK -->
     <div class="routine-callback fade-in" id="routineCallback" style="margin-top:80px">
@@ -952,12 +1034,15 @@ gsap.registerPlugin(ScrollTrigger);
 })();
 
 // === HERO CONTENT ===
-const heroTL = gsap.timeline({scrollTrigger:{trigger:'#hero',start:'top 80%'}});
-heroTL.to('.hero-quote',{opacity:1,duration:1.2},0)
-      .to('.hero-title',{opacity:1,duration:1.2},0.6)
-      .to('.hero-herbert',{opacity:0.6,duration:1},1.0);
-gsap.utils.toArray('.hero-body p').forEach((p)=>{
-  gsap.to(p,{opacity:1,duration:0.8,scrollTrigger:{trigger:p,start:'top 85%'}});
+// Phase 1: Herbert portrait + quote fade in together
+gsap.to('#heroPortrait',{opacity:1,duration:1.2,scrollTrigger:{trigger:'.hero-phase-1',start:'top 70%'}});
+gsap.to('.hero-quote',{opacity:1,duration:1.2,delay:0.4,scrollTrigger:{trigger:'.hero-phase-1',start:'top 70%'}});
+// Phase 2: Title fades in on scroll
+gsap.to('.hero-title',{opacity:1,duration:1.2,scrollTrigger:{trigger:'.hero-phase-2',start:'top 65%'}});
+// Phase 3: JFK background fades in, then paragraphs reveal one by one
+ScrollTrigger.create({trigger:'.hero-phase-3',start:'top 70%',onEnter:()=>document.getElementById('heroBg').classList.add('lit')});
+gsap.utils.toArray('.hero-body p, .hero-body .section-image').forEach((el)=>{
+  gsap.to(el,{opacity:1,duration:0.9,scrollTrigger:{trigger:el,start:'top 80%'}});
 });
 
 // === WEBER BARS ===
@@ -965,9 +1050,9 @@ ScrollTrigger.create({
   trigger:'#weberBars',start:'top 55%',
   onEnter:()=>{
     document.querySelectorAll('#weberBars .weber-bar').forEach(b=>b.classList.add('active'));
-    document.querySelector('#weberBars [data-auth=charisma] .bar-fill').style.height='260px';
-    document.querySelector('#weberBars [data-auth=tradition] .bar-fill').style.height='48px';
-    document.querySelector('#weberBars [data-auth=law] .bar-fill').style.height='48px';
+    document.querySelector('#weberBars [data-auth=charisma] .bar-fill').style.height='90%';
+    document.querySelector('#weberBars [data-auth=tradition] .bar-fill').style.height='14%';
+    document.querySelector('#weberBars [data-auth=law] .bar-fill').style.height='14%';
     setTimeout(()=>{
       document.querySelector('#weberBars [data-auth=tradition]').classList.add('broken');
       document.querySelector('#weberBars [data-auth=law]').classList.add('broken');
@@ -997,22 +1082,33 @@ ScrollTrigger.create({
   });
 })();
 
+// === PENG DEHUAI 5-STEP SCROLL ===
+gsap.utils.toArray('.peng-step').forEach(function(step){
+  gsap.to(step,{opacity:1,y:0,duration:0.9,scrollTrigger:{trigger:step,start:'top 70%'}});
+});
+
 // === DISSONANCE DEMO ===
 (()=>{
   const demo=document.getElementById('dissonanceDemo');
   if(!demo)return;
   const steps=demo.querySelectorAll('.dd-step');
   const btns=demo.querySelector('.dd-buttons');
+  const resultLine=document.getElementById('ddResultLine');
   ScrollTrigger.create({trigger:demo,start:'top 70%',onEnter:()=>{
-    steps.forEach((s,i)=>setTimeout(()=>s.classList.add('show'),i*700));
-    setTimeout(()=>btns.style.opacity='1',steps.length*700);
+    steps.forEach((s,i)=>setTimeout(()=>s.classList.add('show'),i*600));
+    setTimeout(()=>btns.style.opacity='1',steps.length*600);
   }});
   btns.style.opacity='0';btns.style.transition='opacity 0.6s';
+  const outcomes={
+    truth:'You have chosen what Peng Dehuai chose. He was stripped of his rank, beaten, and died in prison.',
+    party:'You have chosen what every official in the chain chose. The grain was exported. Your village starved.'
+  };
   demo.querySelectorAll('.dd-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
       if(demo.classList.contains('locked'))return;
       btn.classList.add('chosen');
       demo.classList.add('locked');
+      resultLine.textContent=outcomes[btn.dataset.choice]||'';
     });
   });
 })();
@@ -1028,11 +1124,20 @@ ScrollTrigger.create({
 (()=>{
   const ycNum=document.getElementById('ycNum');
   const ycToll=document.getElementById('ycToll');
+  const ycEvent=document.getElementById('ycEvent');
   if(!ycNum)return;
   const tollPoints=[
     [632,0],[680,10000],[750,80000],[1500,120000],[1900,150000],
     [1980,150000],[1988,1150000],[2003,1200000],[2011,1400000],
     [2014,1700000],[2026,1850000]
+  ];
+  const events=[
+    {year:680,label:'Karbala & early succession wars — ~10,000'},
+    {year:750,label:'Umayyad civil wars — ~70,000'},
+    {year:1988,label:'Iran-Iraq War (1980–88) — ~1,000,000'},
+    {year:2011,label:'Iraq Civil War (2003–11) — ~200,000'},
+    {year:2014,label:'Syrian Civil War (2011–) — ~500,000'},
+    {year:2026,label:'Yemen Civil War (2014–) — ~150,000+'}
   ];
   const tollAt=(y)=>{
     for(let i=1;i<tollPoints.length;i++){
@@ -1043,6 +1148,7 @@ ScrollTrigger.create({
     }
     return tollPoints[tollPoints.length-1][1];
   };
+  let lastEventIdx=-1;
   const state={year:632};
   gsap.to(state,{
     year:2026,ease:'none',
@@ -1051,6 +1157,23 @@ ScrollTrigger.create({
         const y=Math.round(state.year);
         ycNum.textContent=y;
         ycToll.textContent=Math.round(tollAt(y)).toLocaleString();
+        let idx=-1;
+        for(let i=events.length-1;i>=0;i--){
+          if(y>=events[i].year){idx=i;break;}
+        }
+        if(idx!==lastEventIdx){
+          lastEventIdx=idx;
+          if(idx>=0){
+            ycEvent.textContent=events[idx].label;
+            ycEvent.style.opacity='1';
+            ycEvent.classList.remove('muted');
+            // After 1.2s, mute the label so the next one can take focus
+            clearTimeout(ycEvent._muteTO);
+            ycEvent._muteTO=setTimeout(()=>ycEvent.classList.add('muted'),1400);
+          }else{
+            ycEvent.style.opacity='0';
+          }
+        }
       }
     }
   });
@@ -1216,32 +1339,37 @@ dots.forEach(d=>d.addEventListener('click',()=>document.getElementById(d.dataset
   });
 })();
 
-// === PURGE GRID ===
+// === PURGE COUNTER (scroll-driven) ===
 (function(){
   var grid=document.getElementById('purgeGrid');
-  for(var i=0;i<200;i++){
+  var execEl=document.getElementById('purgeExec');
+  var gulagEl=document.getElementById('purgeGulag');
+  var TOTAL=200;
+  var EXEC_TARGET=750000,GULAG_TARGET=1300000;
+  var EXEC_DOTS=74; // 37% of grid
+  for(var i=0;i<TOTAL;i++){
     var p=document.createElement('div');
     p.className='person';
     grid.appendChild(p);
   }
+  var dots=grid.querySelectorAll('.person');
   ScrollTrigger.create({
-    trigger:grid,start:'top 80%',
-    onEnter:function(){
-      grid.querySelectorAll('.person').forEach(function(p,i){
-        setTimeout(()=>p.classList.add(i<74?'executed':'gulag'),i*15);
+    trigger:'#purgeCounterWrap',start:'top top',end:'bottom bottom',scrub:0.5,
+    onUpdate:function(self){
+      var p=self.progress;
+      execEl.textContent=Math.round(p*EXEC_TARGET).toLocaleString();
+      gulagEl.textContent=Math.round(p*GULAG_TARGET).toLocaleString();
+      var filled=Math.floor(p*TOTAL);
+      dots.forEach(function(d,i){
+        if(i<filled){
+          d.classList.add(i<EXEC_DOTS?'executed':'gulag');
+        }else{
+          d.classList.remove('executed','gulag');
+        }
       });
-    },once:true
+    }
   });
 })();
-function animateCounter(el,target,duration){
-  var obj={val:0};
-  gsap.to(obj,{val:target,duration:duration,ease:'power2.out',
-    onUpdate:()=>{el.textContent=Math.round(obj.val).toLocaleString()},
-    scrollTrigger:{trigger:el,start:'top 80%'}
-  });
-}
-animateCounter(document.getElementById('purgeExec'),750000,2.5);
-animateCounter(document.getElementById('purgeGulag'),1300000,2.5);
 
 // === ISLAMIC TREE ===
 (function(){
@@ -1358,7 +1486,7 @@ animateCounter(document.getElementById('purgeGulag'),1300000,2.5);
   var phase3=[{x:10,y:50,c:'#5a7fb8'},{x:88,y:55,c:'#c0392b'}];
   function setPhase(phase){
     if(phase===1){
-      label.textContent='Individual beliefs — scattered';
+      label.textContent='Individual beliefs — scattered. Each person holds their own position.';
       viz.classList.remove('bubbles-on');
       dots.forEach(function(d){
         d.style.left=d.dataset.x+'%';
@@ -1367,7 +1495,7 @@ animateCounter(document.getElementById('purgeGulag'),1300000,2.5);
         d.style.background='rgb('+shade+','+shade+','+shade+')';
       });
     }else if(phase===2){
-      label.textContent='Group polarization — like attracts like, moderates vanish';
+      label.textContent='Group polarization — people find others who agree. The center empties. Moderates are pulled to the nearest cluster or go silent.';
       viz.classList.remove('bubbles-on');
       dots.forEach(function(d,i){
         var c=clusters[i%clusters.length];
@@ -1376,7 +1504,7 @@ animateCounter(document.getElementById('purgeGulag'),1300000,2.5);
         d.style.background=c.c;
       });
     }else if(phase===3){
-      label.textContent='Filter bubbles — the algorithm locks the door';
+      label.textContent='Filter bubbles — the algorithm shows you what keeps you engaged. You stop seeing the other side.';
       // ensure bubbles exist
       if(!viz.querySelector('.pol-bubble')){
         phase3.forEach(function(c){
