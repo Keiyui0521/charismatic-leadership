@@ -176,17 +176,26 @@ section{position:relative}
 .dissonance-demo .dd-result-line{font-size:18px;color:#f5f5f5;font-weight:500;line-height:1.5}
 .dissonance-demo .dd-result-sub{font-size:16px;color:#777;margin-top:10px;font-style:italic;line-height:1.6}
 
-/* === POLARIZATION DRIFT === */
-.polarization-wrap{position:relative;height:240vh;margin:64px 0}
-.polarization-wrap .polarization-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;padding:0 24px}
-.polarization-viz{position:relative;width:100%;max-width:min(80vw,900px);height:min(70vh,550px);background:#0d0d0d;border:1px solid #1a1a1a;border-radius:4px;overflow:hidden}
-.polarization-viz .pol-stage{position:relative;width:100%;height:calc(100% - 80px)}
-.polarization-viz .pol-axis{position:absolute;left:5%;right:5%;bottom:60px;height:1px;background:#1f1f1f}
-.polarization-viz .pol-axis-labels{position:absolute;left:5%;right:5%;bottom:38px;display:flex;justify-content:space-between;font-size:10px;color:#444;text-transform:uppercase;letter-spacing:2px}
-.polarization-viz .pol-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#888;transition:left 1.6s cubic-bezier(.4,0,.2,1),top 1.6s cubic-bezier(.4,0,.2,1),background 1s}
-.polarization-viz .pol-bubble{position:absolute;border-radius:50%;border:1px dashed #c0392b;opacity:0;transition:opacity 1.2s;pointer-events:none}
-.polarization-viz.bubbles-on .pol-bubble{opacity:0.45}
-.polarization-viz .pol-label{position:absolute;bottom:24px;left:5%;right:5%;text-align:center;font-size:16px;color:#a0a0a0;line-height:1.5;font-style:italic;transition:opacity 0.5s;max-width:none}
+/* === POLARIZATION DRAGGABLE SLIDER === */
+.pol-slider-wrap{margin:64px 0;padding:48px 0}
+.pol-slider-inner{max-width:min(80vw,900px);margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:32px}
+.pol-viz-area{position:relative;width:100%;height:min(50vh,450px);background:#0d0d0d;border:1px solid #1a1a1a;border-radius:4px;overflow:hidden}
+.pol-stage-d{position:relative;width:100%;height:calc(100% - 30px)}
+.pol-dot-d{position:absolute;width:8px;height:8px;border-radius:50%;background:#888;transition:left 0.3s cubic-bezier(.4,0,.2,1),top 0.3s cubic-bezier(.4,0,.2,1),background 0.3s}
+.pol-bubbles{position:absolute;inset:0;pointer-events:none}
+.pol-bubble-d{position:absolute;border-radius:50%;border:1px dashed #c0392b;opacity:0;transition:opacity 0.3s;pointer-events:none}
+.pol-bubble-d.visible{opacity:0.45}
+.pol-axis-row{position:absolute;bottom:0;left:0;right:0;height:30px;background:#0d0d0d;display:flex;align-items:center}
+.pol-axis-labels-d{width:100%;display:flex;justify-content:space-between;font-size:10px;color:#444;text-transform:uppercase;letter-spacing:2px;padding:0 5%}
+.pol-phase-label{font-size:16px;color:#a0a0a0;text-align:center;line-height:1.5;font-style:italic;max-width:640px;min-height:48px}
+.pol-slider-track-wrap{width:100%;display:flex;flex-direction:column;gap:8px}
+.pol-slider-track{position:relative;height:6px;background:#1a1a1a;border-radius:3px;cursor:pointer;touch-action:none}
+.pol-slider-progress{position:absolute;top:0;left:0;height:100%;background:#c0392b;border-radius:3px;width:0%;pointer-events:none}
+.pol-slider-handle{position:absolute;top:50%;left:0%;width:26px;height:26px;background:#fff;border:3px solid #c0392b;border-radius:50%;transform:translate(-50%,-50%);cursor:grab;box-shadow:0 0 20px rgba(192,57,43,0.4);z-index:4;transition:box-shadow 0.15s}
+.pol-slider-handle:hover{box-shadow:0 0 28px rgba(192,57,43,0.6)}
+.pol-slider-handle.dragging{cursor:grabbing}
+.pol-phase-markers{display:flex;justify-content:space-between;font-size:11px;color:#444;text-transform:uppercase;letter-spacing:1px;padding:0 2px}
+.pol-drag-hint{font-size:12px;color:#666;text-transform:uppercase;letter-spacing:3px}
 
 /* === IMAGES === */
 .section-image{width:100%;max-width:680px;margin:48px 0;border-radius:4px;overflow:hidden}
@@ -418,7 +427,7 @@ section{position:relative}
     <div class="hero-portrait" id="heroPortrait">
       <img src="assets/opening-frankherbert.jpg" alt="Portrait of Frank Herbert">
     </div>
-    <div class="hero-quote">"I wrote the Dune series because I had this idea that charismatic leaders ought to come with a warning label on their forehead: 'May be dangerous to your health.'"<cite>— Frank Herbert, UCLA, 1985</cite></div>
+    <div class="hero-quote">"I wrote the Dune series because I had this idea that charismatic leaders ought to come with a warning label on their forehead: 'May be dangerous to your health.' One of the most dangerous presidents we had in this century was John Kennedy because people said 'Yes Sir Mr. Charismatic Leader what do we do next?' — and we wound up in Vietnam."<cite>— Frank Herbert, UCLA, 1985</cite></div>
   </div>
 
   <!-- Phase 2: The Title -->
@@ -430,10 +439,9 @@ section{position:relative}
   <div class="hero-phase hero-phase-3">
     <div class="content-wrap">
       <div class="hero-body">
-        <p>On September 26, 1960, seventy million Americans tuned in to the first televised presidential debate in the country's history. Richard Nixon had been vice president for eight years. He knew policy cold. On substance, the people who listened on radio thought he won. But Nixon had recently been hospitalized, and it showed — he looked pale, underweight, and was visibly sweating under the studio lights. Kennedy, tanned and composed, looked like he belonged on camera. The television audience was certain Kennedy won. Same words, same arguments. The only difference was the screen. Two months later, Kennedy won the presidency by less than 120,000 votes out of 69 million cast — one of the narrowest margins in American history. The election did not turn on policy. It turned on the fact that one man looked like a leader and the other did not.</p>
+        <p>On September 26, 1960, seventy million Americans watched the first televised presidential debate. Nixon had been vice president for eight years. He knew policy cold. The radio audience thought he won. But Nixon had just left the hospital. He looked pale, underweight, sweating under the studio lights. Kennedy looked like he belonged on camera. The television audience picked Kennedy. Two months later, Kennedy won the presidency by fewer than 120,000 votes out of 69 million cast.</p>
         <div class="section-image" style="max-width:min(90vw,1360px);width:min(90vw,1360px);position:relative;left:50%;transform:translateX(-50%)"><img src="assets/opening-paul-atreides.png" alt="Paul Atreides in Dune (2021)"><div class="caption">Paul Atreides — the hero of Frank Herbert's <em>Dune</em>.</div></div>
-        <p>Frank Herbert watched a science fiction audience fall in love with Paul Atreides — the hero of <em>Dune</em> — and it horrified him. He had written Paul as a warning. Readers took him as a savior. So Herbert wrote sequel after sequel to make the point as brutal as possible: the hero will destroy you. Not because he wants to. Because you will let him.</p>
-        <p>What happens when people stop questioning. How institutions collapse. How movements outlive the people who started them. How followers seal themselves inside a belief until nothing can reach them.</p>
+        <p>Frank Herbert watched his readers fall in love with Paul Atreides and it horrified him. He had written Paul as a warning but readers took him as a savior. So Herbert wrote sequel after sequel to make the point as plain as possible: the hero will destroy you. Not because he wants to. Because you will let him.</p>
       </div>
     </div>
   </div>
@@ -446,9 +454,8 @@ section{position:relative}
     <h2 class="fade-in">When Charisma Meets Power</h2>
     <div class="section-image-full fade-in" style="margin-top:48px;max-height:50vh"><img src="assets/s1-nuremberg-rally-1934.jpg" alt="SA and SS formations at the Nuremberg Rally, 1934"></div>
     <h3 class="fade-in" style="margin-top:64px">Part I — The Theory</h3>
-    <div class="fade-in"><p>In 1922, Max Weber identified three sources of political authority: tradition, law, and charisma. The first two are stable — they survive the death of any individual. Charisma does not. It lives in one person, and demands total faith in that person.</p></div>
+    <div class="fade-in"><p>In 1922, Max Weber identified three sources of political authority: tradition, law, and charisma. Tradition and law are stable. They survive the death of any individual. Charisma does not. It lives in one person and demands total faith in that person. In practice, when charisma shows up, the other two buckle.</p></div>
     <div class="section-image fade-in" style="max-width:min(50vw,400px);margin:max(14vh,120px) auto"><img src="assets/s1-weber-portrait-1918.jpg" alt="Max Weber, 1918"><div class="caption">Max Weber, 1918</div></div>
-    <div class="fade-in"><p>Weber's three types of authority are not equal in practice. When charisma enters the room, the other two buckle.</p></div>
     <div class="weber-bars fade-in" id="weberBars">
       <div class="weber-bar" data-auth="tradition"><div class="bar-fill"></div><div class="bar-label">Tradition</div></div>
       <div class="weber-bar" data-auth="law"><div class="bar-fill"></div><div class="bar-label">Law</div></div>
@@ -456,9 +463,8 @@ section{position:relative}
     </div>
     <blockquote class="fade-in">"A certain quality of an individual personality by virtue of which he is set apart from ordinary men and treated as endowed with supernatural, superhuman, or at least specifically exceptional powers."<cite>— Max Weber, Economy and Society, 1922</cite></blockquote>
     <div class="section-image fade-in"><img src="assets/s1-weber-oratory.png" alt="Illustration of an early-20th-century crowd listening to a charismatic orator"><div class="caption">The kind of scene Weber had in mind: a crowd listening, all at once, to one man.</div></div>
-    <div class="fade-in"><p>Institutions — legislatures, courts, free presses — exist because the system expects leaders to be flawed. Madison put it plainly in Federalist No. 51: "If men were angels, no government would be necessary." Every check, every balance, every procedural delay is built on that assumption.</p></div>
-    <div class="fade-in"><p>Charisma breaks the assumption. When followers believe a leader is exceptional, the checks start looking like obstacles. The followers want them gone. The leader, surrounded by devotion, starts to agree.</p></div>
-    <div class="fade-in"><p>Weber saw further than the moment of seizure. Charismatic authority is unstable — it cannot outlast the leader. It must undergo what he called <em>routinization</em>: it hardens into bureaucratic rule, fractures into competing traditions, or the institutions hold and charisma fades. The next sections are three variations of that process — and the question of whether there is a fourth.</p></div>
+    <div class="fade-in"><p>Legislatures, courts, free presses exist because the system expects leaders to be flawed. Madison put it plainly: "If men were angels, no government would be necessary." The entire system is built on that assumption, but charisma breaks that assumption. When followers believe a leader is exceptional, the checks look like obstacles.</p></div>
+    <div class="fade-in"><p>Weber saw further than the moment of seizure. It must undergo what he called <em>routinization</em>: it hardens into bureaucratic rule, fractures into competing traditions, or the institutions hold and charisma fades.</p></div>
 
     <!-- ROUTINIZATION PATHWAY -->
     <div class="routine-wrap" id="routineWrap">
@@ -517,7 +523,7 @@ section{position:relative}
       <div class="scrolly-step" data-step="3"><div class="step-content">
         <div class="section-image"><img src="assets/s1-otto-wels-portrait.jpg" alt="Otto Wels, SPD chairman"><div class="caption">Otto Wels, 1933</div></div>
         <p><strong>Only the Social Democrats hold.</strong> 94 votes against, in a room full of men who have already surrendered. Otto Wels, the SPD leader, stands to speak: "You can take our liberty and our lives, but you cannot take our honor."</p>
-        <p>No tanks. No gunfire. The institutions of German democracy were not destroyed by force. Elected officials handed them over, to a man whose crowds made resistance feel pointless.</p>
+        <p>No tanks. No gunfire. The Reichstag voted away its own power.</p>
       </div></div>
     </div>
   </div>
@@ -532,7 +538,7 @@ section{position:relative}
         <div class="cr-event-text" id="crEvent"></div>
         <div class="cr-intensity-bar"><div class="cr-intensity-fill" id="crIntensity"></div></div>
         <div class="cr-death-toll" id="crToll"></div>
-        <div class="cr-causal" id="crCausal">Courts suspended. Local governments collapsed. The military was politicized. No institution remained that could stop the violence — because the one man who stood above all institutions had told the people to destroy them.</div>
+        <div class="cr-causal" id="crCausal">Courts suspended. Local governments collapsed. The military politicized. No institution could stop the violence, because the one man who stood above all institutions had told the people to destroy them.</div>
       </div>
     </div>
     <div class="scrolly-steps" id="crSteps">
@@ -544,7 +550,7 @@ section{position:relative}
         <blockquote>"To rebel is justified — bombard the headquarters!"<cite>— Mao Zedong, 1966</cite></blockquote>
       </div></div>
       <div class="scrolly-step" data-step="1"><div class="step-content">
-        <p>Mao mobilizes millions of Red Guards. They flood the streets, drag professors from classrooms, beat officials in public, destroy temples, burn books. The chaos is total. The loyalty is absolute.</p>
+        <p>Mao mobilizes millions of Red Guards. They flood the streets, drag professors from classrooms, beat officials in public, destroy temples, burn books.</p>
         <div class="section-image"><img src="assets/s1-cr-rebellion-poster-1967.jpg" alt="Cultural Revolution woodcut propaganda poster, 1967 — 'Revolution is innocent, rebellion is justified'"><div class="caption">1967. "Revolution is innocent, rebellion is justified."</div></div>
       </div></div>
       <div class="scrolly-step" data-step="2"><div class="step-content">
@@ -552,12 +558,12 @@ section{position:relative}
         <div class="section-image"><img src="assets/s1-anti-liu-shaoqi-poster.jpg" alt="Anti-Liu Shaoqi propaganda poster during the Cultural Revolution"><div class="caption">Liu Shaoqi, denounced as "China's Khrushchev." Died in detention, 1969.</div></div>
       </div></div>
       <div class="scrolly-step" data-step="3"><div class="step-content">
-        <p>Even Mao cannot stop it. He sends the army to suppress the Red Guards — the very forces he summoned two years earlier. The weapon he built no longer answers to him.</p>
+        <p>Even Mao cannot stop it. He sends the army to suppress the Red Guards — the very forces he summoned two years earlier. The movement no longer answers to him.</p>
         <div class="section-image"><img src="assets/s1-cr-pla-revolutionary-committee.jpg" alt="People's Liberation Army troops massed with rifles and red flags at a rally celebrating the Beijing Revolutionary Committee"><div class="caption">The PLA takes control. The revolution Mao started now requires an army to contain.</div></div>
       </div></div>
       <div class="scrolly-step" data-step="4"><div class="step-content">
-        <p>The Cultural Revolution officially ends. The toll: an estimated 500,000 to 2 million dead, up to 36 million persecuted.</p>
-        <p>Hitler got the institutions out of his way. Mao went further — he unleashed a force that got out of <em>his</em> way.</p>
+        <p>The Cultural Revolution officially ends. An estimated 500,000 to 2 million dead, up to 36 million persecuted.</p>
+        <p>Hitler dismantled the institutions from above. Mao's revolution dismantled them from below, and then turned on him.</p>
       </div></div>
     </div>
   </div>
@@ -570,7 +576,7 @@ section{position:relative}
     <div class="section-label fade-in">Section 2</div>
     <h2 class="fade-in">The Movement Outlives the Leader</h2>
     <h3 class="fade-in" style="margin-top:64px">Case A — Lenin → Stalin</h3>
-    <div class="framing-prose fade-in"><p>Weber called this <em>routinization</em> — the moment when a movement built on one man's charisma must find a way to survive without him. Lenin's revolution would become Stalin's bureaucracy: the personal cult frozen into institutional terror.</p></div>
+    <div class="framing-prose fade-in"><p>Weber called this <em>routinization</em>: what happens when a movement built on one man's charisma must survive without him. Lenin's revolution became Stalin's bureaucracy.</p></div>
     <div class="section-image fade-in"><img src="assets/s2-lenin-stalin.jpg" alt="Lenin and Stalin at Gorki, 1922"><div class="caption">Lenin and Stalin, Gorki, 1922</div></div>
     <div class="section-image fade-in"><img src="assets/s2-lenin-last-photo-1923.jpg" alt="Vladimir Lenin in a wheelchair at Gorki, 1923, after his third stroke, with his sister Anna Yelizarova"><div class="caption">Lenin at Gorki, summer 1923. After three strokes, he could no longer speak. This is his last known photograph.</div></div>
     <div class="fade-in"><p>Vladimir Lenin died on January 21, 1924. He had spent his final months writing a document that the Party would later call his "Testament." In it, he warned that Stalin was "too rude" and should be removed from the position of General Secretary. He proposed replacing him with someone "more patient, more loyal, more polite."</p><p>The Testament was read aloud at the 13th Party Congress. The delegates listened, discussed it briefly, and did nothing.</p></div>
@@ -626,13 +632,13 @@ section{position:relative}
     </div>
     <div class="section-image fade-in"><img src="assets/s2-stalin-propaganda-2.jpg" alt="Soviet poster glorifying Stalin alongside Lenin's image"><div class="caption">As the purges intensified, Stalin's image multiplied — always beside Lenin's, always borrowing his authority.</div></div>
     <div class="section-image fade-in"><img src="assets/s2-gulag-workers.jpg" alt="Gulag prisoners building the White Sea-Baltic Canal"><div class="caption">Prisoners at Belbaltlag, building the White Sea–Baltic Canal</div></div>
-    <div class="fade-in"><p>Lenin's revolution was supposed to liberate the working class. Under Stalin, it became the justification for a system of forced labor camps stretching across Siberia. The ideology did not change. The words stayed the same. Only the meaning shifted — and no one was left alive who was allowed to say so.</p></div>
+    <div class="fade-in"><p>Lenin's revolution was supposed to liberate the working class. Under Stalin, it justified a system of forced labor camps across Siberia. The words stayed the same. The meaning shifted, and no one was left alive who was allowed to say so.</p></div>
 
     <h3 class="fade-in" style="margin-top:96px">Case B — Muhammad → The Fracture</h3>
     <div class="disclaimer fade-in">A note on framing: for nearly two billion Muslims, Muhammad is not a case study in political leadership — he is the Prophet. This section uses Weber's secular academic framework to analyze the political consequences of a succession crisis, not to pass judgment on faith or religious authority. The analysis that follows concerns institutions, not theology.</div>
     <div class="framing-prose fade-in"><p>Where Lenin's charisma was routinized into a single bureaucratic tyranny, Muhammad's faced a different fate. Without a clear succession mechanism, charismatic authority did not harden into one structure — it fractured into competing claims of legitimate inheritance. Weber's routinization, split in two.</p></div>
     <div class="section-image fade-in"><img src="assets/s2-muhammad.jpg" alt="Conceptual artistic portrait of the Prophet Muhammad"><div class="caption">A conceptual portrait. In Islamic tradition, figurative depictions of the Prophet vary by era and region.</div></div>
-    <div class="fade-in"><p>Muhammad died in Medina on June 8, 632 CE. He left behind a community of believers, a rapidly expanding territory, and no clear successor.</p><p>Within hours, the crisis began. One faction backed Abu Bakr, Muhammad's closest companion. Another insisted on Ali, his cousin and son-in-law — the man they believed Muhammad had designated at Ghadir Khumm. Both sides were certain. Neither side could ask the only person whose answer would have settled it.</p></div>
+    <div class="fade-in"><p>Muhammad died in Medina on June 8, 632 CE. He left behind a community of believers, a rapidly expanding territory, and no clear successor.</p><p>Within hours, the crisis began. One faction backed Abu Bakr, Muhammad's closest companion. Another insisted on Ali, his cousin and son-in-law — the man they believed Muhammad had designated at Ghadir Khumm.</p></div>
   </div>
   <div class="section-image-full fade-in"><img src="assets/s2-karbala-battle.jpg" alt="The Battle of Karbala, 680 CE — oil painting depicting the close-combat massacre of Husayn's forces"></div>
   <div class="content-wrap" style="padding-bottom:120px">
@@ -713,7 +719,7 @@ section{position:relative}
   <div class="section-image-full fade-in"><img src="assets/s2-syria-aleppo-destruction.jpg" alt="Destroyed buildings in Aleppo, Syria, during the civil war"></div>
   <div class="content-wrap" style="padding-bottom:80px">
     <div class="fade-in" style="margin-top:16px"><p style="font-size:13px;color:#555;font-style:italic">Aleppo, Syria. One of the oldest continuously inhabited cities in the world, reduced to rubble in a war with deep sectarian dimensions.</p></div>
-    <div class="fade-in" style="margin-top:48px"><p>No war on that list was caused by theology alone. The Iran-Iraq War was triggered by border disputes, revolutionary export, and Cold War maneuvering. The Iraq Civil War followed a foreign invasion. The Syrian War began as a political uprising. The Yemen War is tangled in Saudi-Iranian rivalry and resource competition. Each conflict had its own proximate causes, its own geopolitics, its own cynical actors. But each one also cracked along the same fault line — the question of who inherited Muhammad's authority. Fourteen centuries later, that fracture has not healed. It does not cause the wars. It shapes where they break.</p></div>
+    <div class="fade-in" style="margin-top:48px"><p>No war on that list was caused by theology alone. The Iran-Iraq War was triggered by border disputes, revolutionary export, and Cold War maneuvering. The Iraq Civil War followed a foreign invasion. The Syrian War began as a political uprising. The Yemen War is tangled in Saudi-Iranian rivalry and resource competition. Each conflict had its own proximate causes, its own geopolitics, its own cynical actors. But each one also cracked along the same fault line — the question of who inherited Muhammad's authority. Fourteen centuries later, that fracture has still not healed.</p></div>
   </div>
   <div class="htl-wrap" id="htlWrap">
     <div class="htl-inner">
@@ -762,7 +768,7 @@ section{position:relative}
     <div class="section-label fade-in">Section 3</div>
     <h2 class="fade-in">Followers Are Self-Sealing</h2>
     <div class="section-image fade-in" style="margin-top:48px"><img src="assets/s3-great-leap-forward-furnaces.jpg" alt="Backyard steel furnaces during China's Great Leap Forward"><div class="caption">Backyard steel furnaces, China, late 1950s</div></div>
-    <div class="fade-in"><p>Somewhere in rural Henan province, 1959. A local Party secretary stands in a field. The wheat is thin. He knows the harvest will fall short — maybe thirty percent of last year. He also knows what happened to the last official who reported low numbers. The man was denounced as a rightist, stripped of his position, and sent to a labor camp. His family was not told where.</p></div>
+    <div class="fade-in"><p>Somewhere in rural Henan province, 1959. A local Party secretary stands in a field. The wheat is thin. He knows the harvest will fall short — maybe thirty percent of last year. He also knows what happened to the last official who reported low numbers. The man was denounced as a rightist, stripped of his position, and sent to a forced labor camp. His family was not told where.</p></div>
     <div class="fade-in"><p>The secretary writes his report. Record yield. Twice the actual harvest. He sends it up the chain.</p></div>
   </div>
 
@@ -786,7 +792,7 @@ section{position:relative}
       <p class="peng-text">Peng was stripped of all positions, placed under house arrest, and eventually handed to the Red Guards.</p>
     </div>
     <div class="peng-step" data-peng-step="5">
-      <p class="peng-text">The message was clear: the system does not lack information. It punishes the people who carry it. Every official in the chain below Peng understood what his fate meant for theirs.</p>
+      <p class="peng-text">The system does not lack information. It punishes the people who carry it.</p>
     </div>
   </div>
 
@@ -834,27 +840,38 @@ section{position:relative}
       </div>
       <div class="dd-result" id="ddResult">
         <div class="dd-result-line" id="ddResultLine"></div>
-        <div class="dd-result-sub" id="ddResultSub">In 1959, every official chose the Party line. Not because they believed it — but because the cost of honesty was higher than the cost of famine.</div>
+        <div class="dd-result-sub" id="ddResultSub">In 1959, every official chose the Party line.</div>
       </div>
     </div>
 
     <h3 class="fade-in" style="margin-top:80px">From Individual to Crowd</h3>
     <div class="fade-in"><p>Festinger described a defense mechanism inside one person's head. Cass Sunstein studied what happens when people who share a belief are placed together: the group does not settle at the average. It moves toward the extreme. He called this <em>group polarization</em>. In a room where everyone agrees, the most forceful voice sets the new anchor. Moderate positions feel like betrayal.</p></div>
-    <div class="fade-in"><p>The simulation below shows how this works. Each dot is a person. Watch what happens when they find others who agree with them — and what happens when the algorithm decides what they see.</p></div>
 
-    <div class="polarization-wrap" id="polarizationWrap">
-      <div class="polarization-sticky">
-        <div class="polarization-viz fade-in" id="polarizationViz">
-          <div class="pol-stage" id="polStage"></div>
-          <div class="pol-axis"></div>
-          <div class="pol-axis-labels"><span>← left</span><span>center</span><span>right →</span></div>
-          <div class="pol-label" id="polLabel">Individual beliefs — scattered</div>
+    <div class="pol-slider-wrap fade-in" id="polSliderWrap">
+      <div class="pol-slider-inner">
+        <div class="pol-viz-area" id="polVizArea">
+          <div class="pol-stage-d" id="polStageD"></div>
+          <div class="pol-bubbles" id="polBubbles"></div>
+          <div class="pol-axis-row">
+            <div class="pol-axis-labels-d"><span>← left</span><span>center</span><span>right →</span></div>
+          </div>
         </div>
+        <div class="pol-phase-label" id="polPhaseLabel">Individual beliefs — scattered. Each person holds their own position.</div>
+        <div class="pol-slider-track-wrap">
+          <div class="pol-slider-track" id="polSliderTrack">
+            <div class="pol-slider-progress" id="polSliderProgress"></div>
+            <div class="pol-slider-handle" id="polSliderHandle"
+                 role="slider" aria-label="Polarization phase" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"></div>
+          </div>
+          <div class="pol-phase-markers">
+            <span>Individual</span><span>Group polarization</span><span>Filter bubbles</span>
+          </div>
+        </div>
+        <div class="pol-drag-hint">↔ drag</div>
       </div>
     </div>
-    <div style="height:40vh" aria-hidden="true"></div>
 
-    <div class="fade-in"><p>Eli Pariser identified the infrastructure that automates Sunstein's process. Social media algorithms optimize for engagement. Devotion engages. Doubt does not. The <em>filter bubble</em> is an environment where the information you see is pre-selected to confirm what you already believe. The technology is new. The psychology is Festinger's. The group dynamics are Sunstein's. The scale is what changed.</p></div>
+    <div class="fade-in"><p>Eli Pariser identified the infrastructure that automates this. Social media algorithms optimize for engagement. The <em>filter bubble</em> shows you what confirms what you already believe. The psychology and group dynamics are old. The scale is what changed.</p></div>
 
     <h3 class="fade-in" style="margin-top:80px">The Confession</h3>
     <div class="section-image fade-in"><img src="assets/s3-moscow-trial.jpg" alt="Moscow Show Trials courtroom, 1936-1938"><div class="caption">Moscow Show Trials, 1936–1938</div></div>
@@ -872,7 +889,7 @@ section{position:relative}
       <div class="trial-row"><div class="trial-name">Alexei Rykov</div><div class="trial-role">Chairman of the Council</div><div class="trial-verdict">Confessed → Executed</div></div>
       <div class="trial-row"><div class="trial-name">Karl Radek</div><div class="trial-role">Revolutionary journalist</div><div class="trial-verdict">Confessed → Imprisoned → Died</div></div>
     </div>
-    <div class="fade-in"><p>The Party secretary who lied about the harvest and the Old Bolshevik who confessed to a crime he did not commit are doing the same thing. They are protecting the belief at the cost of everything else. The system is sealed. Information that contradicts the belief cannot enter.</p></div>
+    <div class="fade-in"><p>The Party secretary who lied about the harvest and the Old Bolshevik who confessed to a crime he did not commit are doing the same thing. They are protecting the belief at the cost of everything else.</p></div>
     <blockquote class="fade-in">"Mass movements can rise and spread without belief in a God, but never without belief in a devil."<cite>— Eric Hoffer, The True Believer, 1951</cite></blockquote>
   </div>
 </section>
@@ -885,24 +902,22 @@ section{position:relative}
   <div class="content-wrap">
     <div class="section-label fade-in">Takeaway</div>
     <h2 class="fade-in">When the Cages Held</h2>
-    <div class="fade-in" style="margin-top:32px"><p>If you have read this far, you might be thinking: we need better leaders.</p></div>
-    <div class="fade-in"><p>That thought is the trap.</p></div>
+    <div class="fade-in" style="margin-top:32px"><p>If you have read this far, you might be thinking: we need better leaders. But that thought is the trap.</p></div>
     <blockquote class="fade-in">The founders of the American republic did not design for angels. They designed for men who would inevitably become corrupt, cowardly, or deluded — and they tried to build a system that could survive them anyway.</blockquote>
     <div class="fade-in"><p>Madison called them "auxiliary precautions":</p></div>
     <div class="principle" id="p1"><div class="principle-num">1.</div><div class="principle-text"><strong>Separation of powers.</strong> No single person holds enough authority to act alone.</div></div>
     <div class="principle" id="p2"><div class="principle-num">2.</div><div class="principle-text"><strong>Term limits and succession rules.</strong> Written in advance, enforced without exception. The leader leaves. The system stays.</div></div>
     <div class="principle" id="p3"><div class="principle-num">3.</div><div class="principle-text"><strong>Independent press and judiciary.</strong> Their job is to say no.</div></div>
-    <div class="fade-in" style="margin-top:48px"><p>Nobody rallies for judicial independence. You cannot build a mass movement around the separation of powers. These things are boring. That is why they work.</p></div>
-    <div class="fade-in"><p>But do they? Everything above is a story of cages that failed. Three times in the twentieth century, the cages held.</p></div>
+    <div class="fade-in" style="margin-top:48px"><p>You cannot build a mass movement around the separation of powers. These things are boring. That is why they work. But do they? Everything above is a story of cages that failed. Three times in the twentieth century, the cages held.</p></div>
   </div>
 
   <!-- DE GAULLE -->
   <div class="counter-example fade-in">
     <h3>Counter-example 1 — De Gaulle, 1969</h3>
     <div class="ce-image"><img src="assets/takeaway-degaulle-portrait.jpeg" alt="Charles de Gaulle"><div class="caption">Charles de Gaulle, founder of the Fifth Republic.</div></div>
-    <p>Charles de Gaulle liberated France, founded the Fifth Republic, and wrote a constitution that concentrated executive power in the presidency — around himself. By any definition, a charismatic leader who had reshaped his country's institutions in his own image.</p>
+    <p>Charles de Gaulle liberated France, founded the Fifth Republic, and wrote a constitution that concentrated executive power in the presidency.</p>
     <div class="ce-image"><img src="assets/takeaway-degaulle-speech.jpg" alt="Charles de Gaulle addressing journalists at a press conference"><div class="caption">De Gaulle in office.</div></div>
-    <p>In April 1969, de Gaulle put a package of constitutional reforms to a national referendum. He announced that if the vote failed, he would resign. The same kind of gamble Hitler had made in 1933, staking everything on a single vote.</p>
+    <p>In April 1969, de Gaulle put constitutional reforms to a national referendum. If the vote failed, he would resign. The same gamble Hitler had made in 1933.</p>
     <div class="ce-image"><img src="assets/takeaway-degaulle-voting.jpg" alt="Charles de Gaulle casting his vote in the 1969 referendum"><div class="caption">De Gaulle casts his own vote, April 27, 1969.</div></div>
 
     <div class="referendum-bar" id="referendumBar">
@@ -930,7 +945,8 @@ section{position:relative}
   <div class="counter-example fade-in">
     <h3>Counter-example 3 — Mandela, 1999</h3>
     <div class="ce-image"><img src="assets/takeaway-mandela-salute.jpg" alt="Nelson Mandela saluting a crowd"><div class="caption">Nelson Mandela, Galeshewe, South Africa.</div></div>
-    <p>Mandela spent twenty-seven years in prison. He won South Africa's first democratic election in 1994 with 62% of the vote. His moral authority was absolute. He served one term and stepped down. De Gaulle was constrained by a vote. Roosevelt was constrained by the Senate. Mandela was constrained by nothing except his own judgment.</p>
+    <p>Mandela spent twenty-seven years in prison. He won South Africa's first democratic election in 1994 with 62% of the vote. His moral authority was absolute. He served one term and stepped down.</p>
+    <p>De Gaulle was constrained by a vote. Roosevelt was constrained by the Senate. Mandela was constrained by nothing except his own judgment.</p>
     <div class="ce-image"><img src="assets/takeaway-mandela-portrait.jpg" alt="Portrait of Nelson Mandela"><div class="caption">The institution did not constrain him. He constrained himself. That is the exception, not the rule.</div></div>
   </div>
 
@@ -957,8 +973,8 @@ section{position:relative}
         <div class="sc-row"><div class="sc-key">Outcome</div><div class="sc-val">Stepped down. But — would the next leader?</div></div>
       </div>
     </div>
-    <div class="fade-in" style="margin-top:32px"><p>Weber's third path — charisma constrained by institutions — held three times. But Mandela's case is the fragile one. His restraint came from character, not from design.</p></div>
-    <div class="fade-in"><p>The cages do not hold by themselves. They hold because someone decides they matter more than the leader standing in front of them.</p></div>
+    <div class="fade-in" style="margin-top:32px"><p>Weber's third path, charisma constrained by institutions, held three times. Mandela's case is the fragile one. His restraint came from character.</p></div>
+    <div class="fade-in"><p>The cages do not hold by themselves, they hold because someone decides they matter more than the leader standing in front of them.</p></div>
 
     <!-- ROUTINIZATION PATHWAY CALLBACK -->
     <div class="routine-callback fade-in" id="routineCallback" style="margin-top:80px">
@@ -1152,7 +1168,7 @@ gsap.utils.toArray('.peng-step').forEach(function(step){
   btns.style.opacity='0';btns.style.transition='opacity 0.6s';
   const outcomes={
     truth:'You have chosen what Peng Dehuai chose. He was stripped of his rank, beaten, and died in prison.',
-    party:'You have chosen what every official in the chain chose. The grain was exported. Your village starved.'
+    party:'You have chosen what every official in the chain chose. The grain was exported. Your village starved. Tens of thousands starve to death.'
   };
   demo.querySelectorAll('.dd-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
@@ -1560,86 +1576,88 @@ dots.forEach(d=>d.addEventListener('click',()=>document.getElementById(d.dataset
   });
 })();
 
-// === POLARIZATION DRIFT ===
+// === POLARIZATION DRAGGABLE SLIDER ===
 (function(){
-  var stage=document.getElementById('polStage');
-  var viz=document.getElementById('polarizationViz');
-  var label=document.getElementById('polLabel');
-  if(!stage)return;
+  var stageEl=document.getElementById('polStageD');
+  var bubblesEl=document.getElementById('polBubbles');
+  var labelEl=document.getElementById('polPhaseLabel');
+  var track=document.getElementById('polSliderTrack');
+  var handle=document.getElementById('polSliderHandle');
+  var progressEl=document.getElementById('polSliderProgress');
+  if(!stageEl)return;
   var N=60;
   var dots=[];
-  // Phase 1: random scatter
+  var init=[];
   for(var i=0;i<N;i++){
-    var d=document.createElement('div');
-    d.className='pol-dot';
-    var x=10+Math.random()*80; // %
-    var y=20+Math.random()*60;
-    d.style.left=x+'%';
-    d.style.top=y+'%';
+    var x=10+Math.random()*80;
+    var y=15+Math.random()*65;
     var shade=Math.floor(120+Math.random()*100);
-    d.style.background='rgb('+shade+','+shade+','+shade+')';
-    d.dataset.x=x;d.dataset.y=y;
-    stage.appendChild(d);
+    init.push({x:x,y:y,c:'rgb('+shade+','+shade+','+shade+')'});
+    var d=document.createElement('div');
+    d.className='pol-dot-d';
+    d.style.left=x+'%';d.style.top=y+'%';d.style.background=init[i].c;
+    stageEl.appendChild(d);
     dots.push(d);
   }
-  // Phase 2: cluster centers (3-4 clusters)
   var clusters=[{x:18,y:50,c:'#5a7fb8'},{x:48,y:35,c:'#888'},{x:78,y:55,c:'#c0392b'},{x:62,y:70,c:'#a66'}];
-  // Phase 3: extreme positions
-  var phase3=[{x:10,y:50,c:'#5a7fb8'},{x:88,y:55,c:'#c0392b'}];
-  function setPhase(phase){
-    if(phase===1){
-      label.textContent='Individual beliefs — scattered. Each person holds their own position.';
-      viz.classList.remove('bubbles-on');
-      dots.forEach(function(d){
-        d.style.left=d.dataset.x+'%';
-        d.style.top=d.dataset.y+'%';
-        var shade=Math.floor(120+Math.random()*100);
-        d.style.background='rgb('+shade+','+shade+','+shade+')';
-      });
-    }else if(phase===2){
-      label.textContent='Group polarization — people find others who agree. The center empties. Moderates are pulled to the nearest cluster or go silent.';
-      viz.classList.remove('bubbles-on');
-      dots.forEach(function(d,i){
-        var c=clusters[i%clusters.length];
-        d.style.left=(c.x+(Math.random()-0.5)*8)+'%';
-        d.style.top=(c.y+(Math.random()-0.5)*16)+'%';
-        d.style.background=c.c;
-      });
-    }else if(phase===3){
-      label.textContent='Filter bubbles — the algorithm shows you what keeps you engaged. You stop seeing the other side.';
-      // ensure bubbles exist
-      if(!viz.querySelector('.pol-bubble')){
-        phase3.forEach(function(c){
-          var b=document.createElement('div');
-          b.className='pol-bubble';
-          b.style.left=(c.x-12)+'%';
-          b.style.top=(c.y-22)+'%';
-          b.style.width='24%';
-          b.style.height='44%';
-          viz.appendChild(b);
-        });
-      }
-      viz.classList.add('bubbles-on');
-      dots.forEach(function(d,i){
-        var c=phase3[i%phase3.length];
-        d.style.left=(c.x+(Math.random()-0.5)*10)+'%';
-        d.style.top=(c.y+(Math.random()-0.5)*30)+'%';
-        d.style.background=c.c;
-      });
-    }
-  }
-  ScrollTrigger.create({
-    trigger:'#polarizationWrap',start:'top top',end:'bottom bottom',scrub:0.4,
-    onUpdate:function(self){
-      var p=self.progress;
-      var phase=p<0.33?1:(p<0.66?2:3);
-      if(phase!==viz.dataset.phase){
-        viz.dataset.phase=phase;
-        setPhase(phase);
-      }
-    }
+  var extremes=[{x:10,y:50,c:'#5a7fb8'},{x:88,y:55,c:'#c0392b'}];
+  extremes.forEach(function(c){
+    var b=document.createElement('div');
+    b.className='pol-bubble-d';
+    b.style.left=(c.x-12)+'%';b.style.top=(c.y-22)+'%';
+    b.style.width='24%';b.style.height='44%';
+    bubblesEl.appendChild(b);
   });
-  setPhase(1);
+  var phaseData=[
+    {label:'Individual beliefs — scattered. Each person holds their own position.',
+     set:function(){
+       bubblesEl.querySelectorAll('.pol-bubble-d').forEach(function(b){b.classList.remove('visible')});
+       dots.forEach(function(d,i){d.style.left=init[i].x+'%';d.style.top=init[i].y+'%';d.style.background=init[i].c});
+     }},
+    {label:'Group polarization — people find others who agree. The center empties. Moderates are pulled to the nearest cluster or go silent.',
+     set:function(){
+       bubblesEl.querySelectorAll('.pol-bubble-d').forEach(function(b){b.classList.remove('visible')});
+       dots.forEach(function(d,i){var c=clusters[i%clusters.length];d.style.left=(c.x+(Math.random()-0.5)*8)+'%';d.style.top=(c.y+(Math.random()-0.5)*16)+'%';d.style.background=c.c});
+     }},
+    {label:'Filter bubbles — the algorithm shows you what keeps you engaged. You stop seeing the other side. Not because it disappeared, but because the feed decided it wasn\'t relevant.',
+     set:function(){
+       bubblesEl.querySelectorAll('.pol-bubble-d').forEach(function(b){b.classList.add('visible')});
+       dots.forEach(function(d,i){var c=extremes[i%extremes.length];d.style.left=(c.x+(Math.random()-0.5)*10)+'%';d.style.top=(c.y+(Math.random()-0.5)*30)+'%';d.style.background=c.c});
+     }}
+  ];
+  var currentPhase=0;
+  function setPhase(phase){
+    if(phase===currentPhase)return;
+    currentPhase=phase;
+    labelEl.textContent=phaseData[phase-1].label;
+    phaseData[phase-1].set();
+  }
+  function setPos(p){
+    p=Math.max(0,Math.min(1,p));
+    handle.style.left=(p*100)+'%';
+    progressEl.style.width=(p*100)+'%';
+    handle.setAttribute('aria-valuenow',Math.round(p*100));
+    setPhase(p<1/3?1:(p<2/3?2:3));
+  }
+  var dragging=false;
+  function getX(e){return e.touches?e.touches[0].clientX:e.clientX}
+  function fromX(x){var r=track.getBoundingClientRect();setPos((x-r.left)/r.width)}
+  function start(e){dragging=true;handle.classList.add('dragging');fromX(getX(e));if(e.cancelable&&e.type!=='touchstart')e.preventDefault()}
+  track.addEventListener('mousedown',start);
+  track.addEventListener('touchstart',start,{passive:true});
+  window.addEventListener('mousemove',function(e){if(dragging)fromX(getX(e))});
+  window.addEventListener('touchmove',function(e){if(!dragging)return;fromX(getX(e));if(e.cancelable)e.preventDefault()},{passive:false});
+  window.addEventListener('mouseup',function(){dragging=false;handle.classList.remove('dragging')});
+  window.addEventListener('touchend',function(){dragging=false;handle.classList.remove('dragging')});
+  handle.addEventListener('keydown',function(e){
+    var cur=parseFloat(handle.style.left)/100||0;
+    if(e.key==='ArrowRight')setPos(cur+0.05);
+    else if(e.key==='ArrowLeft')setPos(cur-0.05);
+    else if(e.key==='Home')setPos(0);
+    else if(e.key==='End')setPos(1);
+  });
+  setPos(0);
+  phaseData[0].set();
 })();
 
 // === TRIALS ===
