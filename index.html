@@ -11,17 +11,17 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:auto}
-body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#a0a0a0;font-size:18px;line-height:1.75;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#a0a0a0;font-size:20px;line-height:1.75;overflow-x:hidden}
 h1{font-size:48px;font-weight:600;color:#f5f5f5;letter-spacing:-1px;line-height:1.2}
-h2{font-size:28px;font-weight:500;color:#f5f5f5;letter-spacing:-0.3px;line-height:1.3}
-h3{font-size:14px;font-weight:500;color:#666;text-transform:uppercase;letter-spacing:2px;margin-bottom:24px}
+h2{font-size:32px;font-weight:500;color:#f5f5f5;letter-spacing:-0.3px;line-height:1.3}
+h3{font-size:15px;font-weight:500;color:#666;text-transform:uppercase;letter-spacing:2px;margin-bottom:24px}
 p{margin-bottom:1.5em;max-width:680px}
 em{font-style:italic;color:#d0d0d0}
 strong{font-weight:600;color:#f5f5f5}
-blockquote{border-left:2px solid #c0392b;padding-left:24px;margin:2em 0;font-style:italic;color:#d0d0d0;font-size:20px;line-height:1.6;max-width:680px}
-blockquote cite{display:block;font-size:14px;font-style:normal;color:#666;margin-top:8px}
+blockquote{border-left:2px solid #c0392b;padding-left:24px;margin:2em 0;font-style:italic;color:#d0d0d0;font-size:22px;line-height:1.6;max-width:680px}
+blockquote cite{display:block;font-size:15px;font-style:normal;color:#666;margin-top:8px}
 .accent{color:#c0392b}
-.section-label{font-size:12px;font-weight:500;color:#c0392b;text-transform:uppercase;letter-spacing:3px;margin-bottom:16px}
+.section-label{font-size:13px;font-weight:500;color:#c0392b;text-transform:uppercase;letter-spacing:3px;margin-bottom:16px}
 .content-wrap{max-width:780px;margin:0 auto;padding:0 40px}
 section{position:relative}
 .prose-section{padding:120px 0}
@@ -44,12 +44,13 @@ section{position:relative}
 .scrolly-centered .scrolly-step{min-height:80vh}
 .fade-in{opacity:0;transform:translateY(30px)}
 
-/* === G3: ONE-ELEMENT-PER-SCROLL SPACING === */
-.prose-section .fade-in{margin-bottom:max(18vh,140px)}
+/* === G3: FLASH-CARD SCROLL (v5) === */
+.flashcard-pin{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 40px}
+.prose-section .fade-in{margin-bottom:max(40vh,300px)}
 .prose-section .fade-in:last-child{margin-bottom:0}
-.prose-section blockquote.fade-in{margin-top:max(12vh,100px);margin-bottom:max(18vh,140px)}
+.prose-section blockquote.fade-in{margin-top:max(30vh,240px);margin-bottom:max(40vh,300px)}
 .prose-section h3.fade-in{margin-bottom:48px}
-.prose-section .section-image.fade-in{margin-top:max(18vh,140px)}
+.prose-section .section-image.fade-in{margin-top:max(40vh,300px)}
 .viewport-step{min-height:90vh;display:flex;flex-direction:column;justify-content:center}
 
 /* === HERO === */
@@ -58,23 +59,23 @@ section{position:relative}
 .hero-phase-3{text-align:left;align-items:flex-start}
 #hero .hero-bg{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity 1.6s ease}
 #hero .hero-bg.lit{opacity:1}
-#hero .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:0.15;filter:grayscale(100%)}
+#hero .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:0.15;filter:grayscale(100%)}
 .hero-phase-3 .content-wrap{position:relative;z-index:1}
 .hero-portrait{width:min(40vw,400px);margin:0 auto 48px;border-radius:4px;overflow:hidden;opacity:0}
 .hero-portrait img{width:100%;display:block;filter:grayscale(100%)}
-.hero-portrait-caption{font-size:13px;color:#555;margin-top:14px;font-style:italic;letter-spacing:0.3px}
-.hero-quote{font-size:24px;font-style:italic;color:#d0d0d0;max-width:680px;margin:0 auto;line-height:1.6;opacity:0}
+.hero-portrait-caption{font-size:14px;color:#555;margin-top:14px;font-style:italic;letter-spacing:0.3px}
+.hero-quote{font-size:26px;font-style:italic;color:#d0d0d0;max-width:680px;margin:0 auto;line-height:1.6;opacity:0}
 .hero-quote cite{display:block;font-size:14px;font-style:normal;color:#666;margin-top:18px}
 .hero-title{font-size:clamp(44px,7vw,72px);font-weight:600;color:#f5f5f5;letter-spacing:-1.5px;line-height:1.1;max-width:900px;opacity:0;text-align:center}
 .hero-body{max-width:680px;margin:0 auto}
-.hero-body p{opacity:0;margin-bottom:max(18vh,140px)}
+.hero-body p{opacity:0;margin-bottom:max(40vh,300px)}
 .hero-body p:last-child{margin-bottom:0}
 .hero-body .section-image{margin:max(14vh,120px) 0;opacity:0}
 #heroIntro{position:relative;height:300vh;background:#0a0a0a}
 #heroIntro .hero-intro-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px}
 #heroIntro .intro-number{font-size:clamp(90px,18vw,240px);font-weight:600;color:#c0392b;letter-spacing:-4px;line-height:1}
-#heroIntro .intro-sub1{font-size:22px;color:#d0d0d0;margin-top:40px;opacity:0;letter-spacing:0.5px;transition:opacity 0.3s}
-#heroIntro .intro-sub2{font-size:17px;color:#888;margin-top:16px;opacity:0;max-width:560px;line-height:1.6;font-style:italic;transition:opacity 0.3s}
+#heroIntro .intro-sub1{font-size:24px;color:#d0d0d0;margin-top:40px;opacity:0;letter-spacing:0.5px;transition:opacity 0.3s}
+#heroIntro .intro-sub2{font-size:19px;color:#888;margin-top:16px;opacity:0;max-width:560px;line-height:1.6;font-style:italic;transition:opacity 0.3s}
 #heroIntro .intro-scroll-hint{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);font-size:11px;color:#555;text-transform:uppercase;letter-spacing:3px;animation:introScrollBob 2s ease-in-out infinite;opacity:0.7;transition:opacity 0.4s}
 @keyframes introScrollBob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
 
@@ -92,7 +93,7 @@ section{position:relative}
 /* === ROUTINIZATION PATHWAY === */
 .routine-wrap{position:relative;height:200vh;margin:64px 0}
 .routine-wrap .routine-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;padding:0 24px}
-.routine-diagram{margin:0 auto;max-width:min(80vw,900px);width:100%}
+.routine-diagram{margin:0 auto;max-width:min(90vw,1100px);width:100%}
 .routine-diagram svg{width:100%;height:auto;display:block}
 .routine-diagram svg .path-line{stroke:#2a2a2a;stroke-width:2;fill:none;transition:stroke 0.8s,stroke-width 0.8s}
 .routine-diagram svg .path-line.lit{stroke:#c0392b;stroke-width:2.5}
@@ -108,15 +109,15 @@ section{position:relative}
 @keyframes qPulse{0%,100%{opacity:0.4}50%{opacity:0.9}}
 
 /* === BEFORE/AFTER === */
-.ba-erasure-intro{font-size:14px;color:#888;text-align:center;max-width:560px;margin:48px auto 16px;font-style:italic;line-height:1.6}
+.ba-erasure-intro{font-size:16px;color:#888;text-align:center;max-width:560px;margin:48px auto 16px;font-style:italic;line-height:1.6}
 .ba-slider{max-width:680px;margin:24px auto 48px}
-.ba-slider .ba-wrap{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#1a1a1a;cursor:ew-resize;user-select:none}
+.ba-slider .ba-wrap{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:4px;background:#1a1a1a;cursor:ew-resize;user-select:none}
 .ba-slider .ba-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);pointer-events:none}
-.ba-slider .ba-after{clip-path:inset(0 0 0 50%)}
-.ba-divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#c0392b;transform:translateX(-50%);pointer-events:none;box-shadow:0 0 12px rgba(192,57,43,0.5)}
-.ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;background:#c0392b;border:2px solid #fff;border-radius:50%;pointer-events:none;z-index:2;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;font-weight:500}
+.ba-slider .ba-after{clip-path:inset(0 0 0 100%)}
+.ba-divider{position:absolute;top:0;bottom:0;left:100%;width:2px;background:#c0392b;transform:translateX(-50%);pointer-events:none;box-shadow:0 0 12px rgba(192,57,43,0.5)}
+.ba-handle{position:absolute;top:50%;left:100%;transform:translate(-50%,-50%);width:40px;height:40px;background:#c0392b;border:2px solid #fff;border-radius:50%;pointer-events:none;z-index:2;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;font-weight:500}
 .ba-labels{display:flex;justify-content:space-between;font-size:10px;color:#666;text-transform:uppercase;letter-spacing:2px;margin-top:10px;padding:0 4px}
-.ba-caption{font-size:13px;color:#555;margin-top:6px;font-style:italic;text-align:center}
+.ba-caption{font-size:14px;color:#555;margin-top:6px;font-style:italic;text-align:center}
 
 /* === TESTAMENT INTERACTIVE === */
 .testament-interactive{position:relative;max-width:680px;margin:32px auto 48px;border-radius:4px;overflow:hidden;cursor:pointer;border:1px solid #1a1a1a}
@@ -128,35 +129,52 @@ section{position:relative}
 .testament-hint{position:absolute;bottom:10px;right:14px;font-size:10px;color:#888;text-transform:uppercase;letter-spacing:2px;background:rgba(0,0,0,0.6);padding:4px 8px;border-radius:3px;transition:opacity 0.3s}
 .testament-interactive.active .testament-hint{opacity:0.4}
 
-/* === YEAR COUNTER === */
-.year-counter{position:relative;height:220vh}
-.year-counter .yc-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;text-align:center}
-.year-counter .yc-viz{max-width:720px;margin:0 auto;padding:0 40px}
-.year-counter .yc-year-label{font-size:14px;color:#888;text-transform:uppercase;letter-spacing:3px;margin-bottom:24px;font-variant-numeric:tabular-nums}
-.year-counter .yc-year-label span{color:#d0d0d0;font-weight:500}
-.year-counter .yc-toll{font-size:clamp(80px,14vw,180px);font-weight:600;color:#c0392b;letter-spacing:-3px;line-height:1;font-variant-numeric:tabular-nums;text-shadow:0 0 60px rgba(192,57,43,0.25)}
-.year-counter .yc-toll-label{font-size:16px;color:#888;margin-top:28px;font-style:italic;letter-spacing:0.5px;max-width:600px;margin-left:auto;margin-right:auto}
-.year-counter .yc-event-label{margin-top:24px;min-height:48px;font-size:18px;color:#c0392b;letter-spacing:0.3px;opacity:0;transition:opacity 0.5s,color 0.5s}
-.year-counter .yc-event-label.muted{color:#666;opacity:0.7}
+/* === HORIZONTAL DRAGGABLE TIMELINE (v5) === */
+.htl-wrap{position:relative;padding:120px 0;margin:64px 0}
+.htl-inner{max-width:1180px;margin:0 auto;padding:0 40px;display:flex;flex-direction:column;align-items:center;gap:48px;text-align:center}
+.htl-toll{font-size:clamp(64px,12vw,140px);font-weight:600;color:#c0392b;letter-spacing:-3px;line-height:1;font-variant-numeric:tabular-nums;text-shadow:0 0 60px rgba(192,57,43,0.25);min-width:560px;text-align:center}
+.htl-current{font-size:18px;color:#888;font-style:italic;min-height:28px;letter-spacing:0.3px}
+.htl-current .htl-current-year{color:#c0392b;font-weight:500;font-style:normal;margin-right:8px}
+.htl-track-wrap{position:relative;width:min(90vw,1100px);padding:140px 0 130px}
+.htl-track{position:relative;height:6px;background:#1a1a1a;border-radius:3px;cursor:pointer;touch-action:none}
+.htl-progress{position:absolute;top:0;left:0;height:100%;background:#c0392b;border-radius:3px;width:0%;pointer-events:none}
+.htl-handle{position:absolute;top:50%;left:0%;width:26px;height:26px;background:#fff;border:3px solid #c0392b;border-radius:50%;transform:translate(-50%,-50%);cursor:grab;box-shadow:0 0 28px rgba(192,57,43,0.55);z-index:4;transition:transform 0.15s}
+.htl-handle:hover{transform:translate(-50%,-50%) scale(1.15)}
+.htl-handle.dragging{cursor:grabbing;transform:translate(-50%,-50%) scale(1.2)}
+.htl-marker{position:absolute;top:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:2}
+.htl-marker .htl-marker-dot{width:12px;height:12px;background:#3a3a3a;border-radius:50%;margin:0 auto;transition:background 0.4s,box-shadow 0.4s}
+.htl-marker.reached .htl-marker-dot{background:#c0392b;box-shadow:0 0 16px rgba(192,57,43,0.6)}
+.htl-marker-label{position:absolute;left:50%;transform:translateX(-50%);width:140px;line-height:1.45;text-align:center;color:#666;transition:color 0.4s}
+.htl-marker-label.below{top:18px}
+.htl-marker-label.above{bottom:18px}
+.htl-marker.reached .htl-marker-label{color:#d0d0d0}
+.htl-marker-year{font-size:13px;font-weight:500;color:#888;display:block}
+.htl-marker.reached .htl-marker-year{color:#f5f5f5}
+.htl-marker-event{font-size:12px;color:#666;display:block;margin-top:2px}
+.htl-marker.reached .htl-marker-event{color:#a0a0a0}
+.htl-marker-toll{font-size:11px;color:#c0392b;font-weight:500;display:block;margin-top:3px;font-variant-numeric:tabular-nums}
+.htl-axis-labels{display:flex;justify-content:space-between;font-size:13px;color:#555;margin-top:14px;font-variant-numeric:tabular-nums;letter-spacing:1px;text-transform:uppercase}
+.htl-hint{font-size:12px;color:#666;text-transform:uppercase;letter-spacing:3px;margin-top:8px}
+.htl-sublabel{font-size:16px;color:#888;font-style:italic;max-width:680px;line-height:1.6;margin-top:16px}
 
 /* === DISSONANCE === */
 .dissonance-demo{max-width:min(70vw,780px);margin:80px auto;padding:64px 56px;background:#121212;border:1px solid #222;border-radius:6px;text-align:center;min-height:60vh;display:flex;flex-direction:column;justify-content:center}
-.dissonance-demo .dd-step{font-size:18px;color:#d0d0d0;line-height:1.7;opacity:0;transform:translateY(8px);transition:opacity 0.6s,transform 0.6s;margin-bottom:16px}
+.dissonance-demo .dd-step{font-size:20px;color:#d0d0d0;line-height:1.7;opacity:0;transform:translateY(8px);transition:opacity 0.6s,transform 0.6s;margin-bottom:16px}
 .dissonance-demo .dd-step.show{opacity:1;transform:translateY(0)}
-.dissonance-demo .dd-scene{font-style:italic;color:#999;margin-bottom:32px;font-size:16px}
+.dissonance-demo .dd-scene{font-style:italic;color:#999;margin-bottom:32px;font-size:18px}
 .dissonance-demo .dd-fact{font-size:24px}
 .dissonance-demo .dd-claim{color:#c0392b;font-size:24px;margin-bottom:28px}
-.dissonance-demo .dd-context{font-size:14px;color:#777;font-style:italic;margin-bottom:32px;max-width:560px;margin-left:auto;margin-right:auto}
-.dissonance-demo .dd-prompt{font-size:13px;color:#666;text-transform:uppercase;letter-spacing:3px;margin-bottom:24px;font-weight:500}
+.dissonance-demo .dd-context{font-size:16px;color:#777;font-style:italic;margin-bottom:32px;max-width:560px;margin-left:auto;margin-right:auto}
+.dissonance-demo .dd-prompt{font-size:14px;color:#666;text-transform:uppercase;letter-spacing:3px;margin-bottom:24px;font-weight:500}
 .dissonance-demo .dd-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.dissonance-demo .dd-btn{background:transparent;border:1px solid #444;color:#d0d0d0;padding:12px 24px;font-family:inherit;font-size:14px;letter-spacing:0.5px;cursor:pointer;border-radius:3px;transition:all 0.25s}
+.dissonance-demo .dd-btn{background:transparent;border:1px solid #444;color:#d0d0d0;padding:12px 24px;font-family:inherit;font-size:16px;letter-spacing:0.5px;cursor:pointer;border-radius:3px;transition:all 0.25s}
 .dissonance-demo .dd-btn:hover{border-color:#c0392b;color:#f5f5f5;background:rgba(192,57,43,0.08)}
 .dissonance-demo.locked .dd-btn{opacity:0.3;pointer-events:none}
 .dissonance-demo.locked .dd-btn.chosen{opacity:1;border-color:#c0392b;color:#c0392b}
 .dissonance-demo .dd-result{margin-top:32px;max-height:0;opacity:0;overflow:hidden;transition:max-height 0.7s,opacity 0.7s,margin-top 0.7s}
 .dissonance-demo.locked .dd-result{max-height:200px;opacity:1;margin-top:40px}
 .dissonance-demo .dd-result-line{font-size:18px;color:#f5f5f5;font-weight:500;line-height:1.5}
-.dissonance-demo .dd-result-sub{font-size:14px;color:#777;margin-top:10px;font-style:italic;line-height:1.6}
+.dissonance-demo .dd-result-sub{font-size:16px;color:#777;margin-top:10px;font-style:italic;line-height:1.6}
 
 /* === POLARIZATION DRIFT === */
 .polarization-wrap{position:relative;height:240vh;margin:64px 0}
@@ -168,13 +186,13 @@ section{position:relative}
 .polarization-viz .pol-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#888;transition:left 1.6s cubic-bezier(.4,0,.2,1),top 1.6s cubic-bezier(.4,0,.2,1),background 1s}
 .polarization-viz .pol-bubble{position:absolute;border-radius:50%;border:1px dashed #c0392b;opacity:0;transition:opacity 1.2s;pointer-events:none}
 .polarization-viz.bubbles-on .pol-bubble{opacity:0.45}
-.polarization-viz .pol-label{position:absolute;bottom:24px;left:5%;right:5%;text-align:center;font-size:14px;color:#a0a0a0;line-height:1.5;font-style:italic;transition:opacity 0.5s;max-width:none}
+.polarization-viz .pol-label{position:absolute;bottom:24px;left:5%;right:5%;text-align:center;font-size:16px;color:#a0a0a0;line-height:1.5;font-style:italic;transition:opacity 0.5s;max-width:none}
 
 /* === IMAGES === */
 .section-image{width:100%;max-width:680px;margin:48px 0;border-radius:4px;overflow:hidden}
 .section-image img{width:100%;display:block;filter:grayscale(80%);transition:filter 0.5s}
 .section-image:hover img{filter:grayscale(40%)}
-.section-image .caption{font-size:13px;color:#555;margin-top:8px;font-style:italic}
+.section-image .caption{font-size:14px;color:#555;margin-top:8px;font-style:italic}
 .section-image-full{width:100vw;position:relative;left:50%;transform:translateX(-50%);max-width:none;margin:64px 0;max-height:60vh;overflow:hidden}
 .section-image-full img{width:100%;height:100%;object-fit:cover;filter:grayscale(80%);display:block}
 .image-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0;max-width:680px}
@@ -194,11 +212,11 @@ section{position:relative}
 .cr-timeline-viz{width:100%;max-width:min(50vw,600px);text-align:center}
 .cr-year-display{font-size:min(14vw,160px);font-weight:600;line-height:1;color:#1a1a1a;transition:color 0.6s,text-shadow 0.6s;letter-spacing:-3px}
 .cr-year-display.active{color:#c0392b;text-shadow:0 0 80px rgba(192,57,43,0.3)}
-.cr-event-text{font-size:16px;color:#666;margin-top:16px;min-height:48px;transition:opacity 0.4s}
+.cr-event-text{font-size:18px;color:#666;margin-top:16px;min-height:48px;transition:opacity 0.4s}
 .cr-intensity-bar{width:100%;height:4px;background:#1a1a1a;border-radius:2px;margin-top:32px;overflow:hidden}
 .cr-intensity-fill{height:100%;background:#c0392b;width:0%;border-radius:2px;transition:width 0.8s ease}
-.cr-death-toll{font-size:14px;color:#444;margin-top:12px;transition:opacity 0.5s,color 0.5s}
-.cr-causal{font-size:12px;color:#555;margin-top:14px;font-style:italic;line-height:1.6;max-width:340px;margin-left:auto;margin-right:auto;opacity:0;transition:opacity 0.6s}
+.cr-death-toll{font-size:16px;color:#444;margin-top:12px;transition:opacity 0.5s,color 0.5s}
+.cr-causal{font-size:14px;color:#555;margin-top:14px;font-style:italic;line-height:1.6;max-width:340px;margin-left:auto;margin-right:auto;opacity:0;transition:opacity 0.6s}
 
 /* === PURGE === */
 .purge-counter-wrap{position:relative;height:150vh;margin:64px 0}
@@ -228,8 +246,8 @@ section{position:relative}
 .peng-step{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 40px;text-align:center;opacity:0;transform:translateY(30px)}
 .peng-step .peng-image{max-width:min(60vw,720px);width:100%;margin:0 auto 32px;border-radius:4px;overflow:hidden}
 .peng-step .peng-image img{width:100%;display:block;filter:grayscale(80%)}
-.peng-step .peng-caption{font-size:14px;color:#666;margin-top:14px;font-style:italic}
-.peng-step .peng-text{max-width:680px;margin:0 auto;font-size:19px;line-height:1.7;color:#d0d0d0}
+.peng-step .peng-caption{font-size:15px;color:#666;margin-top:14px;font-style:italic}
+.peng-step .peng-text{max-width:680px;margin:0 auto;font-size:21px;line-height:1.7;color:#d0d0d0}
 .peng-step .peng-text strong{color:#f5f5f5}
 
 /* === INFLATE NUMBER === */
@@ -350,9 +368,9 @@ section{position:relative}
   .bukharin-block{grid-template-columns:1fr}
 }
 @media(max-width:768px){
-  body{font-size:16px}
-  h1,.hero-title{font-size:36px}
-  h2{font-size:22px}
+  body{font-size:18px}
+  h1,.hero-title{font-size:38px}
+  h2{font-size:26px}
   .content-wrap{padding:0 24px}
   .hemi-yes,.hemi-no{font-size:36px}
   .famine-number{font-size:56px}
@@ -412,9 +430,9 @@ section{position:relative}
   <div class="hero-phase hero-phase-3">
     <div class="content-wrap">
       <div class="hero-body">
-        <p>Seventy million Americans watched that debate. The ones who listened on radio thought Richard Nixon won. The ones who watched on television were certain it was Kennedy. Same words. The only difference was the screen.</p>
+        <p>On September 26, 1960, seventy million Americans tuned in to the first televised presidential debate in the country's history. Richard Nixon had been vice president for eight years. He knew policy cold. On substance, the people who listened on radio thought he won. But Nixon had recently been hospitalized, and it showed — he looked pale, underweight, and was visibly sweating under the studio lights. Kennedy, tanned and composed, looked like he belonged on camera. The television audience was certain Kennedy won. Same words, same arguments. The only difference was the screen. Two months later, Kennedy won the presidency by less than 120,000 votes out of 69 million cast — one of the narrowest margins in American history. The election did not turn on policy. It turned on the fact that one man looked like a leader and the other did not.</p>
+        <div class="section-image" style="max-width:min(90vw,1360px);width:min(90vw,1360px);position:relative;left:50%;transform:translateX(-50%)"><img src="assets/opening-paul-atreides.png" alt="Paul Atreides in Dune (2021)"><div class="caption">Paul Atreides — the hero of Frank Herbert's <em>Dune</em>.</div></div>
         <p>Frank Herbert watched a science fiction audience fall in love with Paul Atreides — the hero of <em>Dune</em> — and it horrified him. He had written Paul as a warning. Readers took him as a savior. So Herbert wrote sequel after sequel to make the point as brutal as possible: the hero will destroy you. Not because he wants to. Because you will let him.</p>
-        <div class="section-image"><img src="assets/opening-paul-atreides.png" alt="Paul Atreides"><div class="caption">The hero Herbert tried to warn you about.</div></div>
         <p>What happens when people stop questioning. How institutions collapse. How movements outlive the people who started them. How followers seal themselves inside a belief until nothing can reach them.</p>
       </div>
     </div>
@@ -503,6 +521,7 @@ section{position:relative}
       </div></div>
     </div>
   </div>
+  <div style="height:40vh" aria-hidden="true"></div>
 
   <!-- CR SCROLLY -->
   <h3 class="fade-in" style="padding:64px 40px 32px;max-width:780px;margin:0 auto">Part III — The Fire</h3>
@@ -542,6 +561,7 @@ section{position:relative}
       </div></div>
     </div>
   </div>
+  <div style="height:40vh" aria-hidden="true"></div>
 </section>
 
 <!-- SECTION 2 -->
@@ -585,7 +605,7 @@ section{position:relative}
         <div class="ba-divider"></div>
         <div class="ba-handle">⇆</div>
       </div>
-      <div class="ba-labels"><span>Original (1920)</span><span>Retouched</span></div>
+      <div class="ba-labels"><span>Original (1920)</span><span>← Drag to reveal retouched</span></div>
       <div class="ba-caption">Lenin at Sverdlov Square, 1920. Trotsky and Kamenev stood beside the podium — until they didn't.</div>
     </div>
     <div class="ba-slider fade-in">
@@ -595,7 +615,7 @@ section{position:relative}
         <div class="ba-divider"></div>
         <div class="ba-handle">⇆</div>
       </div>
-      <div class="ba-labels"><span>Original</span><span>After Yezhov's execution</span></div>
+      <div class="ba-labels"><span>Original</span><span>← Drag to reveal altered</span></div>
       <div class="ba-caption">Stalin and secret police chief Nikolai Yezhov at the Moscow Canal. After Yezhov was shot in 1940, he vanished from the photograph too.</div>
     </div>
     <div class="purge-counter-wrap" id="purgeCounterWrap">
@@ -695,14 +715,43 @@ section{position:relative}
     <div class="fade-in" style="margin-top:16px"><p style="font-size:13px;color:#555;font-style:italic">Aleppo, Syria. One of the oldest continuously inhabited cities in the world, reduced to rubble in a war with deep sectarian dimensions.</p></div>
     <div class="fade-in" style="margin-top:48px"><p>No war on that list was caused by theology alone. The Iran-Iraq War was triggered by border disputes, revolutionary export, and Cold War maneuvering. The Iraq Civil War followed a foreign invasion. The Syrian War began as a political uprising. The Yemen War is tangled in Saudi-Iranian rivalry and resource competition. Each conflict had its own proximate causes, its own geopolitics, its own cynical actors. But each one also cracked along the same fault line — the question of who inherited Muhammad's authority. Fourteen centuries later, that fracture has not healed. It does not cause the wars. It shapes where they break.</p></div>
   </div>
-  <div class="year-counter" id="yearCounter">
-    <div class="yc-sticky">
-      <div class="yc-viz">
-        <div class="yc-year-label">Year <span id="ycNum">632</span></div>
-        <div class="yc-toll" id="ycToll">0</div>
-        <div class="yc-event-label" id="ycEvent"></div>
-        <div class="yc-toll-label">killed in conflicts with sectarian dimensions — each triggered by its own political crisis, none reducible to religion alone</div>
+  <div class="htl-wrap" id="htlWrap">
+    <div class="htl-inner">
+      <div class="htl-toll" id="htlToll">0</div>
+      <div class="htl-current" id="htlCurrent"><span class="htl-current-year">632 CE</span>Muhammad dies — drag the handle right to advance through history</div>
+      <div class="htl-track-wrap">
+        <div class="htl-track" id="htlTrack">
+          <div class="htl-progress" id="htlProgress"></div>
+          <div class="htl-marker" data-pos="0.06" data-year="680" data-event="Karbala" data-toll="10000" style="left:6%">
+            <div class="htl-marker-dot"></div>
+            <div class="htl-marker-label below"><span class="htl-marker-year">680</span><span class="htl-marker-event">Karbala</span><span class="htl-marker-toll">~10,000</span></div>
+          </div>
+          <div class="htl-marker" data-pos="0.18" data-year="750" data-event="Umayyad civil wars" data-toll="80000" style="left:18%">
+            <div class="htl-marker-dot"></div>
+            <div class="htl-marker-label above"><span class="htl-marker-year">750</span><span class="htl-marker-event">Umayyad civil wars</span><span class="htl-marker-toll">~70,000</span></div>
+          </div>
+          <div class="htl-marker" data-pos="0.62" data-year="1988" data-event="Iran-Iraq War" data-toll="1080000" style="left:62%">
+            <div class="htl-marker-dot"></div>
+            <div class="htl-marker-label below"><span class="htl-marker-year">1988</span><span class="htl-marker-event">Iran-Iraq War</span><span class="htl-marker-toll">~1,000,000</span></div>
+          </div>
+          <div class="htl-marker" data-pos="0.76" data-year="2011" data-event="Iraq Civil War" data-toll="1280000" style="left:76%">
+            <div class="htl-marker-dot"></div>
+            <div class="htl-marker-label above"><span class="htl-marker-year">2011</span><span class="htl-marker-event">Iraq Civil War</span><span class="htl-marker-toll">~200,000</span></div>
+          </div>
+          <div class="htl-marker" data-pos="0.88" data-year="2014" data-event="Syrian Civil War" data-toll="1780000" style="left:88%">
+            <div class="htl-marker-dot"></div>
+            <div class="htl-marker-label below"><span class="htl-marker-year">2014</span><span class="htl-marker-event">Syrian Civil War</span><span class="htl-marker-toll">~500,000</span></div>
+          </div>
+          <div class="htl-marker" data-pos="1.00" data-year="2024" data-event="Yemen Civil War" data-toll="1850000" style="left:100%">
+            <div class="htl-marker-dot"></div>
+            <div class="htl-marker-label above"><span class="htl-marker-year">2024</span><span class="htl-marker-event">Yemen Civil War</span><span class="htl-marker-toll">~150,000+</span></div>
+          </div>
+          <div class="htl-handle" id="htlHandle" role="slider" aria-label="Year" aria-valuemin="632" aria-valuemax="2024" aria-valuenow="632" tabindex="0"></div>
+        </div>
+        <div class="htl-axis-labels"><span>632 CE</span><span>2024</span></div>
+        <div class="htl-hint">↔ drag</div>
       </div>
+      <div class="htl-sublabel">killed in conflicts with sectarian dimensions — each triggered by its own political crisis, none reducible to religion alone</div>
     </div>
   </div>
 </section>
@@ -759,6 +808,7 @@ section{position:relative}
       <div class="scrolly-step" data-step="5"><div class="step-content" style="background:rgba(10,10,10,0.92);border-radius:8px;padding:32px;border:1px solid #c0392b"><p style="margin-bottom:0;color:#e8d4d0;line-height:1.7"><strong style="color:#c0392b">The number collapses into reality.</strong> Beijing believed the inflated harvest reports. Grain was exported to repay Soviet debts and fund industrialization. Local food reserves were seized for redistribution to cities. No one sent food back — because the numbers said there was more than enough. There was famine not because the crops failed, but because the system acted on lies as if they were true.</p></div></div>
     </div>
   </div>
+  <div style="height:40vh" aria-hidden="true"></div>
 
   <div class="famine-block">
     <div class="famine-image"><img src="assets/s3-great-famine-victims.jpg" alt="A family during the Great Chinese Famine, 1959–1961"><div class="caption">Rural China, 1959–1961. The surplus did not exist. The famine did.</div></div>
@@ -802,6 +852,7 @@ section{position:relative}
         </div>
       </div>
     </div>
+    <div style="height:40vh" aria-hidden="true"></div>
 
     <div class="fade-in"><p>Eli Pariser identified the infrastructure that automates Sunstein's process. Social media algorithms optimize for engagement. Devotion engages. Doubt does not. The <em>filter bubble</em> is an environment where the information you see is pre-selected to confirm what you already believe. The technology is new. The psychology is Festinger's. The group dynamics are Sunstein's. The scale is what changed.</p></div>
 
@@ -1120,63 +1171,102 @@ gsap.utils.toArray('.peng-step').forEach(function(step){
   t.addEventListener('click',()=>t.classList.toggle('active'));
 })();
 
-// === YEAR COUNTER 632 → 2026 ===
-(()=>{
-  const ycNum=document.getElementById('ycNum');
-  const ycToll=document.getElementById('ycToll');
-  const ycEvent=document.getElementById('ycEvent');
-  if(!ycNum)return;
-  const tollPoints=[
-    [632,0],[680,10000],[750,80000],[1500,120000],[1900,150000],
-    [1980,150000],[1988,1150000],[2003,1200000],[2011,1400000],
-    [2014,1700000],[2026,1850000]
-  ];
-  const events=[
-    {year:680,label:'Karbala & early succession wars — ~10,000'},
-    {year:750,label:'Umayyad civil wars — ~70,000'},
-    {year:1988,label:'Iran-Iraq War (1980–88) — ~1,000,000'},
-    {year:2011,label:'Iraq Civil War (2003–11) — ~200,000'},
-    {year:2014,label:'Syrian Civil War (2011–) — ~500,000'},
-    {year:2026,label:'Yemen Civil War (2014–) — ~150,000+'}
-  ];
-  const tollAt=(y)=>{
-    for(let i=1;i<tollPoints.length;i++){
-      if(y<=tollPoints[i][0]){
-        const [y0,v0]=tollPoints[i-1],[y1,v1]=tollPoints[i];
-        return v0+((y-y0)/(y1-y0))*(v1-v0);
+// === HORIZONTAL DRAGGABLE TIMELINE (v5) ===
+(function(){
+  const wrap=document.getElementById('htlWrap');
+  if(!wrap)return;
+  const track=document.getElementById('htlTrack');
+  const handle=document.getElementById('htlHandle');
+  const progressEl=document.getElementById('htlProgress');
+  const tollEl=document.getElementById('htlToll');
+  const currentEl=document.getElementById('htlCurrent');
+  const markers=Array.from(document.querySelectorAll('.htl-marker'));
+  const stops=markers.map(m=>({
+    pos:parseFloat(m.dataset.pos),
+    year:parseInt(m.dataset.year),
+    event:m.dataset.event,
+    toll:parseInt(m.dataset.toll),
+    el:m
+  })).sort((a,b)=>a.pos-b.pos);
+  const startStop={pos:0,year:632,event:'Muhammad dies',toll:0};
+  const allStops=[startStop,...stops];
+  function lerpYear(p){
+    for(let i=0;i<allStops.length-1;i++){
+      const a=allStops[i],b=allStops[i+1];
+      if(p>=a.pos&&p<=b.pos){
+        const t=(p-a.pos)/(b.pos-a.pos);
+        return Math.round(a.year+t*(b.year-a.year));
       }
     }
-    return tollPoints[tollPoints.length-1][1];
-  };
-  let lastEventIdx=-1;
-  const state={year:632};
-  gsap.to(state,{
-    year:2026,ease:'none',
-    scrollTrigger:{trigger:'#yearCounter',start:'top top',end:'bottom bottom',scrub:0.6,
-      onUpdate:()=>{
-        const y=Math.round(state.year);
-        ycNum.textContent=y;
-        ycToll.textContent=Math.round(tollAt(y)).toLocaleString();
-        let idx=-1;
-        for(let i=events.length-1;i>=0;i--){
-          if(y>=events[i].year){idx=i;break;}
-        }
-        if(idx!==lastEventIdx){
-          lastEventIdx=idx;
-          if(idx>=0){
-            ycEvent.textContent=events[idx].label;
-            ycEvent.style.opacity='1';
-            ycEvent.classList.remove('muted');
-            // After 1.2s, mute the label so the next one can take focus
-            clearTimeout(ycEvent._muteTO);
-            ycEvent._muteTO=setTimeout(()=>ycEvent.classList.add('muted'),1400);
-          }else{
-            ycEvent.style.opacity='0';
-          }
-        }
+    return allStops[allStops.length-1].year;
+  }
+  function lerpToll(p){
+    for(let i=0;i<allStops.length-1;i++){
+      const a=allStops[i],b=allStops[i+1];
+      if(p>=a.pos&&p<=b.pos){
+        const t=(p-a.pos)/(b.pos-a.pos);
+        return Math.round(a.toll+t*(b.toll-a.toll));
       }
     }
+    return allStops[allStops.length-1].toll;
+  }
+  function currentStop(p){
+    let cur=startStop;
+    for(let i=0;i<allStops.length;i++){
+      if(p>=allStops[i].pos-0.001)cur=allStops[i];
+    }
+    return cur;
+  }
+  function setProgress(p){
+    p=Math.max(0,Math.min(1,p));
+    handle.style.left=(p*100)+'%';
+    progressEl.style.width=(p*100)+'%';
+    const yr=lerpYear(p);
+    const toll=lerpToll(p);
+    tollEl.textContent=toll.toLocaleString();
+    const cs=currentStop(p);
+    const yrLabel=p<=0.001?'632 CE':(yr+(yr<1000?' CE':''));
+    if(p<0.001){
+      currentEl.innerHTML='<span class="htl-current-year">632 CE</span>Muhammad dies — drag the handle right to advance through history';
+    }else{
+      currentEl.innerHTML='<span class="htl-current-year">'+yrLabel+'</span>'+cs.event;
+    }
+    handle.setAttribute('aria-valuenow',yr);
+    markers.forEach(m=>{
+      const mp=parseFloat(m.dataset.pos);
+      m.classList.toggle('reached',p>=mp-0.005);
+    });
+  }
+  let dragging=false;
+  function getX(e){return e.touches?e.touches[0].clientX:e.clientX}
+  function updateFromX(x){
+    const r=track.getBoundingClientRect();
+    setProgress((x-r.left)/r.width);
+  }
+  function start(e){
+    dragging=true;
+    handle.classList.add('dragging');
+    updateFromX(getX(e));
+    if(e.cancelable&&e.type!=='touchstart')e.preventDefault();
+  }
+  track.addEventListener('mousedown',start);
+  track.addEventListener('touchstart',start,{passive:true});
+  window.addEventListener('mousemove',e=>{if(dragging)updateFromX(getX(e))});
+  window.addEventListener('touchmove',e=>{
+    if(!dragging)return;
+    updateFromX(getX(e));
+    if(e.cancelable)e.preventDefault();
+  },{passive:false});
+  window.addEventListener('mouseup',()=>{dragging=false;handle.classList.remove('dragging')});
+  window.addEventListener('touchend',()=>{dragging=false;handle.classList.remove('dragging')});
+  handle.addEventListener('keydown',e=>{
+    const cur=parseFloat(handle.style.left)/100||0;
+    if(e.key==='ArrowRight')setProgress(cur+0.02);
+    else if(e.key==='ArrowLeft')setProgress(cur-0.02);
+    else if(e.key==='Home')setProgress(0);
+    else if(e.key==='End')setProgress(1);
   });
+  setProgress(0);
 })();
 
 // === BEFORE/AFTER SLIDERS ===
@@ -1208,8 +1298,20 @@ document.querySelectorAll('.ba-slider').forEach(slider=>{
   window.addEventListener('touchend',()=>dragging=false);
 });
 
-// === FADE-IN ===
+// === FADE-IN (G3 flash-card v5) ===
+gsap.utils.toArray('.prose-section .fade-in').forEach(el=>{
+  ScrollTrigger.create({
+    trigger:el,
+    start:'top 80%',
+    end:'bottom 20%',
+    onEnter:()=>gsap.to(el,{opacity:1,y:0,duration:0.6}),
+    onLeave:()=>gsap.to(el,{opacity:0,y:-30,duration:0.4}),
+    onEnterBack:()=>gsap.to(el,{opacity:1,y:0,duration:0.6}),
+    onLeaveBack:()=>gsap.to(el,{opacity:0,y:30,duration:0.4})
+  });
+});
 gsap.utils.toArray('.fade-in').forEach(el=>{
+  if(el.closest('.prose-section'))return;
   gsap.to(el,{opacity:1,y:0,duration:0.8,scrollTrigger:{trigger:el,start:'top 85%'}});
 });
 
